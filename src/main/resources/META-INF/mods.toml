@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="[28,)"
+
+[[mods]]
+modId="morevanillaarmor"
+version="${file.jarVersion}"
+displayName="MoreVanillaArmor"
+updateJSONURL="https://raw.githubusercontent.com/MelanX/MoreVanillaArmor/master/update/Update.json"
+authors="MelanX"
+description='''
+A mod which adds more armor in the vanilla way.
+'''
+[[dependencies.MoreVanillaTools]]
+    modId="forge"
+    mandatory=true
+    versionRange="[28.1,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.MoreVanillaTools]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.14.4]"
+    ordering="NONE"
+    side="BOTH"
