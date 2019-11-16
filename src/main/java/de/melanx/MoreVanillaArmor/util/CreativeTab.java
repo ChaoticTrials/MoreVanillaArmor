@@ -19,57 +19,57 @@ public class CreativeTab extends ItemGroup {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(ModItems.emerald_chestplate);
+        return new ItemStack(ModItems.EMERALD_CHESTPLATE);
     }
 
     @Override
     public void fill(@Nonnull NonNullList<ItemStack> list) {
         this.list = list;
 
-        addItem(ModItems.redstone_helmet);
-        addItem(ModItems.redstone_chestplate);
-        addItem(ModItems.redstone_leggings);
-        addItem(ModItems.redstone_boots);
+        addItem(ModItems.REDSTONE_HELMET);
+        addItem(ModItems.REDSTONE_CHESTPLATE);
+        addItem(ModItems.REDSTONE_LEGGINGS);
+        addItem(ModItems.REDSTONE_BOOTS);
 
-        addItem(ModItems.lapis_helmet);
-        addItem(ModItems.lapis_chestplate);
-        addItem(ModItems.lapis_leggings);
-        addItem(ModItems.lapis_boots);
+        addItem(ModItems.LAPIS_HELMET);
+        addItem(ModItems.LAPIS_CHESTPLATE);
+        addItem(ModItems.LAPIS_LEGGINGS);
+        addItem(ModItems.LAPIS_BOOTS);
 
-        addItem(ModItems.obsidian_helmet);
-        addItem(ModItems.obsidian_chestplate);
-        addItem(ModItems.obsidian_leggings);
-        addItem(ModItems.obsidian_boots);
+        addItem(ModItems.OBSIDIAN_HELMET);
+        addItem(ModItems.OBSIDIAN_CHESTPLATE);
+        addItem(ModItems.OBSIDIAN_LEGGINGS);
+        addItem(ModItems.OBSIDIAN_BOOTS);
 
-        addItem(ModItems.coal_helmet);
-        addItem(ModItems.coal_chestplate);
-        addItem(ModItems.coal_leggings);
-        addItem(ModItems.coal_boots);
+        addItem(ModItems.COAL_HELMET);
+        addItem(ModItems.COAL_CHESTPLATE);
+        addItem(ModItems.COAL_LEGGINGS);
+        addItem(ModItems.COAL_BOOTS);
 
-        addItem(ModItems.glowstone_helmet);
-        addItem(ModItems.glowstone_chestplate);
-        addItem(ModItems.glowstone_leggings);
-        addItem(ModItems.glowstone_boots);
+        addItem(ModItems.GLOWSTONE_HELMET);
+        addItem(ModItems.GLOWSTONE_CHESTPLATE);
+        addItem(ModItems.GLOWSTONE_LEGGINGS);
+        addItem(ModItems.GLOWSTONE_BOOTS);
 
-        addItem(ModItems.emerald_helmet);
-        addItem(ModItems.emerald_chestplate);
-        addItem(ModItems.emerald_leggings);
-        addItem(ModItems.emerald_boots);
+        addItem(ModItems.EMERALD_HELMET);
+        addItem(ModItems.EMERALD_CHESTPLATE);
+        addItem(ModItems.EMERALD_LEGGINGS);
+        addItem(ModItems.EMERALD_BOOTS);
 
-        addItem(ModItems.quartz_helmet);
-        addItem(ModItems.quartz_chestplate);
-        addItem(ModItems.quartz_leggings);
-        addItem(ModItems.quartz_boots);
+        addItem(ModItems.QUARTZ_HELMET);
+        addItem(ModItems.QUARTZ_CHESTPLATE);
+        addItem(ModItems.QUARTZ_LEGGINGS);
+        addItem(ModItems.QUARTZ_BOOTS);
 
-        addItem(ModItems.bone_helmet);
-        addItem(ModItems.bone_chestplate);
-        addItem(ModItems.bone_leggings);
-        addItem(ModItems.bone_boots);
+        addItem(ModItems.BONE_HELMET);
+        addItem(ModItems.BONE_CHESTPLATE);
+        addItem(ModItems.BONE_LEGGINGS);
+        addItem(ModItems.BONE_BOOTS);
 
-        addItem(ModItems.paper_helmet);
-        addItem(ModItems.paper_chestplate);
-        addItem(ModItems.paper_leggings);
-        addItem(ModItems.paper_boots);
+        addItem(ModItems.PAPER_HELMET);
+        addItem(ModItems.PAPER_CHESTPLATE);
+        addItem(ModItems.PAPER_LEGGINGS);
+        addItem(ModItems.PAPER_BOOTS);
     }
 
     private void addItem(IItemProvider item) {

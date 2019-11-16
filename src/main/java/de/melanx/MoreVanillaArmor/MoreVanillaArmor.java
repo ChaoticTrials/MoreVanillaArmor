@@ -1,8 +1,9 @@
 package de.melanx.MoreVanillaArmor;
 
-import de.melanx.MoreVanillaArmor.items.ModItems;
+import de.melanx.MoreVanillaArmor.items.Armor;
+import de.melanx.MoreVanillaArmor.items.ArmorTypes;
 import de.melanx.MoreVanillaArmor.util.CreativeTab;
-import de.melanx.MoreVanillaArmor.util.Registry;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.common.MinecraftForge;
@@ -33,10 +34,14 @@ public class MoreVanillaArmor {
 
         @SubscribeEvent
         public static void registerItems(final RegistryEvent.Register<Item> event) {
-            ModItems.init();
-            for (Item item : Registry.ITEMS_TO_REGISTER) {
-                event.getRegistry().register(item);
-                LOGGER.debug(item.getRegistryName());
+            EquipmentSlotType[] slotTypes = new EquipmentSlotType[]{EquipmentSlotType.HEAD, EquipmentSlotType.CHEST, EquipmentSlotType.LEGS, EquipmentSlotType.FEET};
+            String[] names = new String[]{"helmet", "chestplate", "leggings", "boots"};
+
+            for (ArmorTypes type : ArmorTypes.values()) {
+                for (int i = 0; i < slotTypes.length; i++) {
+                    event.getRegistry().register(new Armor(type, slotTypes[i], names[i]));
+                    LOGGER.info(new Armor(type, slotTypes[i], names[i]).asItem().getName().getFormattedText());
+                }
             }
 
             LOGGER.info("Items registered.");
