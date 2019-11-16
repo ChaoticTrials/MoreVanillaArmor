@@ -40,7 +40,6 @@ public class MoreVanillaArmor {
             for (ArmorTypes type : ArmorTypes.values()) {
                 for (int i = 0; i < slotTypes.length; i++) {
                     event.getRegistry().register(new Armor(type, slotTypes[i], names[i]));
-                    LOGGER.info(new Armor(type, slotTypes[i], names[i]).asItem().getName().getFormattedText());
                 }
             }
 
