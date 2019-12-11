@@ -1,12 +1,13 @@
 package de.melanx.MoreVanillaArmor.items;
 
-import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.LazyLoadBase;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -24,10 +25,10 @@ public enum ArmorTiers implements IArmorMaterial {
         return Ingredient.fromItems(Items.GLOWSTONE_DUST);
     }),
     LAPIS("lapis", 13, new int[]{2, 5, 6, 2}, 13, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1.0F, () -> {
-        return Ingredient.fromItems(Items.LAPIS_BLOCK);
+        return Ingredient.fromItems(Blocks.LAPIS_BLOCK.asItem());
     }),
     OBSIDIAN("obsidian", 81, new int[]{5, 9, 15, 4}, 11, SoundEvents.ENTITY_ENDER_EYE_DEATH, 4.0F, () -> {
-        return Ingredient.fromItems(Items.OBSIDIAN);
+        return Ingredient.fromItems(Blocks.OBSIDIAN.asItem());
     }),
     PAPER("paper", 1, new int[]{0, 1, 2, 0}, 13, SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, 0.0F, () -> {
         return Ingredient.fromItems(Items.PAPER);
@@ -61,11 +62,11 @@ public enum ArmorTiers implements IArmorMaterial {
         this.repairMaterial = new LazyLoadBase<>(repairMaterial);
     }
 
-    public int getDurability(EquipmentSlotType slotIn) {
+    public int getDurability(EntityEquipmentSlot slotIn) {
         return MAX_DAMAGE_ARRAY[slotIn.getIndex()] * this.maxDamageFactor;
     }
 
-    public int getDamageReductionAmount(EquipmentSlotType slotIn) {
+    public int getDamageReductionAmount(EntityEquipmentSlot slotIn) {
         return this.damageReductionAmountArray[slotIn.getIndex()];
     }
 

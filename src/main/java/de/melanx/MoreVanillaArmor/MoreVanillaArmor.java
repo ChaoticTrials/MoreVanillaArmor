@@ -3,7 +3,7 @@ package de.melanx.MoreVanillaArmor;
 import de.melanx.MoreVanillaArmor.items.Armor;
 import de.melanx.MoreVanillaArmor.items.ArmorTypes;
 import de.melanx.MoreVanillaArmor.util.CreativeTab;
-import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.common.MinecraftForge;
@@ -34,7 +34,7 @@ public class MoreVanillaArmor {
 
         @SubscribeEvent
         public static void registerItems(final RegistryEvent.Register<Item> event) {
-            EquipmentSlotType[] slotTypes = new EquipmentSlotType[]{EquipmentSlotType.HEAD, EquipmentSlotType.CHEST, EquipmentSlotType.LEGS, EquipmentSlotType.FEET};
+            EntityEquipmentSlot[] slotTypes = new EntityEquipmentSlot[]{EntityEquipmentSlot.HEAD, EntityEquipmentSlot.CHEST, EntityEquipmentSlot.LEGS, EntityEquipmentSlot.FEET};
             String[] names = new String[]{"helmet", "chestplate", "leggings", "boots"};
 
             for (ArmorTypes type : ArmorTypes.values()) {
