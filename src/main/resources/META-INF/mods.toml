@@ -5,7 +5,7 @@ loaderVersion="[28,)"
 modId="morevanillaarmor"
 version="${file.jarVersion}"
 displayName="MoreVanillaArmor"
-updateJSONURL="https://raw.githubusercontent.com/MelanX/MoreVanillaArmor/1.14.4/update/Update.json"
+updateJSONURL="https://raw.githubusercontent.com/MelanX/MoreVanillaArmor/1.15.x/update/Update.json"
 authors="MelanX"
 description='''
 A mod which adds more armor in the vanilla way.

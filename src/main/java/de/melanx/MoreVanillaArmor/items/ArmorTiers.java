@@ -4,7 +4,7 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.LazyLoadBase;
+import net.minecraft.util.LazyValue;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraftforge.api.distmarker.Dist;
@@ -49,7 +49,7 @@ public enum ArmorTiers implements IArmorMaterial {
     private final int enchantability;
     private final SoundEvent soundEvent;
     private final float toughness;
-    private final LazyLoadBase<Ingredient> repairMaterial;
+    private final LazyValue<Ingredient> repairMaterial;
 
     ArmorTiers(String nameIn, int maxDamageFactor, int[] damageReduction, int enchantability, SoundEvent sound, float toughness, Supplier<Ingredient> repairMaterial) {
         this.name = nameIn;
@@ -58,7 +58,7 @@ public enum ArmorTiers implements IArmorMaterial {
         this.enchantability = enchantability;
         this.soundEvent = sound;
         this.toughness = toughness;
-        this.repairMaterial = new LazyLoadBase<>(repairMaterial);
+        this.repairMaterial = new LazyValue<>(repairMaterial);
     }
 
     public int getDurability(EquipmentSlotType slotIn) {
