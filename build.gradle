@@ -38,7 +38,7 @@ minecraft {
         }
 
         server {
-            workingDirectory project.file('run')
+            workingDirectory project.file('run_server')
 
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
@@ -54,7 +54,7 @@ minecraft {
         }
 
         data {
-            workingDirectory project.file('run')
+            workingDirectory project.file('run_data')
 
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
@@ -84,7 +84,7 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
     // waiting for JEI
-//    runtimeOnly fg.deobf("mezz.jei:jei-1.14.4:6.0.0.18")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.15.1:6.0.0.1")
 }
 
 jar {

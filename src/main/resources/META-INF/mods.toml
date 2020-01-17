@@ -10,14 +10,14 @@ authors="MelanX"
 description='''
 A mod which adds more armor in the vanilla way.
 '''
-[[dependencies.MoreVanillaArmor]]
+[[dependencies.morevanillaarmor]]
     modId="forge"
     mandatory=true
     versionRange="[30,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.MoreVanillaArmor]]
+[[dependencies.morevanillaarmor]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.15.1]"
