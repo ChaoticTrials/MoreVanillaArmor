@@ -7,6 +7,7 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.LazyValue;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
+import net.minecraftforge.common.Tags;
 
 import java.util.function.Supplier;
 
@@ -16,28 +17,28 @@ public enum ArmorTiers implements IArmorMaterial {
         return Ingredient.fromItems(Items.COAL);
     }),
     BONE("bone", 15, new int[]{1, 4, 5, 2}, 14, SoundEvents.ENTITY_SKELETON_AMBIENT, 1.5F, () -> {
-        return Ingredient.fromItems(Items.BONE);
+        return Ingredient.fromTag(Tags.Items.BONES);
     }),
     GLOWSTONE("glowstone", 13, new int[]{2, 5, 6, 2}, 13, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1.0F, () -> {
-        return Ingredient.fromItems(Items.GLOWSTONE_DUST);
+        return Ingredient.fromTag(Tags.Items.DUSTS_GLOWSTONE);
     }),
     LAPIS("lapis", 13, new int[]{2, 5, 6, 2}, 13, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1.0F, () -> {
-        return Ingredient.fromItems(Items.LAPIS_BLOCK);
+        return Ingredient.fromTag(Tags.Items.GEMS_LAPIS);
     }),
     OBSIDIAN("obsidian", 81, new int[]{5, 9, 15, 4}, 11, SoundEvents.ENTITY_ENDER_EYE_DEATH, 4.0F, () -> {
-        return Ingredient.fromItems(Items.OBSIDIAN);
+        return Ingredient.fromTag(Tags.Items.OBSIDIAN);
     }),
     PAPER("paper", 1, new int[]{0, 1, 2, 0}, 13, SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, 0.0F, () -> {
         return Ingredient.fromItems(Items.PAPER);
     }),
     QUARTZ("quartz", 10, new int[]{1, 2, 3, 1}, 11, SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA, 0.5F, () -> {
-        return Ingredient.fromItems(Items.QUARTZ);
+        return Ingredient.fromTag(Tags.Items.GEMS_QUARTZ);
     }),
     REDSTONE("redstone", 13, new int[]{2, 5, 6, 2}, 13, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1.0F, () -> {
-        return Ingredient.fromItems(Items.REDSTONE);
+        return Ingredient.fromTag(Tags.Items.DUSTS_REDSTONE);
     }),
-    EMERALD("emerald", 69, new int[]{4, 8, 12, 4}, 16, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.0F, () -> {
-        return Ingredient.fromItems(Items.EMERALD);
+    EMERALD("emerald", 69, new int[]{4, 8, 12, 4}, 25, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.0F, () -> {
+        return Ingredient.fromTag(Tags.Items.GEMS_EMERALD);
     });
 
     private static final int[] MAX_DAMAGE_ARRAY = new int[]{13, 15, 16, 11};
