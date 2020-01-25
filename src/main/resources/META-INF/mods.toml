@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[30,)"
+loaderVersion="[29,)"
 
 [[mods]]
 modId="morevanillaarmor"
@@ -13,13 +13,13 @@ A mod which adds more armor in the vanilla way.
 [[dependencies.morevanillaarmor]]
     modId="forge"
     mandatory=true
-    versionRange="[30,)"
+    versionRange="[29,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.morevanillaarmor]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.15.1]"
+    versionRange="[1.15,1.16)"
     ordering="NONE"
     side="BOTH"
