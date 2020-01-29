@@ -22,16 +22,14 @@ public class Recipes extends RecipeProvider {
         for (RegistryObject<Item> object : Registry.ITEMS.getEntries()) {
             Armor item = (Armor) object.get();
             EquipmentSlotType slotType = item.getSlotType();
-            switch (slotType) {
-                case HEAD:
-                    registerHelmetRecipe(item).build(consumer);
-                case CHEST:
-                    registerChestplateRecipe(item).build(consumer);
-                case LEGS:
-                    registerLeggingsRecipe(item).build(consumer);
-                case FEET:
-                    registerBootsRecipe(item).build(consumer);
-            }
+            if (slotType == EquipmentSlotType.HEAD)
+                registerHelmetRecipe(item).build(consumer);
+            else if (slotType == EquipmentSlotType.CHEST)
+                registerChestplateRecipe(item).build(consumer);
+            else if (slotType == EquipmentSlotType.LEGS)
+                registerLeggingsRecipe(item).build(consumer);
+            else if (slotType == EquipmentSlotType.FEET)
+                registerBootsRecipe(item).build(consumer);
         }
     }
 
