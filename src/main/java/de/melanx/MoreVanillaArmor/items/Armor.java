@@ -6,14 +6,20 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 
 public class Armor extends ArmorItem {
-    private ArmorTypes type;
+    private ArmorTypes armorType;
+    private EquipmentSlotType slotType;
 
     public Armor(ArmorTypes type, EquipmentSlotType slot) {
         super(type.getType(), slot, new Item.Properties().group(ItemGroup.COMBAT));
-        this.type = type;
+        this.armorType = type;
+        this.slotType = slot;
     }
 
     public ArmorTypes getType() {
-        return this.type;
+        return this.armorType;
+    }
+
+    public EquipmentSlotType getSlotType() {
+        return this.slotType;
     }
 }

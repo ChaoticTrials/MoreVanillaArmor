@@ -21,8 +21,8 @@ public class Languages {
         @Override
         protected void addTranslations() {
             for (RegistryObject<Item> object : Registry.ITEMS.getEntries()) {
-                Item item = object.get();
-                EquipmentSlotType slotType = item.getEquipmentSlot(new ItemStack(item));
+                Armor item = (Armor) object.get();
+                EquipmentSlotType slotType = item.getSlotType();
                 String name = item.getRegistryName().getPath().split("_")[0];
                 add(item, Languages.capitalize(name) + " " + getSlotTypeName(slotType));
             }
@@ -52,8 +52,8 @@ public class Languages {
         @Override
         protected void addTranslations() {
             for (RegistryObject<Item> object : Registry.ITEMS.getEntries()) {
-                Item item = object.get();
-                EquipmentSlotType slotType = item.getEquipmentSlot(new ItemStack(item));
+                Armor item = (Armor) object.get();
+                EquipmentSlotType slotType = item.getSlotType();
                 String name = item.getRegistryName().getPath().split("_")[0];
                 add(item, getGermanMaterialName(item) + getSlotTypeName(slotType));
             }

@@ -8,7 +8,6 @@ import net.minecraft.data.RecipeProvider;
 import net.minecraft.data.ShapedRecipeBuilder;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.RegistryObject;
 
 import java.util.function.Consumer;
@@ -22,7 +21,7 @@ public class Recipes extends RecipeProvider {
     protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
         for (RegistryObject<Item> object : Registry.ITEMS.getEntries()) {
             Armor item = (Armor) object.get();
-            EquipmentSlotType slotType = item.getEquipmentSlot(new ItemStack(item));
+            EquipmentSlotType slotType = item.getSlotType();
             switch (slotType) {
                 case HEAD:
                     registerHelmetRecipe(item).build(consumer);
