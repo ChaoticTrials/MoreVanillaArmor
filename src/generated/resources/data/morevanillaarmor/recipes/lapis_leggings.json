@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "MMM",
+    "M M",
+    "M M"
+  ],
+  "key": {
+    "M": {
+      "tag": "forge:storage_blocks/lapis"
+    }
+  },
+  "result": {
+    "item": "morevanillaarmor:lapis_leggings"
+  }
+}

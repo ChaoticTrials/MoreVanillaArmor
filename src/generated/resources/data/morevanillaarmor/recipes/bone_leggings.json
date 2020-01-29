@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "MMM",
+    "M M",
+    "M M"
+  ],
+  "key": {
+    "M": {
+      "tag": "forge:bones"
+    }
+  },
+  "result": {
+    "item": "morevanillaarmor:bone_leggings"
+  }
+}
