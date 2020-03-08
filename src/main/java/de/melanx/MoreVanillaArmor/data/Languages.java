@@ -68,18 +68,28 @@ public class Languages {
                     return "Kohle";
                 case EMERALD:
                     return "Smaragd";
+                case ENDER:
+                    return "Ender";
+                case FIERY:
+                    return "Feuer";
                 case GLOWSTONE:
                     return "Glowstone";
                 case LAPIS:
                     return "Lapis";
+                case NETHER:
+                    return "Nether";
                 case OBSIDIAN:
                     return "Obsidian";
                 case PAPER:
                     return "Papier";
+                case PRISMARINE:
+                    return "Prismarin";
                 case QUARTZ:
                     return "Netherquartz";
                 case REDSTONE:
                     return "Redstone";
+                case SLIME:
+                    return "Schleim";
                 default:
                     return null;
             }

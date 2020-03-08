@@ -25,24 +25,44 @@ public enum ArmorTiers implements IArmorMaterial {
     EMERALD("emerald", 69, new int[]{4, 8, 12, 4}, 25, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.0F, () -> {
         return Ingredient.fromTag(Tags.Items.GEMS_EMERALD);
     }, Tags.Items.GEMS_EMERALD),
+    // TODO configure
+    ENDER("ender", 31, new int[]{4, 8, 12, 4}, 20, SoundEvents.ENTITY_ENDER_EYE_LAUNCH, 3.14F, () -> {
+        return Ingredient.fromTag(Tags.Items.ENDER_PEARLS);
+    }, Tags.Items.END_STONES),
+    // TODO configure
+    FIERY("fiery", 17, new int[]{4, 8, 12, 4}, 15, SoundEvents.ENTITY_BLAZE_SHOOT, 1.3F, () -> {
+        return Ingredient.fromTag(ModTags.Items.MAGMA_BLOCK);
+    }, ModTags.Items.MAGMA_BLOCK),
     GLOWSTONE("glowstone", 13, new int[]{2, 5, 6, 2}, 13, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1.0F, () -> {
         return Ingredient.fromTag(Tags.Items.DUSTS_GLOWSTONE);
     }, ModTags.Items.STORAGE_BLOCKS_GLOWSTONE),
     LAPIS("lapis", 13, new int[]{2, 5, 6, 2}, 13, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1.0F, () -> {
         return Ingredient.fromTag(Tags.Items.GEMS_LAPIS);
     }, Tags.Items.STORAGE_BLOCKS_LAPIS),
+    // TODO configure
+    NETHER("nether", 17, new int[]{4, 8, 12, 4}, 66, SoundEvents.BLOCK_LAVA_EXTINGUISH, 2.1F, () -> {
+        return Ingredient.fromTag(ModTags.Items.NETHER_BRICKS);
+    }, ModTags.Items.NETHER_BRICKS),
     OBSIDIAN("obsidian", 81, new int[]{5, 9, 15, 4}, 11, SoundEvents.ENTITY_ENDER_EYE_DEATH, 4.0F, () -> {
         return Ingredient.fromTag(Tags.Items.OBSIDIAN);
     }, Tags.Items.OBSIDIAN),
     PAPER("paper", 1, new int[]{0, 1, 2, 0}, 13, SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, 0.0F, () -> {
         return Ingredient.fromItems(Items.PAPER);
     }, ModTags.Items.PAPER),
+    // TODO configure
+    PRISMARINE("prismarine", 21, new int[]{4, 8, 12, 4}, 20, SoundEvents.ENTITY_BOAT_PADDLE_WATER, 1.0F, () -> {
+        return Ingredient.fromTag(Tags.Items.DUSTS_PRISMARINE);
+    }, ModTags.Items.PRISMARINE),
     QUARTZ("quartz", 10, new int[]{1, 2, 3, 1}, 11, SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA, 0.5F, () -> {
         return Ingredient.fromTag(Tags.Items.GEMS_QUARTZ);
     }, Tags.Items.STORAGE_BLOCKS_QUARTZ),
     REDSTONE("redstone", 13, new int[]{2, 5, 6, 2}, 13, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1.0F, () -> {
         return Ingredient.fromTag(Tags.Items.DUSTS_REDSTONE);
-    }, Tags.Items.STORAGE_BLOCKS_REDSTONE);
+    }, Tags.Items.STORAGE_BLOCKS_REDSTONE),
+    // TODO configure
+    SLIME("slime", 42, new int[]{4, 8, 12, 4}, 20, SoundEvents.BLOCK_SLIME_BLOCK_STEP, 0.3F, () -> {
+        return Ingredient.fromTag(Tags.Items.SLIMEBALLS);
+    }, ModTags.Items.SLIME_BLOCK);
 
     private static final int[] MAX_DAMAGE_ARRAY = new int[]{13, 15, 16, 11};
     private final String name;
