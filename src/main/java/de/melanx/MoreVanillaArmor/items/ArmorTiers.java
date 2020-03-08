@@ -16,12 +16,15 @@ import java.util.function.Supplier;
 
 public enum ArmorTiers implements IArmorMaterial {
 
-    COAL("coal", 10, new int[]{1, 2, 3, 1}, 11, SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA, 0.5F, () -> {
-        return Ingredient.fromItems(Items.COAL);
-    }, Tags.Items.STORAGE_BLOCKS_COAL),
     BONE("bone", 15, new int[]{1, 4, 5, 2}, 14, SoundEvents.ENTITY_SKELETON_AMBIENT, 1.5F, () -> {
         return Ingredient.fromTag(Tags.Items.BONES);
     }, Tags.Items.BONES),
+    COAL("coal", 10, new int[]{1, 2, 3, 1}, 11, SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA, 0.5F, () -> {
+        return Ingredient.fromItems(Items.COAL);
+    }, Tags.Items.STORAGE_BLOCKS_COAL),
+    EMERALD("emerald", 69, new int[]{4, 8, 12, 4}, 25, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.0F, () -> {
+        return Ingredient.fromTag(Tags.Items.GEMS_EMERALD);
+    }, Tags.Items.GEMS_EMERALD),
     GLOWSTONE("glowstone", 13, new int[]{2, 5, 6, 2}, 13, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1.0F, () -> {
         return Ingredient.fromTag(Tags.Items.DUSTS_GLOWSTONE);
     }, ModTags.Items.STORAGE_BLOCKS_GLOWSTONE),
@@ -39,10 +42,7 @@ public enum ArmorTiers implements IArmorMaterial {
     }, Tags.Items.STORAGE_BLOCKS_QUARTZ),
     REDSTONE("redstone", 13, new int[]{2, 5, 6, 2}, 13, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1.0F, () -> {
         return Ingredient.fromTag(Tags.Items.DUSTS_REDSTONE);
-    }, Tags.Items.STORAGE_BLOCKS_REDSTONE),
-    EMERALD("emerald", 69, new int[]{4, 8, 12, 4}, 25, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.0F, () -> {
-        return Ingredient.fromTag(Tags.Items.GEMS_EMERALD);
-    }, Tags.Items.GEMS_EMERALD);
+    }, Tags.Items.STORAGE_BLOCKS_REDSTONE);
 
     private static final int[] MAX_DAMAGE_ARRAY = new int[]{13, 15, 16, 11};
     private final String name;
