@@ -17,6 +17,10 @@ archivesBaseName = "morevanillaarmor"
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
+}
+
 minecraft {
     mappings channel: 'snapshot', version: mappings_version
 
