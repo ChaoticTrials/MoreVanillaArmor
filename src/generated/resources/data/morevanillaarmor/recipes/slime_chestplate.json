@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "M M",
+    "MMM",
+    "MMM"
+  ],
+  "key": {
+    "M": {
+      "tag": "forge:slime_block"
+    }
+  },
+  "result": {
+    "item": "morevanillaarmor:slime_chestplate"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "MMM",
+    "M M",
+    "M M"
+  ],
+  "key": {
+    "M": {
+      "tag": "forge:magma_block"
+    }
+  },
+  "result": {
+    "item": "morevanillaarmor:fiery_leggings"
+  }
+}
