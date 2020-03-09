@@ -1,6 +1,8 @@
 package de.melanx.MoreVanillaArmor;
 
+import de.melanx.MoreVanillaArmor.util.CreativeTab;
 import de.melanx.MoreVanillaArmor.util.Registry;
+import net.minecraft.item.ItemGroup;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import org.apache.logging.log4j.LogManager;
@@ -13,6 +15,8 @@ public class MoreVanillaArmor {
 
     public static final String MODID = "morevanillaarmor";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
+
+    public static final ItemGroup creativeTab = new CreativeTab();
 
     public MoreVanillaArmor() {
         instance = this;

@@ -20,6 +20,7 @@ public class Languages {
 
         @Override
         protected void addTranslations() {
+            add("itemGroup.morevanillaarmor", "MoreVanillaArmor");
             for (RegistryObject<Item> object : Registry.ITEMS.getEntries()) {
                 Armor item = (Armor) object.get();
                 EquipmentSlotType slotType = item.getSlotType();
