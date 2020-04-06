@@ -1,0 +1,73 @@
+{
+  "itemGroup.morevanillaarmor": "MoreVanillaArmor",
+
+  "item.morevanillaarmor.bone_helmet": "Костяной шлем",
+  "item.morevanillaarmor.bone_chestplate": "Костяной нагрудник",
+  "item.morevanillaarmor.bone_leggings": "Костяные поножи",
+  "item.morevanillaarmor.bone_boots": "Костяные ботинки",
+
+  "item.morevanillaarmor.coal_helmet": "Угольный шлем",
+  "item.morevanillaarmor.coal_chestplate": "Угольный нагрудник",
+  "item.morevanillaarmor.coal_leggings": "Угольные поножи",
+  "item.morevanillaarmor.coal_boots": "Угольные ботинки",
+
+  "item.morevanillaarmor.emerald_helmet": "Изумрудный шлем",
+  "item.morevanillaarmor.emerald_chestplate": "Изумрудный нагрудник",
+  "item.morevanillaarmor.emerald_leggings": "Изумрудные поножи",
+  "item.morevanillaarmor.emerald_boots": "Изумрудные ботинки",
+
+  "item.morevanillaarmor.ender_helmet": "Эндер-шлем",
+  "item.morevanillaarmor.ender_chestplate": "Эндер-нагрудник",
+  "item.morevanillaarmor.ender_leggings": "Эндер-поножи",
+  "item.morevanillaarmor.ender_boots": "Эндер-ботинки",
+
+  "item.morevanillaarmor.fiery_helmet": "Огненный шлем",
+  "item.morevanillaarmor.fiery_chestplate": "Огненный нагрудник",
+  "item.morevanillaarmor.fiery_leggings": "Огненные поножи",
+  "item.morevanillaarmor.fiery_boots": "Огненные ботинки",
+
+  "item.morevanillaarmor.glowstone_helmet": "Светокаменный шлем",
+  "item.morevanillaarmor.glowstone_chestplate": "Светокаменный нагрудник",
+  "item.morevanillaarmor.glowstone_leggings": "Светокаменные поножи",
+  "item.morevanillaarmor.glowstone_boots": "Светокаменные ботинки",
+
+  "item.morevanillaarmor.lapis_helmet": "Лазуритовый шлем",
+  "item.morevanillaarmor.lapis_chestplate": "Лазуритовый нагрудник",
+  "item.morevanillaarmor.lapis_leggings": "Лазуритовые поножи",
+  "item.morevanillaarmor.lapis_boots": "Лазуритовые ботинки",
+
+  "item.morevanillaarmor.nether_helmet": "Незерский шлем",
+  "item.morevanillaarmor.nether_chestplate": "Незерский нагрудник",
+  "item.morevanillaarmor.nether_leggings": "Незерские поножи",
+  "item.morevanillaarmor.nether_boots": "Незерские ботинки",
+
+  "item.morevanillaarmor.obsidian_helmet": "Обсидиановый шлем",
+  "item.morevanillaarmor.obsidian_chestplate": "Обсидиановый нагрудник",
+  "item.morevanillaarmor.obsidian_leggings": "Обсидиановые поножи",
+  "item.morevanillaarmor.obsidian_boots": "Обсидиановые ботинки",
+
+  "item.morevanillaarmor.paper_helmet": "Бумажный шлем",
+  "item.morevanillaarmor.paper_chestplate": "Бумажный нагрудник",
+  "item.morevanillaarmor.paper_leggings": "Бумажные поножи",
+  "item.morevanillaarmor.paper_boots": "Бумажные ботинки",
+
+  "item.morevanillaarmor.prismarine_helmet": "Призмариновый шлем",
+  "item.morevanillaarmor.prismarine_chestplate": "Призмариновый нагрудник",
+  "item.morevanillaarmor.prismarine_leggings": "Призмариновые поножи",
+  "item.morevanillaarmor.prismarine_boots": "Призмариновые ботинки",
+
+  "item.morevanillaarmor.quartz_helmet": "Кварцевый шлем",
+  "item.morevanillaarmor.quartz_chestplate": "Кварцевый нагрудник",
+  "item.morevanillaarmor.quartz_leggings": "Кварцевые поножи",
+  "item.morevanillaarmor.quartz_boots": "Кварцевые ботинки",
+
+  "item.morevanillaarmor.redstone_helmet": "Редстоуновый шлем",
+  "item.morevanillaarmor.redstone_chestplate": "Редстоуновый нагрудник",
+  "item.morevanillaarmor.redstone_leggings": "Редстоуновые поножи",
+  "item.morevanillaarmor.redstone_boots": "Редстоуновые ботинки",
+
+  "item.morevanillaarmor.slime_helmet": "Слизневый шлем",
+  "item.morevanillaarmor.slime_chestplate": "Слизневый нагрудник",
+  "item.morevanillaarmor.slime_leggings": "Слизневые поножи",
+  "item.morevanillaarmor.slime_boots": "Слизневые ботинки"
+}
