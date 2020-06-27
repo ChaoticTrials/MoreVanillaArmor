@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.RegistryObject;
 
 import java.util.Collection;
@@ -26,4 +27,10 @@ public class CreativeTab extends ItemGroup {
         return new ItemStack(Items.DIAMOND_CHESTPLATE);
     }
 
+    @Override
+    public void fill(NonNullList<ItemStack> list) {
+        for (RegistryObject<Item> entry : Registry.ITEMS.getEntries()) {
+            entry.get().asItem().fillItemGroup(this, list);
+        }
+    }
 }

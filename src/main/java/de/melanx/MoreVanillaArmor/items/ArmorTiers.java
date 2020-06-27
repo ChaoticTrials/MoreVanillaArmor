@@ -6,7 +6,7 @@ import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.ITag;
 import net.minecraft.util.LazyValue;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
@@ -16,46 +16,46 @@ import java.util.function.Supplier;
 
 public enum ArmorTiers implements IArmorMaterial {
 
-    BONE("bone", 15, new int[]{1, 4, 5, 2}, 14, SoundEvents.ENTITY_SKELETON_AMBIENT, 1.5F, () -> {
+    BONE("bone", 15, new int[]{1, 4, 5, 2}, 14, SoundEvents.ENTITY_SKELETON_AMBIENT, 1.5F, 0.0F, () -> {
         return Ingredient.fromTag(Tags.Items.BONES);
     }, Tags.Items.BONES),
-    COAL("coal", 10, new int[]{1, 2, 3, 1}, 11, SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA, 0.5F, () -> {
+    COAL("coal", 10, new int[]{1, 2, 3, 1}, 11, SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA, 0.5F, 0.0F, () -> {
         return Ingredient.fromItems(Items.COAL);
     }, Tags.Items.STORAGE_BLOCKS_COAL),
-    EMERALD("emerald", 69, new int[]{4, 8, 12, 4}, 25, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.0F, () -> {
+    EMERALD("emerald", 69, new int[]{4, 8, 12, 4}, 25, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.0F, 0.0F, () -> {
         return Ingredient.fromTag(Tags.Items.GEMS_EMERALD);
     }, Tags.Items.GEMS_EMERALD),
-    ENDER("ender", 31, new int[]{2, 6, 8, 3}, 20, SoundEvents.ENTITY_ENDER_EYE_LAUNCH, 3.14F, () -> {
+    ENDER("ender", 31, new int[]{2, 6, 8, 3}, 20, SoundEvents.ENTITY_ENDER_EYE_LAUNCH, 3.14F, 0.0F, () -> {
         return Ingredient.fromTag(Tags.Items.ENDER_PEARLS);
     }, Tags.Items.END_STONES),
-    FIERY("fiery", 17, new int[]{2, 4, 7, 3}, 15, SoundEvents.ENTITY_BLAZE_SHOOT, 1.3F, () -> {
+    FIERY("fiery", 17, new int[]{2, 4, 7, 3}, 15, SoundEvents.ENTITY_BLAZE_SHOOT, 1.3F, 0.0F, () -> {
         return Ingredient.fromTag(ModTags.Items.MAGMA_BLOCK);
     }, ModTags.Items.MAGMA_BLOCK),
-    GLOWSTONE("glowstone", 13, new int[]{2, 5, 6, 2}, 13, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1.0F, () -> {
+    GLOWSTONE("glowstone", 13, new int[]{2, 5, 6, 2}, 13, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1.0F, 0.0F, () -> {
         return Ingredient.fromTag(Tags.Items.DUSTS_GLOWSTONE);
     }, ModTags.Items.STORAGE_BLOCKS_GLOWSTONE),
-    LAPIS("lapis", 13, new int[]{2, 5, 6, 2}, 13, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1.0F, () -> {
+    LAPIS("lapis", 13, new int[]{2, 5, 6, 2}, 13, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1.0F, 0.0F, () -> {
         return Ingredient.fromTag(Tags.Items.GEMS_LAPIS);
     }, Tags.Items.STORAGE_BLOCKS_LAPIS),
-    NETHER("nether", 17, new int[]{3, 4, 7, 3}, 66, SoundEvents.BLOCK_LAVA_EXTINGUISH, 2.1F, () -> {
+    NETHER("nether", 17, new int[]{3, 4, 7, 3}, 66, SoundEvents.BLOCK_LAVA_EXTINGUISH, 2.1F, 0.0F, () -> {
         return Ingredient.fromTag(ModTags.Items.NETHER_BRICKS);
     }, ModTags.Items.NETHER_BRICKS),
-    OBSIDIAN("obsidian", 81, new int[]{5, 9, 15, 4}, 11, SoundEvents.ENTITY_ENDER_EYE_DEATH, 4.0F, () -> {
+    OBSIDIAN("obsidian", 81, new int[]{5, 9, 15, 4}, 11, SoundEvents.ENTITY_ENDER_EYE_DEATH, 4.0F, 0.0F, () -> {
         return Ingredient.fromTag(Tags.Items.OBSIDIAN);
     }, Tags.Items.OBSIDIAN),
-    PAPER("paper", 1, new int[]{0, 1, 2, 0}, 13, SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, 0.0F, () -> {
+    PAPER("paper", 1, new int[]{0, 1, 2, 0}, 13, SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, 0.0F, 0.0F, () -> {
         return Ingredient.fromItems(Items.PAPER);
     }, ModTags.Items.PAPER),
-    PRISMARINE("prismarine", 21, new int[]{4, 6, 8, 2}, 20, SoundEvents.BLOCK_WATER_AMBIENT, 1.0F, () -> {
+    PRISMARINE("prismarine", 21, new int[]{4, 6, 8, 2}, 20, SoundEvents.BLOCK_WATER_AMBIENT, 1.0F, 0.0F, () -> {
         return Ingredient.fromTag(Tags.Items.DUSTS_PRISMARINE);
     }, ModTags.Items.PRISMARINE),
-    QUARTZ("quartz", 10, new int[]{1, 2, 3, 1}, 11, SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA, 0.5F, () -> {
+    QUARTZ("quartz", 10, new int[]{1, 2, 3, 1}, 11, SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA, 0.5F, 0.0F, () -> {
         return Ingredient.fromTag(Tags.Items.GEMS_QUARTZ);
     }, Tags.Items.STORAGE_BLOCKS_QUARTZ),
-    REDSTONE("redstone", 13, new int[]{2, 5, 6, 2}, 13, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1.0F, () -> {
+    REDSTONE("redstone", 13, new int[]{2, 5, 6, 2}, 13, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1.0F, 0.0F, () -> {
         return Ingredient.fromTag(Tags.Items.DUSTS_REDSTONE);
     }, Tags.Items.STORAGE_BLOCKS_REDSTONE),
-    SLIME("slime", 42, new int[]{1, 3, 4, 2}, 20, SoundEvents.BLOCK_SLIME_BLOCK_STEP, 0.3F, () -> {
+    SLIME("slime", 42, new int[]{1, 3, 4, 2}, 20, SoundEvents.BLOCK_SLIME_BLOCK_STEP, 0.3F, 0.0F, () -> {
         return Ingredient.fromTag(Tags.Items.SLIMEBALLS);
     }, ModTags.Items.SLIME_BLOCK);
 
@@ -66,16 +66,18 @@ public enum ArmorTiers implements IArmorMaterial {
     private final int enchantability;
     private final SoundEvent soundEvent;
     private final float toughness;
+    private final float knockbackResistance;
     private final LazyValue<Ingredient> repairMaterial;
-    private final Tag<Item> ingredient;
+    private final ITag.INamedTag<Item> ingredient;
 
-    ArmorTiers(String nameIn, int maxDamageFactor, int[] damageReduction, int enchantability, SoundEvent sound, float toughness, Supplier<Ingredient> repairMaterial, Tag<Item> ingredient) {
+    ArmorTiers(String nameIn, int maxDamageFactor, int[] damageReduction, int enchantability, SoundEvent sound, float toughness, float knockbackResistance, Supplier<Ingredient> repairMaterial, ITag.INamedTag<Item> ingredient) {
         this.name = nameIn;
         this.maxDamageFactor = maxDamageFactor;
         this.damageReductionAmountArray = damageReduction;
         this.enchantability = enchantability;
         this.soundEvent = sound;
         this.toughness = toughness;
+        this.knockbackResistance = knockbackResistance;
         this.repairMaterial = new LazyValue<>(repairMaterial);
         this.ingredient = ingredient;
     }
@@ -108,7 +110,11 @@ public enum ArmorTiers implements IArmorMaterial {
         return this.toughness;
     }
 
-    public Tag<Item> getIngredient() {
+    public float func_230304_f_() {
+        return this.knockbackResistance;
+    }
+
+    public ITag.INamedTag<Item> getIngredient() {
         return this.ingredient;
     }
 

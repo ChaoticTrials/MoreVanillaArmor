@@ -1,14 +1,14 @@
 {
   "homepage": "https://www.curseforge.com/minecraft/mc-mods/morevanillaarmor",
   "promos": {
+    "1.16.1-latest": "1.2",
     "1.15.1-latest": "1.1.1",
-    "1.15.1-recommended": "1.1.1",
     "1.15.2-latest": "1.2",
-    "1.15.2-recommended": "1.2",
     "1.15-latest": "1.0",
-    "1.15-recommended": "1.0",
-    "1.14.4-latest": "1.0",
-    "1.14.4-recommended": "1.0"
+    "1.14.4-latest": "1.0"
+  },
+  "1.16.1": {
+    "1.2": "Initial port to 1.16.1"
   },
   "1.15.2": {
     "1.2": "Added 5 new materials\nAdded ru_ru.json (TheDirectorX)",
