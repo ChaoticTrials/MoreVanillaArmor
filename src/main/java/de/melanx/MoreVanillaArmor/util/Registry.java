@@ -1,17 +1,21 @@
 package de.melanx.MoreVanillaArmor.util;
 
 import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
+import de.melanx.MoreVanillaArmor.effects.ArmorEffects;
 import de.melanx.MoreVanillaArmor.items.Armor;
 import de.melanx.MoreVanillaArmor.items.ArmorTypes;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
+import net.minecraft.potion.Effect;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+
 public class Registry {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MoreVanillaArmor.MODID);
+    public static final DeferredRegister<Effect> EFFECTS = DeferredRegister.create(ForgeRegistries.POTIONS, MoreVanillaArmor.MODID);
 
     public static void registerArmor() {
         EquipmentSlotType[] slotTypes = new EquipmentSlotType[]{EquipmentSlotType.HEAD, EquipmentSlotType.CHEST, EquipmentSlotType.LEGS, EquipmentSlotType.FEET};
@@ -24,5 +28,13 @@ public class Registry {
             }
         }
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+    }
+
+    public static void registerArmorEffects() {
+        EFFECTS.register("heavy", () -> ArmorEffects.HEAVY);
+        EFFECTS.register("damage_reduction", () -> ArmorEffects.DAMAGE_REDUCTION);
+        EFFECTS.register("fire_immunity", () -> ArmorEffects.FIRE_IMMUNITY);
+        EFFECTS.register("power_source", () -> ArmorEffects.POWER_SOURCE);
+        EFFECTS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 }

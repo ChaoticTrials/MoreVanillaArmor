@@ -40,7 +40,7 @@ public enum ArmorTiers implements IArmorMaterial {
     NETHER("nether", 17, new int[]{3, 4, 7, 3}, 66, SoundEvents.BLOCK_LAVA_EXTINGUISH, 2.1F, 0.0F, () -> {
         return Ingredient.fromTag(ModTags.Items.NETHER_BRICKS);
     }, ModTags.Items.NETHER_BRICKS),
-    OBSIDIAN("obsidian", 81, new int[]{5, 9, 15, 4}, 11, SoundEvents.ENTITY_ENDER_EYE_DEATH, 4.0F, 0.0F, () -> {
+    OBSIDIAN("obsidian", 81, new int[]{3, 6, 8, 3}, 10, SoundEvents.ENTITY_ENDER_EYE_DEATH, 3.0F, 0.3F, () -> {
         return Ingredient.fromTag(Tags.Items.OBSIDIAN);
     }, Tags.Items.OBSIDIAN),
     PAPER("paper", 1, new int[]{0, 1, 2, 0}, 13, SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, 0.0F, 0.0F, () -> {
@@ -110,7 +110,7 @@ public enum ArmorTiers implements IArmorMaterial {
         return this.toughness;
     }
 
-    public float func_230304_f_() {
+    public float getKnockbackResistance() {
         return this.knockbackResistance;
     }
 

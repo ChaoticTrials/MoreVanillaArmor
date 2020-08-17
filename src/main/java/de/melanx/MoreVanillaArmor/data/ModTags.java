@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.ItemTagsProvider;
+import net.minecraft.data.TagsProvider;
 import net.minecraft.item.Item;
 import net.minecraft.tags.ITag;
 
@@ -42,11 +43,11 @@ public class ModTags {
 
         @Override
         protected void registerTags() {
-            func_240522_a_(Blocks.STORAGE_BLOCKS_GLOWSTONE).func_240534_a_(net.minecraft.block.Blocks.GLOWSTONE);
-            func_240522_a_(Blocks.MAGMA_BLOCK).func_240534_a_(net.minecraft.block.Blocks.MAGMA_BLOCK);
-            func_240522_a_(Blocks.NETHER_BRICKS).func_240534_a_(net.minecraft.block.Blocks.NETHER_BRICKS);
-            func_240522_a_(Blocks.PRISMARINE).func_240534_a_(net.minecraft.block.Blocks.PRISMARINE);
-            func_240522_a_(Blocks.SLIME_BLOCK).func_240534_a_(net.minecraft.block.Blocks.SLIME_BLOCK);
+            getOrCreateBuilder(Blocks.STORAGE_BLOCKS_GLOWSTONE).add(net.minecraft.block.Blocks.GLOWSTONE);
+            getOrCreateBuilder(Blocks.MAGMA_BLOCK).add(net.minecraft.block.Blocks.MAGMA_BLOCK);
+            getOrCreateBuilder(Blocks.NETHER_BRICKS).add(net.minecraft.block.Blocks.NETHER_BRICKS);
+            getOrCreateBuilder(Blocks.PRISMARINE).add(net.minecraft.block.Blocks.PRISMARINE);
+            getOrCreateBuilder(Blocks.SLIME_BLOCK).add(net.minecraft.block.Blocks.SLIME_BLOCK);
         }
     }
 
@@ -57,13 +58,13 @@ public class ModTags {
 
         @Override
         protected void registerTags() {
-            func_240522_a_(Items.PAPER).func_240534_a_(net.minecraft.item.Items.PAPER);
+            getOrCreateBuilder(Items.PAPER).add(net.minecraft.item.Items.PAPER);
 
-            func_240521_a_(ModTags.Blocks.STORAGE_BLOCKS_GLOWSTONE, ModTags.Items.STORAGE_BLOCKS_GLOWSTONE);
-            func_240521_a_(Blocks.MAGMA_BLOCK, Items.MAGMA_BLOCK);
-            func_240521_a_(Blocks.NETHER_BRICKS, Items.NETHER_BRICKS);
-            func_240521_a_(Blocks.PRISMARINE, Items.PRISMARINE);
-            func_240521_a_(Blocks.SLIME_BLOCK, Items.SLIME_BLOCK);
+            copy(ModTags.Blocks.STORAGE_BLOCKS_GLOWSTONE, ModTags.Items.STORAGE_BLOCKS_GLOWSTONE);
+            copy(Blocks.MAGMA_BLOCK, Items.MAGMA_BLOCK);
+            copy(Blocks.NETHER_BRICKS, Items.NETHER_BRICKS);
+            copy(Blocks.PRISMARINE, Items.PRISMARINE);
+            copy(Blocks.SLIME_BLOCK, Items.SLIME_BLOCK);
         }
     }
 
