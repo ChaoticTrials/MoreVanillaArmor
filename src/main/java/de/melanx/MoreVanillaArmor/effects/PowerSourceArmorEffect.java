@@ -1,13 +1,10 @@
 package de.melanx.MoreVanillaArmor.effects;
 
+import de.melanx.MoreVanillaArmor.blocks.ModBlocks;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.PoweredRailBlock;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.potion.EffectType;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
 
 public class PowerSourceArmorEffect extends ArmorEffect {
 
@@ -18,15 +15,14 @@ public class PowerSourceArmorEffect extends ArmorEffect {
 
     @Override
     public void performEffect(LivingEntity livingEntity, int amplifier) {
-        // TODO: Power all nearby redstone devices while present.
-
-        /*
-        // THIS IS DUMB TEST CODE
-        BlockState downBlockState = livingEntity.world.getBlockState(livingEntity.getPosition().down());
-        if (downBlockState.hasProperty(BlockStateProperties.LIT)) {
-            livingEntity.world.setBlockState(livingEntity.getPosition().down(), downBlockState.with(BlockStateProperties.LIT, true));
+        if (livingEntity.isOnGround()) {
+            BlockState blockState = livingEntity.world.getBlockState(livingEntity.getPosition());
+            if (blockState.getMaterial() == Material.AIR) {
+                BlockState invisiTorch = ModBlocks.INVISI_TORCH.getDefaultState();
+                livingEntity.world.setBlockState(livingEntity.getPosition(), invisiTorch);
+            }
         }
-        */
+
     }
 
     @Override

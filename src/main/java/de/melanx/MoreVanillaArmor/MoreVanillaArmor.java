@@ -27,6 +27,7 @@ public class MoreVanillaArmor {
         MinecraftForge.EVENT_BUS.register(this);
         Registry.registerArmor();
         Registry.registerArmorEffects();
+        Registry.registerBlocks();
     }
 
 }

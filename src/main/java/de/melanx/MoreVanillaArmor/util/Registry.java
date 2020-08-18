@@ -1,12 +1,16 @@
 package de.melanx.MoreVanillaArmor.util;
 
 import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
+import de.melanx.MoreVanillaArmor.blocks.ModBlocks;
 import de.melanx.MoreVanillaArmor.effects.ArmorEffects;
 import de.melanx.MoreVanillaArmor.items.Armor;
 import de.melanx.MoreVanillaArmor.items.ArmorTypes;
+import de.melanx.MoreVanillaArmor.tile_entities.ModTileEntityTypes;
+import net.minecraft.block.Block;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Effect;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -16,6 +20,8 @@ public class Registry {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MoreVanillaArmor.MODID);
     public static final DeferredRegister<Effect> EFFECTS = DeferredRegister.create(ForgeRegistries.POTIONS, MoreVanillaArmor.MODID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MoreVanillaArmor.MODID);
+    public static final DeferredRegister<TileEntityType<?>> TILE_ENTITIES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, MoreVanillaArmor.MODID);
 
     public static void registerArmor() {
         EquipmentSlotType[] slotTypes = new EquipmentSlotType[]{EquipmentSlotType.HEAD, EquipmentSlotType.CHEST, EquipmentSlotType.LEGS, EquipmentSlotType.FEET};
@@ -37,4 +43,15 @@ public class Registry {
         EFFECTS.register("power_source", () -> ArmorEffects.POWER_SOURCE);
         EFFECTS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
+
+    public static void registerBlocks() {
+        BLOCKS.register("invisi_torch", () -> ModBlocks.INVISI_TORCH);
+        BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+    }
+
+    public static void registerTileEntities() {
+        TILE_ENTITIES.register("invisi_torch_tile_entity", () -> ModTileEntityTypes.INVISI_TORCH_TILE_ENTITY);
+        TILE_ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
+    }
+
 }
