@@ -13,5 +13,5 @@ public class ModTileEntityTypes {
 
     public static final DeferredRegister<TileEntityType<?>> TILE_ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, MoreVanillaArmor.MODID);
 
-    public static final RegistryObject<TileEntityType<RedstoneEssenceTileEntity>> REDSTONE_ESSENCE = TILE_ENTITY_TYPES.register("redstone_essence", () -> TileEntityType.Builder.create(RedstoneEssenceTileEntity::new, ModBlocks.REDSTONE_ESSENCE).build(null));
+    public static final RegistryObject<TileEntityType<RedstoneEssenceTileEntity>> REDSTONE_ESSENCE = TILE_ENTITY_TYPES.register("redstone_essence", () -> TileEntityType.Builder.create(RedstoneEssenceTileEntity::new, ModBlocks.REDSTONE_ESSENCE.get()).build(null));
 }

@@ -2,6 +2,7 @@ package de.melanx.MoreVanillaArmor;
 
 //import de.melanx.MoreVanillaArmor.init.ModEffects;
 import de.melanx.MoreVanillaArmor.blocks.ModBlocks;
+import de.melanx.MoreVanillaArmor.tile_entities.ModTileEntityTypes;
 import de.melanx.MoreVanillaArmor.util.CreativeTab;
 import de.melanx.MoreVanillaArmor.util.Registry;
 import net.minecraft.item.ItemGroup;
@@ -31,6 +32,7 @@ public class MoreVanillaArmor {
 
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModBlocks.BLOCKS.register(modEventBus);
+        ModTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);
 
         Registry.registerArmor();
         Registry.registerArmorEffects();
