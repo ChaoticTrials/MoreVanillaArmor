@@ -20,8 +20,6 @@ public class Registry {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MoreVanillaArmor.MODID);
     public static final DeferredRegister<Effect> EFFECTS = DeferredRegister.create(ForgeRegistries.POTIONS, MoreVanillaArmor.MODID);
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MoreVanillaArmor.MODID);
-    public static final DeferredRegister<TileEntityType<?>> TILE_ENTITIES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, MoreVanillaArmor.MODID);
 
     public static void registerArmor() {
         EquipmentSlotType[] slotTypes = new EquipmentSlotType[]{EquipmentSlotType.HEAD, EquipmentSlotType.CHEST, EquipmentSlotType.LEGS, EquipmentSlotType.FEET};
@@ -42,16 +40,6 @@ public class Registry {
         EFFECTS.register("fire_immunity", () -> ArmorEffects.FIRE_IMMUNITY);
         EFFECTS.register("power_source", () -> ArmorEffects.POWER_SOURCE);
         EFFECTS.register(FMLJavaModLoadingContext.get().getModEventBus());
-    }
-
-    public static void registerBlocks() {
-        BLOCKS.register("invisi_torch", () -> ModBlocks.INVISI_TORCH);
-        BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
-    }
-
-    public static void registerTileEntities() {
-        TILE_ENTITIES.register("invisi_torch_tile_entity", () -> ModTileEntityTypes.INVISI_TORCH_TILE_ENTITY);
-        TILE_ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
 }

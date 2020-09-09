@@ -18,7 +18,7 @@ public class PowerSourceArmorEffect extends ArmorEffect {
         if (livingEntity.isOnGround()) {
             BlockState blockState = livingEntity.world.getBlockState(livingEntity.getPosition());
             if (blockState.getMaterial() == Material.AIR) {
-                BlockState invisiTorch = ModBlocks.INVISI_TORCH.getDefaultState();
+                BlockState invisiTorch = ModBlocks.REDSTONE_ESSENCE.get().getDefaultState();
                 livingEntity.world.setBlockState(livingEntity.getPosition(), invisiTorch);
             }
         }

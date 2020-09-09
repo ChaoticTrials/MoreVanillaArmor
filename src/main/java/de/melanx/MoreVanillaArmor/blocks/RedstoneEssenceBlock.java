@@ -8,8 +8,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 
-public class InvisiTorchBlock extends RedstoneBlock {
-    InvisiTorchBlock(Properties props) {
+public class RedstoneEssenceBlock extends RedstoneBlock {
+
+    public RedstoneEssenceBlock(Properties props) {
         super(props);
     }
 
@@ -20,9 +21,8 @@ public class InvisiTorchBlock extends RedstoneBlock {
 
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return ModTileEntityTypes.INVISI_TORCH_TILE_ENTITY.create();
+        return ModTileEntityTypes.REDSTONE_ESSENCE.get().create();
     }
-
 
     public boolean isOpaqueCube(IBlockReader worldIn, BlockPos pos) {
         return false;
