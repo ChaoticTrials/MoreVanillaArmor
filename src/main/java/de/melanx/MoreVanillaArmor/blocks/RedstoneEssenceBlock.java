@@ -1,9 +1,9 @@
 package de.melanx.MoreVanillaArmor.blocks;
 
 import de.melanx.MoreVanillaArmor.tile_entities.ModTileEntityTypes;
+import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.RedstoneBlock;
-import net.minecraft.block.RedstoneTorchBlock;
 import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.RedstoneParticleData;
 import net.minecraft.tileentity.TileEntity;
@@ -34,15 +34,17 @@ public class RedstoneEssenceBlock extends RedstoneBlock {
         return ModTileEntityTypes.REDSTONE_ESSENCE.get().create();
     }
 
+    @Override
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.INVISIBLE;
+    }
+
     @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         double d0 = (double)pos.getX() + 0.5D + (rand.nextDouble() - 0.5D) * 0.2D;
         double d1 = (double)pos.getY() + 0.7D + (rand.nextDouble() - 0.5D) * 0.2D;
         double d2 = (double)pos.getZ() + 0.5D + (rand.nextDouble() - 0.5D) * 0.2D;
         worldIn.addParticle(this.particles, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-    }
-    public boolean isOpaqueCube(IBlockReader worldIn, BlockPos pos) {
-        return false;
     }
 
 }
