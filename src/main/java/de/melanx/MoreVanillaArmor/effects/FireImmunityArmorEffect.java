@@ -15,13 +15,13 @@ public class FireImmunityArmorEffect extends ArmorEffect {
     public FireImmunityArmorEffect() { super(EffectType.BENEFICIAL); }
 
     @SubscribeEvent
-    public static void  playerDamagedEvent(LivingDamageEvent event) {
+    public static void playerDamagedEvent(LivingDamageEvent event) {
 
         if (event.getEntityLiving() instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) event.getEntityLiving();
 
             if (event.getSource().isFireDamage()) {
-                if (Armor.getArmorSetType(player) != null && Armor.getArmorSetType(player) == ArmorTypes.FIERY) {
+                if (player.isPotionActive(ArmorEffects.FIRE_IMMUNITY)) {
                     event.setAmount(0.0F);
                 }
             }
