@@ -4,7 +4,7 @@ import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
 import de.melanx.MoreVanillaArmor.effects.ArmorEffectInstance;
 import de.melanx.MoreVanillaArmor.effects.ArmorEffects;
 import de.melanx.MoreVanillaArmor.items.Armor;
-import de.melanx.MoreVanillaArmor.items.ArmorTypes;
+import de.melanx.MoreVanillaArmor.items.ArmorTiers;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
@@ -26,23 +26,23 @@ public class ObsidianArmor {
         Item leggings = player.getItemStackFromSlot(EquipmentSlotType.LEGS).getItem();
         Item boots = player.getItemStackFromSlot(EquipmentSlotType.FEET).getItem();
         Item chestplate = player.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem();
-        if (helmet instanceof Armor && ((Armor) helmet).getType() == ArmorTypes.OBSIDIAN) {
+        if (helmet instanceof Armor && ((Armor) helmet).getType() == ArmorTiers.OBSIDIAN) {
             amplifier +=1;
         }
-        if (boots instanceof Armor && ((Armor) boots).getType() == ArmorTypes.OBSIDIAN) {
+        if (boots instanceof Armor && ((Armor) boots).getType() == ArmorTiers.OBSIDIAN) {
             amplifier +=1;
         }
-        if (leggings instanceof Armor && ((Armor) leggings).getType() == ArmorTypes.OBSIDIAN) {
+        if (leggings instanceof Armor && ((Armor) leggings).getType() == ArmorTiers.OBSIDIAN) {
             amplifier +=2;
         }
-        if (chestplate instanceof Armor && ((Armor) chestplate).getType() == ArmorTypes.OBSIDIAN) {
+        if (chestplate instanceof Armor && ((Armor) chestplate).getType() == ArmorTiers.OBSIDIAN) {
             amplifier +=3;
         }
 
         if (amplifier >= 0) {
             player.addPotionEffect(new ArmorEffectInstance(ArmorEffects.HEAVY, amplifier));
         }
-        if (Armor.playerIsWearingArmorSetOfType(player, ArmorTypes.OBSIDIAN)) {
+        if (Armor.playerIsWearingArmorSetOfType(player, ArmorTiers.OBSIDIAN)) {
             player.addPotionEffect(new ArmorEffectInstance(ArmorEffects.DAMAGE_REDUCTION, 0));
         }
     }

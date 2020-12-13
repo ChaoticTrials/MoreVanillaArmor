@@ -9,6 +9,14 @@ import net.minecraft.inventory.EquipmentSlotType;
 
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Armor extends ArmorItem {
     private final ArmorTiers armorType;
@@ -32,7 +40,7 @@ public class Armor extends ArmorItem {
     public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         if (Minecraft.getInstance().player != null) {
             ClientPlayerEntity player = Minecraft.getInstance().player;
-            ArmorTypes fullArmorSetType = getArmorSetType(player);
+            ArmorTiers fullArmorSetType = getArmorSetType(player);
             String setBonusColor = "\u00A78"; // Dark Gray
             String setBonusText = "";
             String missingPiecesText = "";
@@ -55,17 +63,17 @@ public class Armor extends ArmorItem {
                     setBonusText = "Fire Immunity";
                     break;
             }
-            if (setBonusText != "") {
-                tooltip.add(new StringTextComponent(setBonusColor + "Set Bonus: " + setBonusText + setBonusColor));
+            if (!setBonusText.equals("")) {
+                tooltip.add(new TranslationTextComponent(setBonusColor + "Set Bonus: " + setBonusText + setBonusColor));
             }
-            if (missingPiecesText != "") {
-                tooltip.add(new StringTextComponent(setBonusColor + "Missing " + missingPiecesText + setBonusColor));
+            if (!missingPiecesText.equals("")) {
+                tooltip.add(new TranslationTextComponent(setBonusColor + "Missing " + missingPiecesText + setBonusColor));
             }
         }
 
     }
 
-    public static List<String> getMissingPieces(PlayerEntity player, ArmorTypes type) {
+    public static List<String> getMissingPieces(PlayerEntity player, ArmorTiers type) {
         EquipmentSlotType[] slotTypes = new EquipmentSlotType[]{EquipmentSlotType.HEAD, EquipmentSlotType.CHEST, EquipmentSlotType.LEGS, EquipmentSlotType.FEET};
         String[] names = new String[]{"helmet", "chestplate", "leggings", "boots"};
 
@@ -81,11 +89,11 @@ public class Armor extends ArmorItem {
         return missingPieces;
     }
 
-    public static List<ArmorTypes> getArmorTypes(PlayerEntity player) {
-        List<ArmorTypes> types = new ArrayList();
+    public static List<ArmorTiers> getArmorTypes(PlayerEntity player) {
+        List<ArmorTiers> types = new ArrayList();
         for (ItemStack armorPieceStack : player.inventory.armorInventory) {
             if (armorPieceStack.getItem() instanceof Armor) {
-                ArmorTypes type = ((Armor) armorPieceStack.getItem()).getType();
+                ArmorTiers type = ((Armor) armorPieceStack.getItem()).getType();
                 if (!types.contains(type)) {
                     types.add(type);
                 }
@@ -94,20 +102,18 @@ public class Armor extends ArmorItem {
         return types;
     }
 
-    public static boolean playerIsWearingArmorSetOfType(PlayerEntity player, ArmorTypes type) {
+    public static boolean playerIsWearingArmorSetOfType(PlayerEntity player, ArmorTiers type) {
         for (ItemStack armorPieceStack : player.inventory.armorInventory) {
-            if (
-                    armorPieceStack.isEmpty()
+            if (armorPieceStack.isEmpty()
                     || !(armorPieceStack.getItem() instanceof Armor)
-                    || ((Armor) armorPieceStack.getItem()).getType() != type
-            ) {
+                    || ((Armor) armorPieceStack.getItem()).getType() != type) {
                 return false;
             }
         }
         return true;
     }
 
-    public static boolean playerIsWearingArmorOfType(PlayerEntity player, ArmorTypes type) {
+    public static boolean playerIsWearingArmorOfType(PlayerEntity player, ArmorTiers type) {
         for (ItemStack armorPieceStack : player.inventory.armorInventory) {
             if (armorPieceStack.getItem() instanceof Armor) {
                 if (((Armor) armorPieceStack.getItem()).getType() == type) {
@@ -119,10 +125,10 @@ public class Armor extends ArmorItem {
     }
 
     @Nullable
-    public static ArmorTypes getArmorSetType(PlayerEntity player) {
+    public static ArmorTiers getArmorSetType(PlayerEntity player) {
         Item helmet = player.getItemStackFromSlot(EquipmentSlotType.HEAD).getItem();
         if (helmet instanceof Armor) {
-            ArmorTypes type = ((Armor) helmet).getType();
+            ArmorTiers type = ((Armor) helmet).getType();
             for (ItemStack armorPieceStack : player.inventory.armorInventory) {
                 Item armorPiece = armorPieceStack.getItem();
                 if (armorPiece instanceof Armor) {

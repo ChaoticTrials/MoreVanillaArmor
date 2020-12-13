@@ -1,8 +1,6 @@
 package de.melanx.MoreVanillaArmor.effects;
 
 import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
-import de.melanx.MoreVanillaArmor.items.Armor;
-import de.melanx.MoreVanillaArmor.items.ArmorTypes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.potion.EffectType;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;

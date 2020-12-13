@@ -7,7 +7,6 @@ import de.melanx.MoreVanillaArmor.util.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.fml.RegistryObject;
 
