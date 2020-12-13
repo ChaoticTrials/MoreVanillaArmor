@@ -4,9 +4,7 @@ import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
 import de.melanx.MoreVanillaArmor.blocks.ModBlocks;
 import de.melanx.MoreVanillaArmor.effects.ArmorEffects;
 import de.melanx.MoreVanillaArmor.items.Armor;
-import de.melanx.MoreVanillaArmor.items.ArmorTypes;
-import de.melanx.MoreVanillaArmor.tile_entities.ModTileEntityTypes;
-import net.minecraft.block.Block;
+import de.melanx.MoreVanillaArmor.items.ArmorTiers;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Effect;
@@ -25,7 +23,7 @@ public class Registry {
         EquipmentSlotType[] slotTypes = new EquipmentSlotType[]{EquipmentSlotType.HEAD, EquipmentSlotType.CHEST, EquipmentSlotType.LEGS, EquipmentSlotType.FEET};
         String[] names = new String[]{"helmet", "chestplate", "leggings", "boots"};
 
-        for (ArmorTypes type : ArmorTypes.values()) {
+        for (ArmorTiers type : ArmorTiers.values()) {
             for (int i = 0; i < slotTypes.length; i++) {
                 int j = i; // idk why but IntelliJ wanted this
                 ITEMS.register(type.getName() + "_" + names[j], () -> new Armor(type, slotTypes[j]));

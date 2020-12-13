@@ -6,28 +6,21 @@ import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.*;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.world.World;
-import net.minecraftforge.common.extensions.IForgeItem;
 
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.Item;
 
+public class Armor extends ArmorItem {
+    private final ArmorTiers armorType;
+    private final EquipmentSlotType slotType;
 
-public class Armor extends ArmorItem implements IForgeItem {
-    private ArmorTypes armorType;
-    private EquipmentSlotType slotType;
-
-    public Armor(ArmorTypes type, EquipmentSlotType slot) {
-        super(type.getType(), slot, new Item.Properties().group(MoreVanillaArmor.creativeTab));
+    public Armor(ArmorTiers type, EquipmentSlotType slot) {
+        super(type, slot, new Item.Properties().group(MoreVanillaArmor.creativeTab));
         this.armorType = type;
         this.slotType = slot;
     }
 
-    public ArmorTypes getType() {
+    public ArmorTiers getType() {
         return this.armorType;
     }
 

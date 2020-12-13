@@ -35,35 +35,35 @@ public class Recipes extends RecipeProvider {
 
     private ShapedRecipeBuilder registerHelmetRecipe(Armor item) {
         return ShapedRecipeBuilder.shapedRecipe(item)
-                .key('M', item.getType().getType().getIngredient())
+                .key('M', item.getType().getIngredient())
                 .patternLine("MMM")
                 .patternLine("M M")
-                .addCriterion("has_material", hasItem(item.getType().getType().getIngredient()));
+                .addCriterion("already_crafted", hasItem(item));
     }
 
     private ShapedRecipeBuilder registerChestplateRecipe(Armor item) {
         return ShapedRecipeBuilder.shapedRecipe(item)
-                .key('M', item.getType().getType().getIngredient())
+                .key('M', item.getType().getIngredient())
                 .patternLine("M M")
                 .patternLine("MMM")
                 .patternLine("MMM")
-                .addCriterion("has_material", hasItem(item.getType().getType().getIngredient()));
+                .addCriterion("already_crafted", hasItem(item));
     }
 
     private ShapedRecipeBuilder registerLeggingsRecipe(Armor item) {
         return ShapedRecipeBuilder.shapedRecipe(item)
-                .key('M', item.getType().getType().getIngredient())
+                .key('M', item.getType().getIngredient())
                 .patternLine("MMM")
                 .patternLine("M M")
                 .patternLine("M M")
-                .addCriterion("has_material", hasItem(item.getType().getType().getIngredient()));
+                .addCriterion("already_crafted", hasItem(item));
     }
 
     private ShapedRecipeBuilder registerBootsRecipe(Armor item) {
         return ShapedRecipeBuilder.shapedRecipe(item)
-                .key('M', item.getType().getType().getIngredient())
+                .key('M', item.getType().getIngredient())
                 .patternLine("M M")
                 .patternLine("M M")
-                .addCriterion("has_material", hasItem(item.getType().getType().getIngredient()));
+                .addCriterion("already_crafted", hasItem(item));
     }
 }
