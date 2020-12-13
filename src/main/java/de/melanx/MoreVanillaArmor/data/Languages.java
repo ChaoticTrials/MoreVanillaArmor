@@ -91,6 +91,10 @@ public class Languages {
                     return "Redstone";
                 case SLIME:
                     return "Schleim";
+                case STONE:
+                    return "Stein";
+                case WOOD:
+                    return "Holz";
                 default:
                     return null;
             }

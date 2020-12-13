@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "MMM",
+    "M M",
+    "M M"
+  ],
+  "key": {
+    "M": {
+      "tag": "minecraft:logs"
+    }
+  },
+  "result": {
+    "item": "morevanillaarmor:wood_leggings"
+  }
+}

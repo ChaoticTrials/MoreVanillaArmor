@@ -55,7 +55,12 @@ public enum ArmorTiers implements IArmorMaterial {
     }, Ingredient.fromTag(Tags.Items.STORAGE_BLOCKS_REDSTONE)),
     SLIME("slime", 42, new int[]{1, 3, 4, 2}, 20, SoundEvents.BLOCK_SLIME_BLOCK_STEP, 0.3F, 0.2F, () -> {
         return Ingredient.fromTag(Tags.Items.SLIMEBALLS);
-    }, ModTags.Items.SLIME_BLOCK);
+    }, Ingredient.fromItems(Items.SLIME_BLOCK)),
+    STONE("stone", 5, new int[]{1, 3, 4, 2}, 7, SoundEvents.BLOCK_STONE_BREAK, 0.3F, 0.0F, () -> {
+        return Ingredient.fromTag(Tags.Items.STONE);
+    }),
+    WOOD("wood", 13, new int[]{0, 2, 3, 2}, 5, SoundEvents.BLOCK_WOODEN_DOOR_OPEN, 0.1F, 0.1F, () -> {
+        return Ingredient.fromTag(ItemTags.LOGS);
     });
 
     private static final int[] MAX_DAMAGE_ARRAY = new int[]{13, 15, 16, 11};
