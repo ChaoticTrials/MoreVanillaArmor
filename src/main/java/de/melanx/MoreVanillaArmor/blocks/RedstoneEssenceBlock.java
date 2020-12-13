@@ -1,6 +1,7 @@
 package de.melanx.MoreVanillaArmor.blocks;
 
 import de.melanx.MoreVanillaArmor.tile_entities.ModTileEntityTypes;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.RedstoneBlock;
@@ -8,6 +9,8 @@ import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.RedstoneParticleData;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -16,6 +19,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import java.util.Random;
 
 public class RedstoneEssenceBlock extends RedstoneBlock {
+    private static final VoxelShape SHAPE = Block.makeCuboidShape(0,0,0,0, 0, 0);
 
     protected final IParticleData particles;
 
@@ -47,4 +51,8 @@ public class RedstoneEssenceBlock extends RedstoneBlock {
         worldIn.addParticle(this.particles, d0, d1, d2, 0.0D, 0.0D, 0.0D);
     }
 
+    @Override
+    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+        return SHAPE;
+    }
 }
