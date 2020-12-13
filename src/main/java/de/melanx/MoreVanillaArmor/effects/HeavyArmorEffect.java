@@ -1,6 +1,7 @@
 package de.melanx.MoreVanillaArmor.effects;
 
 import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
+import de.melanx.MoreVanillaArmor.util.Registry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.potion.EffectType;
 import net.minecraft.util.DamageSource;
@@ -11,20 +12,19 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = MoreVanillaArmor.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class HeavyArmorEffect extends ArmorEffect {
 
-    public HeavyArmorEffect()
-    {
+    public HeavyArmorEffect() {
         super(EffectType.HARMFUL);
     }
 
     @SubscribeEvent
-    public static void  playerDamagedEvent(LivingDamageEvent event) {
+    public static void playerDamagedEvent(LivingDamageEvent event) {
         if (event.getEntityLiving() instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) event.getEntityLiving();
 
-            if (player.isPotionActive(ArmorEffects.HEAVY)) {
+            if (player.isPotionActive(Registry.HEAVY.get())) {
                 if (event.getSource() == DamageSource.FALL) {
                     // Increase damage by 50% per level (example Heavy II increases damage by 100%, Heavy III increases damage by 150%)
-                    event.setAmount(event.getAmount() + event.getAmount() * (player.getActivePotionEffect(ArmorEffects.HEAVY).getAmplifier()+1)*0.5F);
+                    event.setAmount(event.getAmount() + event.getAmount() * ((player.getActivePotionEffect(Registry.HEAVY.get())).getAmplifier() + 1) * 0.5F);
                 }
             }
         }

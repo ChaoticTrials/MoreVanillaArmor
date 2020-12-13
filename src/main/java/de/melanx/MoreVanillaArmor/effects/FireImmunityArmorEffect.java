@@ -1,6 +1,7 @@
 package de.melanx.MoreVanillaArmor.effects;
 
 import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
+import de.melanx.MoreVanillaArmor.util.Registry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.potion.EffectType;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
@@ -19,7 +20,7 @@ public class FireImmunityArmorEffect extends ArmorEffect {
             PlayerEntity player = (PlayerEntity) event.getEntityLiving();
 
             if (event.getSource().isFireDamage()) {
-                if (player.isPotionActive(ArmorEffects.FIRE_IMMUNITY)) {
+                if (player.isPotionActive(Registry.FIRE_IMMUNITY.get())) {
                     event.setAmount(0.0F);
                 }
             }

@@ -1,6 +1,7 @@
 package de.melanx.MoreVanillaArmor.effects;
 
 import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
+import de.melanx.MoreVanillaArmor.util.Registry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.potion.EffectType;
 import net.minecraft.util.DamageSource;
@@ -18,11 +19,11 @@ public class DamageReductionArmorEffect extends ArmorEffect {
         if (event.getEntityLiving() instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) event.getEntityLiving();
 
-            if (player.isPotionActive(ArmorEffects.DAMAGE_REDUCTION) && event.getSource() != DamageSource.FALL) {
+            if (player.isPotionActive(Registry.DAMAGE_REDUCTION.get()) && event.getSource() != DamageSource.FALL) {
                 int damageReduction = 0;
                 // Don't trump other mods/effects that might reduce the damage to less than .25
                 if (event.getAmount() > 0.25) {
-                    damageReduction = 1 + player.getActivePotionEffect(ArmorEffects.DAMAGE_REDUCTION).getAmplifier();
+                    damageReduction = 1 + player.getActivePotionEffect(Registry.DAMAGE_REDUCTION.get()).getAmplifier();
                     if (event.getAmount() - damageReduction > 0.25) {
                         event.setAmount(event.getAmount() - damageReduction);
                     } else {

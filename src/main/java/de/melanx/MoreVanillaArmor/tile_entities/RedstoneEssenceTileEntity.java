@@ -1,6 +1,6 @@
 package de.melanx.MoreVanillaArmor.tile_entities;
 
-import de.melanx.MoreVanillaArmor.effects.ArmorEffects;
+import de.melanx.MoreVanillaArmor.util.Registry;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.tileentity.ITickableTileEntity;
@@ -21,16 +21,16 @@ public class RedstoneEssenceTileEntity extends TileEntity implements ITickableTi
 
     @Override
     public void tick() {
-
-        PlayerEntity closestPlayer = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 1, false);
-        if (closestPlayer == null || closestPlayer.getPosition() != pos || !closestPlayer.isPotionActive(ArmorEffects.POWER_SOURCE)) {
-            tick++;
-            if (tick > 40) {
-                world.setBlockState(pos, Blocks.AIR.getDefaultState());
+        if (world != null) {
+            PlayerEntity closestPlayer = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 1, false);
+            if (closestPlayer == null || closestPlayer.getPosition() != pos || !closestPlayer.isPotionActive(Registry.POWER_SOURCE.get())) {
+                tick++;
+                if (tick > 40) {
+                    world.setBlockState(pos, Blocks.AIR.getDefaultState());
+                }
+            } else if (closestPlayer.getPosition() == pos && closestPlayer.isPotionActive(Registry.POWER_SOURCE.get())) {
+                tick = 0;
             }
-        }
-        else if (closestPlayer != null && closestPlayer.getPosition() == pos && closestPlayer.isPotionActive(ArmorEffects.POWER_SOURCE)) {
-            tick=0;
         }
     }
 }
