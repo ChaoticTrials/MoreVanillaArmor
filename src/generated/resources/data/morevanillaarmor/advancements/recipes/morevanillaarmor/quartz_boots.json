@@ -6,12 +6,12 @@
     ]
   },
   "criteria": {
-    "has_material": {
+    "already_crafted": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "forge:storage_blocks/quartz"
+            "item": "morevanillaarmor:quartz_boots"
           }
         ]
       }
@@ -25,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_material",
+      "already_crafted",
       "has_the_recipe"
     ]
   ]

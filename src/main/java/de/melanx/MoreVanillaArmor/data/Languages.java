@@ -61,7 +61,7 @@ public class Languages {
         }
 
         private static String getGermanMaterialName(Item item) {
-            ArmorTiers type = ((Armor) item).getType().getType();
+            ArmorTiers type = ((Armor) item).getType();
             switch (type) {
                 case BONE:
                     return "Knochen";

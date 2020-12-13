@@ -6,12 +6,12 @@
     ]
   },
   "criteria": {
-    "has_material": {
+    "already_crafted": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "forge:slime_block"
+            "item": "morevanillaarmor:slime_helmet"
           }
         ]
       }
@@ -25,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_material",
+      "already_crafted",
       "has_the_recipe"
     ]
   ]
