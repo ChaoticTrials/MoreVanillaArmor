@@ -1,24 +1,30 @@
 package de.melanx.MoreVanillaArmor.items;
 
 import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
+import de.melanx.MoreVanillaArmor.util.Registry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
-
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Armor extends ArmorItem {
+    private static final String SETBONUS_KEY = Registry.getTooltip("setbonus");
+    private static final String MISSING_KEY = Registry.getTooltip("missing");
+    private static final TranslationTextComponent MISSING_PIECES_COMPONENT = new TranslationTextComponent(Registry.getTooltip("missing_pieces"));
     private final ArmorTiers armorType;
     private final EquipmentSlotType slotType;
 
@@ -41,48 +47,44 @@ public class Armor extends ArmorItem {
         if (Minecraft.getInstance().player != null) {
             ClientPlayerEntity player = Minecraft.getInstance().player;
             ArmorTiers fullArmorSetType = getArmorSetType(player);
-            String setBonusColor = "\u00A78"; // Dark Gray
-            String setBonusText = "";
-            String missingPiecesText = "";
+            TextFormatting setBonusColor = TextFormatting.DARK_GRAY;
+            ITextComponent missingPiecesText = null;
             if (fullArmorSetType == this.armorType) {
-                setBonusColor = "\u00A7a"; // Green
-            }
-            else {
-                List<String> missingPieces = getMissingPieces(player, this.armorType);
+                setBonusColor = TextFormatting.GREEN;
+            } else {
+                List<Item> missingPieces = getMissingPieces(player, this.armorType);
                 if (missingPieces.size() > 1) {
-                    missingPiecesText = "multiple pieces";
+                    missingPiecesText = MISSING_PIECES_COMPONENT;
+                } else if (missingPieces.size() == 1) {
+                    missingPiecesText = missingPieces.get(0).getName();
                 }
-                else if (missingPieces.size() == 1) {
-                    missingPiecesText = this.armorType.getName() + " " + missingPieces.get(0);
-                }
-
             }
 
-            switch (this.armorType) {
-                case FIERY:
-                    setBonusText = "Fire Immunity";
-                    break;
-            }
-            if (!setBonusText.equals("")) {
-                tooltip.add(new TranslationTextComponent(setBonusColor + "Set Bonus: " + setBonusText + setBonusColor));
-            }
-            if (!missingPiecesText.equals("")) {
-                tooltip.add(new TranslationTextComponent(setBonusColor + "Missing " + missingPiecesText + setBonusColor));
+            if (this.armorType.hasSetBonus()) {
+                TranslationTextComponent component = new TranslationTextComponent(SETBONUS_KEY);
+                component.append(this.armorType.getTextComponent());
+                component.mergeStyle(setBonusColor);
+                tooltip.add(component);
+                if (missingPiecesText != null) {
+                    TranslationTextComponent missingComponent = new TranslationTextComponent(MISSING_KEY);
+                    missingComponent.append(missingPiecesText);
+                    missingComponent.mergeStyle(setBonusColor);
+                    tooltip.add(missingComponent);
+                }
             }
         }
-
     }
 
-    public static List<String> getMissingPieces(PlayerEntity player, ArmorTiers type) {
+    public static List<Item> getMissingPieces(PlayerEntity player, ArmorTiers type) {
         EquipmentSlotType[] slotTypes = new EquipmentSlotType[]{EquipmentSlotType.HEAD, EquipmentSlotType.CHEST, EquipmentSlotType.LEGS, EquipmentSlotType.FEET};
         String[] names = new String[]{"helmet", "chestplate", "leggings", "boots"};
 
-        List<String> missingPieces = new ArrayList();
+        List<Item> missingPieces = new ArrayList<>();
 
         for (int i = 0; i < slotTypes.length; i++) {
             Item armorPiece = player.getItemStackFromSlot(slotTypes[i]).getItem();
             if (!(armorPiece instanceof Armor) || ((Armor) armorPiece).getType() != type) {
-                missingPieces.add(names[i]);
+                missingPieces.add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(MoreVanillaArmor.MODID, type.getName() + "_" + names[i])));
             }
         }
 
@@ -90,7 +92,7 @@ public class Armor extends ArmorItem {
     }
 
     public static List<ArmorTiers> getArmorTypes(PlayerEntity player) {
-        List<ArmorTiers> types = new ArrayList();
+        List<ArmorTiers> types = new ArrayList<>();
         for (ItemStack armorPieceStack : player.inventory.armorInventory) {
             if (armorPieceStack.getItem() instanceof Armor) {
                 ArmorTiers type = ((Armor) armorPieceStack.getItem()).getType();

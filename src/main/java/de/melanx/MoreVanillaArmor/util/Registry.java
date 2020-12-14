@@ -45,4 +45,8 @@ public class Registry {
         registerArmor();
         EFFECTS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
+
+    public static String getTooltip(String title) {
+        return "tooltip." + MoreVanillaArmor.MODID + "." + title;
+    }
 }

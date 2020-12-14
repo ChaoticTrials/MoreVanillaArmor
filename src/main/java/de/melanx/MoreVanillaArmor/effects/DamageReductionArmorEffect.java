@@ -20,7 +20,7 @@ public class DamageReductionArmorEffect extends ArmorEffect {
             PlayerEntity player = (PlayerEntity) event.getEntityLiving();
 
             if (player.isPotionActive(Registry.DAMAGE_REDUCTION.get()) && event.getSource() != DamageSource.FALL) {
-                int damageReduction = 0;
+                int damageReduction;
                 // Don't trump other mods/effects that might reduce the damage to less than .25
                 if (event.getAmount() > 0.25) {
                     damageReduction = 1 + player.getActivePotionEffect(Registry.DAMAGE_REDUCTION.get()).getAmplifier();

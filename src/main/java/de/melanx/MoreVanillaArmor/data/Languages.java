@@ -26,6 +26,9 @@ public class Languages {
                 String name = item.getRegistryName().getPath().split("_")[0];
                 add(item, Languages.capitalize(name) + " " + getSlotTypeName(slotType));
             }
+            add(Registry.getTooltip("missing"), "Missing: ");
+            add(Registry.getTooltip("setbonus"), "Set bonus: ");
+            add(Registry.getTooltip("missing_pieces"), "multiple pieces");
         }
 
         private static String getSlotTypeName(EquipmentSlotType type) {
