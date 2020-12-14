@@ -29,6 +29,11 @@ public class Languages {
             add(Registry.getTooltip("missing"), "Missing: ");
             add(Registry.getTooltip("setbonus"), "Set bonus: ");
             add(Registry.getTooltip("missing_pieces"), "multiple pieces");
+
+            add(Registry.HEAVY.get(), "Heavyness");
+            add(Registry.DAMAGE_REDUCTION.get(), "Damage Reduction");
+            add(Registry.FIRE_IMMUNITY.get(), "Fire Immunity");
+            add(Registry.POWER_SOURCE.get(), "Power Source");
         }
 
         private static String getSlotTypeName(EquipmentSlotType type) {

@@ -60,7 +60,8 @@ public class Armor extends ArmorItem {
                 }
             }
 
-            if (this.armorType.hasSetBonus()) {
+            //noinspection ConstantConditions
+            if (this.armorType.getSetBonus() != null) {
                 TranslationTextComponent component = new TranslationTextComponent(SETBONUS_KEY);
                 component.append(this.armorType.getTextComponent());
                 component.mergeStyle(setBonusColor);
