@@ -17,10 +17,12 @@ public class Config {
             builder.comment(String.format("Values for %s armor", material.name));
             builder.comment("Will be multiplied with", "11 for head", "16 for chestplate", "15 for leggings", "13 for boots")
                     .defineInRange(material.name + ".durabilityFactor", material.durabilityFactor, 0, Integer.MAX_VALUE);
-            builder.defineInRange(material.name + ".headDamageReduction", material.damageReduction[3], 0, Integer.MAX_VALUE);
-            builder.defineInRange(material.name + ".chestDamageReduction", material.damageReduction[2], 0, Integer.MAX_VALUE);
-            builder.defineInRange(material.name + ".leggingsDamageReduction", material.damageReduction[1], 0, Integer.MAX_VALUE);
-            builder.defineInRange(material.name + ".bootsDamageReduction", material.damageReduction[0], 0, Integer.MAX_VALUE);
+            builder.push(material.name + ".damageReduction");
+            builder.defineInRange("head", material.damageReduction[3], 0, Integer.MAX_VALUE);
+            builder.defineInRange("chest", material.damageReduction[2], 0, Integer.MAX_VALUE);
+            builder.defineInRange("leggings", material.damageReduction[1], 0, Integer.MAX_VALUE);
+            builder.defineInRange("boots", material.damageReduction[0], 0, Integer.MAX_VALUE);
+            builder.pop();
             builder.defineInRange(material.name + ".enchantability", material.enchantability, 0, Integer.MAX_VALUE);
             builder.defineInRange(material.name + ".thoughness", material.toughness, 0, Float.MAX_VALUE);
             builder.defineInRange(material.name + ".knockbackResistance", material.knockbackResistance, 0, Float.MAX_VALUE);
@@ -28,22 +30,22 @@ public class Config {
     }
 
     public enum Material {
-        BONE("bone", 15, 1, 4, 5, 2, 14, 1.5f, 0.0f),
-        COAL("coal", 10, 1, 2, 3, 1, 11, 0.5F, 0.0F),
-        EMERALD("emerald", 69, 4, 8, 12, 4, 25, 3.0F, 0.0F),
-        ENDER("ender", 31, 2, 6, 8, 3, 20, 3.14F, 0.0F),
-        FIERY("fiery", 17, 2, 4, 7, 3, 15, 1.3F, 0.0F),
-        GLOWSTONE("glowstone", 13, 2, 5, 6, 2, 13, 1.0F, 0.0F),
-        LAPIS("lapis", 13, 2, 5, 6, 2, 13, 1.0F, 0.0F),
-        NETHER("nether", 17, 3, 4, 7, 3, 66, 2.1F, 0.0F),
-        OBSIDIAN("obsidian", 81, 5, 9, 15, 4, 11, 4.0F, 0.0F),
+        BONE("bone", 7, 1, 2, 3, 2, 20, 0.0f, 0.0f),
+        COAL("coal", 6, 1, 1, 2, 1, 10, 0.0F, 0.0F),
+        EMERALD("emerald", 25, 2, 4, 6, 2, 25, 1.9F, 0.0F),
+        ENDER("ender", 21, 1, 3, 5, 2, 15, 0.1F, 0.0F),
+        FIERY("fiery", 13, 1, 3, 4, 1, 13, 0.0F, 0.0F),
+        GLOWSTONE("glowstone", 7, 1, 2, 3, 1, 15, 0.0F, 0.0F),
+        LAPIS("lapis", 8, 1, 3, 5, 1, 30, 0.0F, 0.0F),
+        NETHER("nether", 11, 2, 2, 4, 1, 20, 0.1F, 0.0F),
+        OBSIDIAN("obsidian", 40, 3, 6, 8, 2, 8, 1.5F, 0.3F),
         PAPER("paper", 1, 0, 1, 2, 0, 13, 0.0F, 0.0F),
-        PRISMARINE("prismarine", 21, 4, 6, 8, 2, 20, 1.0F, 0.0F),
-        QUARTZ("quartz", 10, 1, 2, 3, 1, 11, 0.5F, 0.0F),
-        REDSTONE("redstone", 13, 2, 5, 6, 2, 13, 1.0F, 0.0F),
-        SLIME("slime", 42, 1, 3, 4, 2, 20, 0.3F, 0.2F),
-        STONE("stone", 5, 1, 3, 4, 2, 7, 0.3F, 0.0F),
-        WOOD("wood", 13, 0, 2, 3, 2, 5, 0.1F, 0.1F);
+        PRISMARINE("prismarine", 14, 2, 3, 5, 1, 15, 0.1F, 0.0F),
+        QUARTZ("quartz", 7, 1, 1, 2, 1, 15, 0.0F, 0.0F),
+        REDSTONE("redstone", 8, 1, 3, 5, 1, 15, 0.0F, 0.0F),
+        SLIME("slime", 36, 4, 6, 8, 3, 14, 0.1F, 0.2F),
+        STONE("stone", 4, 1, 1, 3, 1, 7, 0.0F, 0.0F),
+        WOOD("wood", 8, 1, 2, 3, 2, 5, 0.0F, 0.0F);
 
         private final String name;
         private final int durabilityFactor;
