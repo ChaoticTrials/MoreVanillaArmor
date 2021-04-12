@@ -17,6 +17,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,7 @@ public class Armor extends ArmorItem {
     }
 
     @Override
-    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    public void addInformation(@Nonnull ItemStack stack, World world, @Nonnull List<ITextComponent> tooltip, @Nonnull ITooltipFlag flag) {
         if (Minecraft.getInstance().player != null) {
             ClientPlayerEntity player = Minecraft.getInstance().player;
             ArmorTiers fullArmorSetType = getArmorSetType(player);
@@ -102,6 +103,7 @@ public class Armor extends ArmorItem {
                 }
             }
         }
+
         return types;
     }
 
@@ -113,18 +115,8 @@ public class Armor extends ArmorItem {
                 return false;
             }
         }
-        return true;
-    }
 
-    public static boolean playerIsWearingArmorOfType(PlayerEntity player, ArmorTiers type) {
-        for (ItemStack armorPieceStack : player.inventory.armorInventory) {
-            if (armorPieceStack.getItem() instanceof Armor) {
-                if (((Armor) armorPieceStack.getItem()).getType() == type) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return true;
     }
 
     @Nullable
@@ -139,10 +131,13 @@ public class Armor extends ArmorItem {
                         continue;
                     }
                 }
+
                 return null;
             }
+
             return type;
         }
+
         return null;
     }
 }

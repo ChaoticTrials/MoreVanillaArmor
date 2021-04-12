@@ -2,8 +2,6 @@ package de.melanx.MoreVanillaArmor.tile_entities;
 
 import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
 import de.melanx.MoreVanillaArmor.blocks.ModBlocks;
-import de.melanx.MoreVanillaArmor.tile_entities.RedstoneEssenceTileEntity;
-
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;

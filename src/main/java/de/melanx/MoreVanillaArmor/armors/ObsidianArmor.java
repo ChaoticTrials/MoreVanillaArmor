@@ -26,22 +26,27 @@ public class ObsidianArmor {
         Item leggings = player.getItemStackFromSlot(EquipmentSlotType.LEGS).getItem();
         Item boots = player.getItemStackFromSlot(EquipmentSlotType.FEET).getItem();
         Item chestplate = player.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem();
+
         if (helmet instanceof Armor && ((Armor) helmet).getType() == ArmorTiers.OBSIDIAN) {
-            amplifier +=1;
+            amplifier += 1;
         }
+
         if (boots instanceof Armor && ((Armor) boots).getType() == ArmorTiers.OBSIDIAN) {
-            amplifier +=1;
+            amplifier += 1;
         }
+
         if (leggings instanceof Armor && ((Armor) leggings).getType() == ArmorTiers.OBSIDIAN) {
-            amplifier +=2;
+            amplifier += 2;
         }
+
         if (chestplate instanceof Armor && ((Armor) chestplate).getType() == ArmorTiers.OBSIDIAN) {
-            amplifier +=3;
+            amplifier += 3;
         }
 
         if (amplifier >= 0) {
             player.addPotionEffect(new ArmorEffectInstance(Registry.HEAVY.get(), amplifier));
         }
+
         if (Armor.playerIsWearingArmorSetOfType(player, ArmorTiers.OBSIDIAN)) {
             player.addPotionEffect(new ArmorEffectInstance(Registry.DAMAGE_REDUCTION.get(), 0));
         }

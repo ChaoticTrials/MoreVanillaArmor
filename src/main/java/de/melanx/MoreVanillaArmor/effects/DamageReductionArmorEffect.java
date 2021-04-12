@@ -23,6 +23,7 @@ public class DamageReductionArmorEffect extends ArmorEffect {
                 int damageReduction;
                 // Don't trump other mods/effects that might reduce the damage to less than .25
                 if (event.getAmount() > 0.25) {
+                    //noinspection ConstantConditions
                     damageReduction = 1 + player.getActivePotionEffect(Registry.DAMAGE_REDUCTION.get()).getAmplifier();
                     if (event.getAmount() - damageReduction > 0.25) {
                         event.setAmount(event.getAmount() - damageReduction);

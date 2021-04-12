@@ -1,7 +1,6 @@
 package de.melanx.MoreVanillaArmor.items;
 
 import de.melanx.MoreVanillaArmor.Config;
-import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
 import de.melanx.MoreVanillaArmor.util.Registry;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
@@ -13,7 +12,6 @@ import net.minecraft.util.LazyValue;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.Tags;
 
 import javax.annotation.Nonnull;
