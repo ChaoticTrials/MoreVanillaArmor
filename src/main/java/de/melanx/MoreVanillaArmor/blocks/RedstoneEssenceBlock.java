@@ -16,6 +16,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import javax.annotation.Nonnull;
 import java.util.Random;
 
 public class RedstoneEssenceBlock extends RedstoneBlock {
@@ -38,21 +39,25 @@ public class RedstoneEssenceBlock extends RedstoneBlock {
         return ModTileEntityTypes.REDSTONE_ESSENCE.get().create();
     }
 
+    @SuppressWarnings("deprecation")
+    @Nonnull
     @Override
-    public BlockRenderType getRenderType(BlockState state) {
+    public BlockRenderType getRenderType(@Nonnull BlockState state) {
         return BlockRenderType.INVISIBLE;
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-        double d0 = (double)pos.getX() + 0.5D + (rand.nextDouble() - 0.5D) * 0.2D;
-        double d1 = (double)pos.getY() + 0.7D + (rand.nextDouble() - 0.5D) * 0.2D;
-        double d2 = (double)pos.getZ() + 0.5D + (rand.nextDouble() - 0.5D) * 0.2D;
-        worldIn.addParticle(this.particles, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+    public void animateTick(@Nonnull BlockState state, World world, BlockPos pos, Random rand) {
+        double d0 = (double) pos.getX() + 0.5D + (rand.nextDouble() - 0.5D) * 0.2D;
+        double d1 = (double) pos.getY() + 0.7D + (rand.nextDouble() - 0.5D) * 0.2D;
+        double d2 = (double) pos.getZ() + 0.5D + (rand.nextDouble() - 0.5D) * 0.2D;
+        world.addParticle(this.particles, d0, d1, d2, 0.0D, 0.0D, 0.0D);
     }
 
+    @SuppressWarnings("deprecation")
+    @Nonnull
     @Override
-    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+    public VoxelShape getShape(@Nonnull BlockState state, @Nonnull IBlockReader world, @Nonnull BlockPos pos, @Nonnull ISelectionContext context) {
         return SHAPE;
     }
 }
