@@ -3,54 +3,67 @@
   "item.morevanillaarmor.bone_chestplate": "Knochenharnisch",
   "item.morevanillaarmor.bone_helmet": "Knochenhelm",
   "item.morevanillaarmor.bone_leggings": "Knochenbeinschutz",
+
   "item.morevanillaarmor.coal_boots": "Kohlestiefel",
   "item.morevanillaarmor.coal_chestplate": "Kohleharnisch",
   "item.morevanillaarmor.coal_helmet": "Kohlehelm",
   "item.morevanillaarmor.coal_leggings": "Kohlebeinschutz",
+
   "item.morevanillaarmor.emerald_boots": "Smaragdstiefel",
   "item.morevanillaarmor.emerald_chestplate": "Smaragdharnisch",
   "item.morevanillaarmor.emerald_helmet": "Smaragdhelm",
   "item.morevanillaarmor.emerald_leggings": "Smaragdbeinschutz",
+
   "item.morevanillaarmor.ender_boots": "Enderstiefel",
   "item.morevanillaarmor.ender_chestplate": "Enderharnisch",
   "item.morevanillaarmor.ender_helmet": "Enderhelm",
   "item.morevanillaarmor.ender_leggings": "Enderbeinschutz",
+
   "item.morevanillaarmor.fiery_boots": "Feuerstiefel",
   "item.morevanillaarmor.fiery_chestplate": "Feuerharnisch",
   "item.morevanillaarmor.fiery_helmet": "Feuerhelm",
   "item.morevanillaarmor.fiery_leggings": "Feuerbeinschutz",
+
   "item.morevanillaarmor.glowstone_boots": "Glowstonestiefel",
   "item.morevanillaarmor.glowstone_chestplate": "Glowstoneharnisch",
   "item.morevanillaarmor.glowstone_helmet": "Glowstonehelm",
   "item.morevanillaarmor.glowstone_leggings": "Glowstonebeinschutz",
+
   "item.morevanillaarmor.lapis_boots": "Lapisstiefel",
   "item.morevanillaarmor.lapis_chestplate": "Lapisharnisch",
   "item.morevanillaarmor.lapis_helmet": "Lapishelm",
   "item.morevanillaarmor.lapis_leggings": "Lapisbeinschutz",
+
   "item.morevanillaarmor.nether_boots": "Netherstiefel",
   "item.morevanillaarmor.nether_chestplate": "Netherharnisch",
   "item.morevanillaarmor.nether_helmet": "Netherhelm",
   "item.morevanillaarmor.nether_leggings": "Netherbeinschutz",
+
   "item.morevanillaarmor.obsidian_boots": "Obsidianstiefel",
   "item.morevanillaarmor.obsidian_chestplate": "Obsidianharnisch",
   "item.morevanillaarmor.obsidian_helmet": "Obsidianhelm",
   "item.morevanillaarmor.obsidian_leggings": "Obsidianbeinschutz",
+
   "item.morevanillaarmor.paper_boots": "Papierstiefel",
   "item.morevanillaarmor.paper_chestplate": "Papierharnisch",
   "item.morevanillaarmor.paper_helmet": "Papierhelm",
   "item.morevanillaarmor.paper_leggings": "Papierbeinschutz",
+
   "item.morevanillaarmor.prismarine_boots": "Prismarinstiefel",
   "item.morevanillaarmor.prismarine_chestplate": "Prismarinharnisch",
   "item.morevanillaarmor.prismarine_helmet": "Prismarinhelm",
   "item.morevanillaarmor.prismarine_leggings": "Prismarinbeinschutz",
+
   "item.morevanillaarmor.quartz_boots": "Netherquartzstiefel",
   "item.morevanillaarmor.quartz_chestplate": "Netherquartzharnisch",
   "item.morevanillaarmor.quartz_helmet": "Netherquartzhelm",
   "item.morevanillaarmor.quartz_leggings": "Netherquartzbeinschutz",
+
   "item.morevanillaarmor.redstone_boots": "Redstonestiefel",
   "item.morevanillaarmor.redstone_chestplate": "Redstoneharnisch",
   "item.morevanillaarmor.redstone_helmet": "Redstonehelm",
   "item.morevanillaarmor.redstone_leggings": "Redstonebeinschutz",
+
   "item.morevanillaarmor.slime_boots": "Schleimstiefel",
   "item.morevanillaarmor.slime_chestplate": "Schleimharnisch",
   "item.morevanillaarmor.slime_helmet": "Schleimhelm",

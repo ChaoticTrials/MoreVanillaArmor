@@ -16,12 +16,12 @@ public class ItemModels extends ItemModelProvider {
     @Override
     protected void registerModels() {
         for (RegistryObject<Item> item : Registry.ITEMS.getEntries())
-            generateItem(item.get());
+            this.generateItem(item.get());
     }
 
     private void generateItem(Item item) {
         String path = item.getRegistryName().getPath();
-        getBuilder(path).parent(getExistingFile(mcLoc("item/handheld")))
+        this.getBuilder(path).parent(this.getExistingFile(this.mcLoc("item/handheld")))
                 .texture("layer0", "item/" + path);
     }
 

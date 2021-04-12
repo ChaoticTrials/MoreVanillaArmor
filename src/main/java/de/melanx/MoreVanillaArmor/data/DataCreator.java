@@ -20,8 +20,6 @@ public class DataCreator {
         }
         if (event.includeClient()) {
             generator.addProvider(new ItemModels(generator, helper));
-            generator.addProvider(new Languages.English(generator));
-            generator.addProvider(new Languages.German(generator));
         }
     }
 

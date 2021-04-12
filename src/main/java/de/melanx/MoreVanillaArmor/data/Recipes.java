@@ -23,13 +23,13 @@ public class Recipes extends RecipeProvider {
             Armor item = (Armor) object.get();
             EquipmentSlotType slotType = item.getSlotType();
             if (slotType == EquipmentSlotType.HEAD)
-                registerHelmetRecipe(item).build(consumer);
+                this.registerHelmetRecipe(item).build(consumer);
             else if (slotType == EquipmentSlotType.CHEST)
-                registerChestplateRecipe(item).build(consumer);
+                this.registerChestplateRecipe(item).build(consumer);
             else if (slotType == EquipmentSlotType.LEGS)
-                registerLeggingsRecipe(item).build(consumer);
+                this.registerLeggingsRecipe(item).build(consumer);
             else if (slotType == EquipmentSlotType.FEET)
-                registerBootsRecipe(item).build(consumer);
+                this.registerBootsRecipe(item).build(consumer);
         }
     }
 
