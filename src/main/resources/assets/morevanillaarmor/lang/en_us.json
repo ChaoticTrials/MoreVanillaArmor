@@ -1,6 +1,11 @@
 {
   "itemGroup.morevanillaarmor": "MoreVanillaArmor",
 
+  "effect.morevanillaarmor.damage_reduction": "Damage Reduction",
+  "effect.morevanillaarmor.fire_immunity": "Fire Immunity",
+  "effect.morevanillaarmor.heavy": "Heavyness",
+  "effect.morevanillaarmor.power_source": "Power Source",
+
   "item.morevanillaarmor.bone_boots": "Bone Boots",
   "item.morevanillaarmor.bone_chestplate": "Bone Chestplate",
   "item.morevanillaarmor.bone_helmet": "Bone Helmet",
@@ -69,5 +74,11 @@
   "item.morevanillaarmor.slime_boots": "Slime Boots",
   "item.morevanillaarmor.slime_chestplate": "Slime Chestplate",
   "item.morevanillaarmor.slime_helmet": "Slime Helmet",
-  "item.morevanillaarmor.slime_leggings": "Slime Leggings"
+  "item.morevanillaarmor.slime_leggings": "Slime Leggings",
+
+  "tooltip.morevanillaarmor.fiery": "Fire Immunity",
+  "tooltip.morevanillaarmor.missing": "Missing: ",
+  "tooltip.morevanillaarmor.missing_pieces": "multiple pieces",
+  "tooltip.morevanillaarmor.obsidian": "Damage Reduction",
+  "tooltip.morevanillaarmor.setbonus": "Set bonus: "
 }
