@@ -1,6 +1,12 @@
 package de.melanx.MoreVanillaArmor;
 
+import com.electronwill.nightconfig.core.file.CommentedFileConfig;
+import com.electronwill.nightconfig.core.io.WritingMode;
 import net.minecraftforge.common.ForgeConfigSpec;
+
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Config {
 
@@ -12,24 +18,76 @@ public class Config {
         COMMON_CONFIG = CONFIG_BUILDER.build();
     }
 
+    public static Map<DefaultMaterial, Material> materials;
+
     private static void init(ForgeConfigSpec.Builder builder) {
-        for (Material material : Material.values()) {
-            builder.comment(String.format("Values for %s armor", material.name));
-            builder.comment("Will be multiplied with", "11 for head", "16 for chestplate", "15 for leggings", "13 for boots")
-                    .defineInRange(material.name + ".durabilityFactor", material.durabilityFactor, 0, Integer.MAX_VALUE);
-            builder.push(material.name + ".damageReduction");
-            builder.defineInRange("head", material.damageReduction[3], 0, Integer.MAX_VALUE);
-            builder.defineInRange("chest", material.damageReduction[2], 0, Integer.MAX_VALUE);
-            builder.defineInRange("leggings", material.damageReduction[1], 0, Integer.MAX_VALUE);
-            builder.defineInRange("boots", material.damageReduction[0], 0, Integer.MAX_VALUE);
-            builder.pop();
-            builder.defineInRange(material.name + ".enchantability", material.enchantability, 0, Integer.MAX_VALUE);
-            builder.defineInRange(material.name + ".thoughness", material.toughness, 0, Float.MAX_VALUE);
-            builder.defineInRange(material.name + ".knockbackResistance", material.knockbackResistance, 0, Float.MAX_VALUE);
+        materials = new HashMap<>();
+
+        for (DefaultMaterial material : DefaultMaterial.values()) {
+            materials.put(material, new Material(
+                    material.name,
+                    builder.comment("Will be multiplied with", "11 for head", "16 for chestplate", "15 for leggings", "13 for boots")
+                            .defineInRange(material.name + ".durabilityFactor", material.durabilityFactor, 0, Integer.MAX_VALUE),
+                    builder.defineInRange(material.name + ".damageReduction.head", material.damageReduction[3], 0, Integer.MAX_VALUE),
+                    builder.defineInRange(material.name + ".damageReduction.chest", material.damageReduction[2], 0, Integer.MAX_VALUE),
+                    builder.defineInRange(material.name + ".damageReduction.leggings", material.damageReduction[1], 0, Integer.MAX_VALUE),
+                    builder.defineInRange(material.name + ".damageReduction.boots", material.damageReduction[0], 0, Integer.MAX_VALUE),
+                    builder.defineInRange(material.name + ".enchantability", material.enchantability, 0, Integer.MAX_VALUE),
+                    builder.defineInRange(material.name + ".thoughness", material.toughness, 0, Float.MAX_VALUE),
+                    builder.defineInRange(material.name + ".knockbackResistance", material.knockbackResistance, 0, Float.MAX_VALUE)
+            ));
         }
     }
 
-    public enum Material {
+    public static class Material {
+        private final String name;
+        private final ForgeConfigSpec.IntValue durabilityFactor;
+        private final ForgeConfigSpec.IntValue bootsReduction;
+        private final ForgeConfigSpec.IntValue leggingsReduction;
+        private final ForgeConfigSpec.IntValue chestReduction;
+        private final ForgeConfigSpec.IntValue headReduction;
+        private final ForgeConfigSpec.IntValue enchantability;
+        private final ForgeConfigSpec.DoubleValue toughness;
+        private final ForgeConfigSpec.DoubleValue knockbackResistance;
+
+        private Material(String name, ForgeConfigSpec.IntValue durabilityFactor, ForgeConfigSpec.IntValue bootsReduction, ForgeConfigSpec.IntValue leggingsReduction, ForgeConfigSpec.IntValue chestReduction, ForgeConfigSpec.IntValue headReduction, ForgeConfigSpec.IntValue enchantability, ForgeConfigSpec.DoubleValue toughness, ForgeConfigSpec.DoubleValue knockbackResistance) {
+            this.name = name;
+            this.durabilityFactor = durabilityFactor;
+            this.enchantability = enchantability;
+            this.bootsReduction = bootsReduction;
+            this.chestReduction = chestReduction;
+            this.leggingsReduction = leggingsReduction;
+            this.headReduction = headReduction;
+            this.toughness = toughness;
+            this.knockbackResistance = knockbackResistance;
+        }
+
+        public String getName() {
+            return this.name;
+        }
+
+        public int getDurabilityFactor() {
+            return this.durabilityFactor.get();
+        }
+
+        public int[] getDamageReduction() {
+            return new int[]{this.bootsReduction.get(), this.leggingsReduction.get(), this.chestReduction.get(), this.headReduction.get()};
+        }
+
+        public int getEnchantability() {
+            return this.enchantability.get();
+        }
+
+        public float getToughness() {
+            return (float) (double) this.toughness.get();
+        }
+
+        public float getKnockbackResistance() {
+            return (float) (double) this.knockbackResistance.get();
+        }
+    }
+
+    public enum DefaultMaterial {
         BONE("bone", 7, 1, 2, 3, 2, 20, 0.0f, 0.0f),
         COAL("coal", 6, 1, 1, 2, 1, 10, 0.0F, 0.0F),
         EMERALD("emerald", 25, 2, 4, 6, 2, 25, 1.9F, 0.0F),
@@ -54,7 +112,7 @@ public class Config {
         private final float toughness;
         private final float knockbackResistance;
 
-        Material(String name, int durabilityFactor, int bootsReduction, int leggingsReduction, int chestReduction, int headReduction, int enchantability, float toughness, float knockbackResistance) {
+        DefaultMaterial(String name, int durabilityFactor, int bootsReduction, int leggingsReduction, int chestReduction, int headReduction, int enchantability, float toughness, float knockbackResistance) {
             this.name = name;
             this.durabilityFactor = durabilityFactor;
             this.damageReduction = new int[]{bootsReduction, leggingsReduction, chestReduction, headReduction};
@@ -62,29 +120,12 @@ public class Config {
             this.toughness = toughness;
             this.knockbackResistance = knockbackResistance;
         }
+    }
 
-        public String getName() {
-            return name;
-        }
-
-        public int getDurabilityFactor() {
-            return durabilityFactor;
-        }
-
-        public int[] getDamageReduction() {
-            return damageReduction;
-        }
-
-        public int getEnchantability() {
-            return enchantability;
-        }
-
-        public float getToughness() {
-            return toughness;
-        }
-
-        public float getKnockbackResistance() {
-            return knockbackResistance;
-        }
+    public static void loadConfig(ForgeConfigSpec spec, Path path) {
+        MoreVanillaArmor.LOGGER.debug("Loading config file {}", path);
+        final CommentedFileConfig configData = CommentedFileConfig.builder(path).sync().autosave().writingMode(WritingMode.REPLACE).build();
+        configData.load();
+        spec.setConfig(configData);
     }
 }
