@@ -1,4 +1,6 @@
 {
+  "itemGroup.morevanillaarmor": "MoreVanillaArmor",
+
   "item.morevanillaarmor.bone_boots": "Knochenstiefel",
   "item.morevanillaarmor.bone_chestplate": "Knochenharnisch",
   "item.morevanillaarmor.bone_helmet": "Knochenhelm",
@@ -67,5 +69,15 @@
   "item.morevanillaarmor.slime_boots": "Schleimstiefel",
   "item.morevanillaarmor.slime_chestplate": "Schleimharnisch",
   "item.morevanillaarmor.slime_helmet": "Schleimhelm",
-  "item.morevanillaarmor.slime_leggings": "Schleimbeinschutz"
+  "item.morevanillaarmor.slime_leggings": "Schleimbeinschutz",
+
+  "item.morevanillaarmor.stone_boots": "Steinstiefel",
+  "item.morevanillaarmor.stone_chestplate": "Steinharnisch",
+  "item.morevanillaarmor.stone_helmet": "Steinhelm",
+  "item.morevanillaarmor.stone_leggings": "Steinbeinschutz",
+
+  "item.morevanillaarmor.wood_boots": "Holzstiefel",
+  "item.morevanillaarmor.wood_chestplate": "Holzharnisch",
+  "item.morevanillaarmor.wood_helmet": "Holzhelm",
+  "item.morevanillaarmor.wood_leggings": "Holzbeinschutz"
 }
