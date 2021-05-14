@@ -28,10 +28,10 @@ public class Config {
                     material.name,
                     builder.comment("Will be multiplied with", "11 for head", "16 for chestplate", "15 for leggings", "13 for boots")
                             .defineInRange(material.name + ".durabilityFactor", material.durabilityFactor, 0, Integer.MAX_VALUE),
-                    builder.defineInRange(material.name + ".damageReduction.head", material.damageReduction[3], 0, Integer.MAX_VALUE),
-                    builder.defineInRange(material.name + ".damageReduction.chest", material.damageReduction[2], 0, Integer.MAX_VALUE),
-                    builder.defineInRange(material.name + ".damageReduction.leggings", material.damageReduction[1], 0, Integer.MAX_VALUE),
                     builder.defineInRange(material.name + ".damageReduction.boots", material.damageReduction[0], 0, Integer.MAX_VALUE),
+                    builder.defineInRange(material.name + ".damageReduction.leggings", material.damageReduction[1], 0, Integer.MAX_VALUE),
+                    builder.defineInRange(material.name + ".damageReduction.chest", material.damageReduction[2], 0, Integer.MAX_VALUE),
+                    builder.defineInRange(material.name + ".damageReduction.head", material.damageReduction[3], 0, Integer.MAX_VALUE),
                     builder.defineInRange(material.name + ".enchantability", material.enchantability, 0, Integer.MAX_VALUE),
                     builder.defineInRange(material.name + ".thoughness", material.toughness, 0, Float.MAX_VALUE),
                     builder.defineInRange(material.name + ".knockbackResistance", material.knockbackResistance, 0, Float.MAX_VALUE)

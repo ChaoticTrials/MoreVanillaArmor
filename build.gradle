@@ -83,17 +83,24 @@ repositories {
         name = "Progwml6 maven"
         url = "https://dvs1.progwml6.com/files/maven/"
     }
+    maven {
+        name = "MelanX maven"
+        url = "https://maven.melanx.de/"
+    }
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
+
+    runtimeOnly fg.deobf("io.github.noeppi_noeppi.mods:LibX:1.16.3-1.0.1")
+    runtimeOnly fg.deobf("de.melanx.recipeprinter:recipeprinter-1.16.3:2.0.4")
 }
 
 jar {
     manifest {
         attributes([
-                "Specification-Title": "morevanillatools",
+                "Specification-Title": "morevanillaarmor",
                 "Specification-Vendor": "MelanX",
                 "Specification-Version": "1", // We are version 1 of ourselves
                 "Implementation-Title": project.name,
