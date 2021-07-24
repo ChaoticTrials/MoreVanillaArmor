@@ -36,5 +36,4 @@ public class MoreVanillaArmor {
 
         Registry.init();
     }
-
 }
