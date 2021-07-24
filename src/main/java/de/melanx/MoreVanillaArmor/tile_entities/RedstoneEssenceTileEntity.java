@@ -27,6 +27,7 @@ public class RedstoneEssenceTileEntity extends TileEntity implements ITickableTi
                 this.tick++;
                 if (this.tick > 40) {
                     this.world.setBlockState(this.pos, Blocks.AIR.getDefaultState());
+                    this.remove();
                 }
             } else if (closestPlayer.getPosition() == this.pos && closestPlayer.isPotionActive(Registry.POWER_SOURCE.get())) {
                 this.tick = 0;
