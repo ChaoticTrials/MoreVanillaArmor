@@ -15,6 +15,6 @@ public class BlockState extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        simpleBlock(ModBlocks.REDSTONE_ESSENCE.get());
+        this.simpleBlock(ModBlocks.REDSTONE_ESSENCE.get());
     }
 }

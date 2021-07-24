@@ -64,27 +64,27 @@ public class Config {
         }
 
         public String getName() {
-            return name;
+            return this.name;
         }
 
         public int getDurabilityFactor() {
-            return durabilityFactor;
+            return this.durabilityFactor;
         }
 
         public int[] getDamageReduction() {
-            return damageReduction;
+            return this.damageReduction;
         }
 
         public int getEnchantability() {
-            return enchantability;
+            return this.enchantability;
         }
 
         public float getToughness() {
-            return toughness;
+            return this.toughness;
         }
 
         public float getKnockbackResistance() {
-            return knockbackResistance;
+            return this.knockbackResistance;
         }
     }
 }

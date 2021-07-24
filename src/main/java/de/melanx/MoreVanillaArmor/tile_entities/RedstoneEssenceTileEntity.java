@@ -21,15 +21,15 @@ public class RedstoneEssenceTileEntity extends TileEntity implements ITickableTi
 
     @Override
     public void tick() {
-        if (world != null) {
-            PlayerEntity closestPlayer = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 1, false);
-            if (closestPlayer == null || closestPlayer.getPosition() != pos || !closestPlayer.isPotionActive(Registry.POWER_SOURCE.get())) {
-                tick++;
-                if (tick > 40) {
-                    world.setBlockState(pos, Blocks.AIR.getDefaultState());
+        if (this.world != null) {
+            PlayerEntity closestPlayer = this.world.getClosestPlayer(this.pos.getX(), this.pos.getY(), this.pos.getZ(), 1, false);
+            if (closestPlayer == null || closestPlayer.getPosition() != this.pos || !closestPlayer.isPotionActive(Registry.POWER_SOURCE.get())) {
+                this.tick++;
+                if (this.tick > 40) {
+                    this.world.setBlockState(this.pos, Blocks.AIR.getDefaultState());
                 }
-            } else if (closestPlayer.getPosition() == pos && closestPlayer.isPotionActive(Registry.POWER_SOURCE.get())) {
-                tick = 0;
+            } else if (closestPlayer.getPosition() == this.pos && closestPlayer.isPotionActive(Registry.POWER_SOURCE.get())) {
+                this.tick = 0;
             }
         }
     }
