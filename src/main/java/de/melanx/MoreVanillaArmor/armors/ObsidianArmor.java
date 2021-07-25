@@ -4,10 +4,10 @@ import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
 import de.melanx.MoreVanillaArmor.effects.ArmorEffectInstance;
 import de.melanx.MoreVanillaArmor.items.Armor;
 import de.melanx.MoreVanillaArmor.items.ArmorTiers;
-import de.melanx.MoreVanillaArmor.util.Registry;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.Item;
+import de.melanx.MoreVanillaArmor.util.ModRegistries;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -18,14 +18,14 @@ public class ObsidianArmor {
 
     @SubscribeEvent
     public static void playerTick(TickEvent.PlayerTickEvent event) {
-        PlayerEntity player = event.player;
+        Player player = event.player;
 
         int amplifier = -1;
 
-        Item helmet = player.getItemStackFromSlot(EquipmentSlotType.HEAD).getItem();
-        Item leggings = player.getItemStackFromSlot(EquipmentSlotType.LEGS).getItem();
-        Item boots = player.getItemStackFromSlot(EquipmentSlotType.FEET).getItem();
-        Item chestplate = player.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem();
+        Item helmet = player.getItemBySlot(EquipmentSlot.HEAD).getItem();
+        Item leggings = player.getItemBySlot(EquipmentSlot.LEGS).getItem();
+        Item boots = player.getItemBySlot(EquipmentSlot.FEET).getItem();
+        Item chestplate = player.getItemBySlot(EquipmentSlot.CHEST).getItem();
 
         if (helmet instanceof Armor && ((Armor) helmet).getType() == ArmorTiers.OBSIDIAN) {
             amplifier += 1;
@@ -44,11 +44,11 @@ public class ObsidianArmor {
         }
 
         if (amplifier >= 0) {
-            player.addPotionEffect(new ArmorEffectInstance(Registry.HEAVY.get(), amplifier));
+            player.addEffect(new ArmorEffectInstance(ModRegistries.HEAVY.get(), amplifier));
         }
 
         if (Armor.playerIsWearingArmorSetOfType(player, ArmorTiers.OBSIDIAN)) {
-            player.addPotionEffect(new ArmorEffectInstance(Registry.DAMAGE_REDUCTION.get(), 0));
+            player.addEffect(new ArmorEffectInstance(ModRegistries.DAMAGE_REDUCTION.get(), 0));
         }
     }
 }

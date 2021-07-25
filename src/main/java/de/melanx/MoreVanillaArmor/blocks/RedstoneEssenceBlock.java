@@ -1,63 +1,70 @@
 package de.melanx.MoreVanillaArmor.blocks;
 
-import de.melanx.MoreVanillaArmor.tile_entities.ModTileEntityTypes;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.RedstoneBlock;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.RedstoneParticleData;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
+import de.melanx.MoreVanillaArmor.tile_entities.ModBlockEntityTypes;
+import de.melanx.MoreVanillaArmor.tile_entities.RedstoneEssenceBlockEntity;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.PoweredBlock;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.Random;
 
-public class RedstoneEssenceBlock extends RedstoneBlock {
-    private static final VoxelShape SHAPE = Block.makeCuboidShape(0,0,0,0, 0, 0);
+public class RedstoneEssenceBlock extends PoweredBlock implements EntityBlock {
+    private static final VoxelShape SHAPE = Block.box(0, 0, 0, 0, 0, 0);
 
-    protected final IParticleData particles;
+    protected final ParticleOptions particles;
 
     public RedstoneEssenceBlock(Properties props) {
         super(props);
-        this.particles = RedstoneParticleData.REDSTONE_DUST;
+        this.particles = DustParticleOptions.REDSTONE;
     }
 
+    @Nullable
     @Override
-    public boolean hasTileEntity(BlockState state) {
-        return true;
+    public BlockEntity newBlockEntity(@Nonnull BlockPos pos, @Nonnull BlockState state) {
+        return new RedstoneEssenceBlockEntity(pos, state);
     }
 
+    @Nullable
     @Override
-    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return ModTileEntityTypes.REDSTONE_ESSENCE.get().create();
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(@Nonnull Level level, @Nonnull BlockState state, @Nonnull BlockEntityType<T> type) {
+        return level.isClientSide ? null : type == ModBlockEntityTypes.REDSTONE_ESSENCE.get() ? RedstoneEssenceBlockEntity::serverTick : null;
     }
 
     @SuppressWarnings("deprecation")
     @Nonnull
     @Override
-    public BlockRenderType getRenderType(@Nonnull BlockState state) {
-        return BlockRenderType.INVISIBLE;
+    public RenderShape getRenderShape(@Nonnull BlockState state) {
+        return RenderShape.INVISIBLE;
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void animateTick(@Nonnull BlockState state, World world, BlockPos pos, Random rand) {
+    public void animateTick(@Nonnull BlockState state, Level level, BlockPos pos, Random rand) {
         double d0 = (double) pos.getX() + 0.5D + (rand.nextDouble() - 0.5D) * 0.2D;
         double d1 = (double) pos.getY() + 0.7D + (rand.nextDouble() - 0.5D) * 0.2D;
         double d2 = (double) pos.getZ() + 0.5D + (rand.nextDouble() - 0.5D) * 0.2D;
-        world.addParticle(this.particles, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+        level.addParticle(this.particles, d0, d1, d2, 0.0D, 0.0D, 0.0D);
     }
 
     @SuppressWarnings("deprecation")
     @Nonnull
     @Override
-    public VoxelShape getShape(@Nonnull BlockState state, @Nonnull IBlockReader world, @Nonnull BlockPos pos, @Nonnull ISelectionContext context) {
+    public VoxelShape getShape(@Nonnull BlockState state, @Nonnull BlockGetter level, @Nonnull BlockPos pos, @Nonnull CollisionContext context) {
         return SHAPE;
     }
 }

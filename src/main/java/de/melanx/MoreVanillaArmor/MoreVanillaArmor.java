@@ -1,10 +1,10 @@
 package de.melanx.MoreVanillaArmor;
 
 import de.melanx.MoreVanillaArmor.blocks.ModBlocks;
-import de.melanx.MoreVanillaArmor.tile_entities.ModTileEntityTypes;
+import de.melanx.MoreVanillaArmor.tile_entities.ModBlockEntityTypes;
 import de.melanx.MoreVanillaArmor.util.CreativeTab;
-import de.melanx.MoreVanillaArmor.util.Registry;
-import net.minecraft.item.ItemGroup;
+import de.melanx.MoreVanillaArmor.util.ModRegistries;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -22,7 +22,7 @@ public class MoreVanillaArmor {
     public static final String MODID = "morevanillaarmor";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
 
-    public static final ItemGroup creativeTab = new CreativeTab();
+    public static final CreativeModeTab creativeTab = new CreativeTab();
 
     public MoreVanillaArmor() {
         instance = this;
@@ -32,8 +32,8 @@ public class MoreVanillaArmor {
 
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModBlocks.BLOCKS.register(modEventBus);
-        ModTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);
+        ModBlockEntityTypes.BLOCK_ENTITY_TYPES.register(modEventBus);
 
-        Registry.init();
+        ModRegistries.init();
     }
 }

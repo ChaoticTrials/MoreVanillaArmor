@@ -1,10 +1,10 @@
 package de.melanx.MoreVanillaArmor.blocks;
 
 import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Material;
+import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -14,6 +14,6 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> REDSTONE_ESSENCE = BLOCKS.register(
             "redstone_essence",
-            () -> new RedstoneEssenceBlock(AbstractBlock.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance())
+            () -> new RedstoneEssenceBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().instabreak())
     );
 }

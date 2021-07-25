@@ -1,33 +1,32 @@
 package de.melanx.MoreVanillaArmor.effects;
 
 import de.melanx.MoreVanillaArmor.blocks.ModBlocks;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.material.Material;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.potion.EffectType;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Material;
 
 public class PowerSourceArmorEffect extends ArmorEffect {
 
     public PowerSourceArmorEffect()
     {
-        super(EffectType.NEUTRAL);
+        super(MobEffectCategory.NEUTRAL);
     }
 
     @Override
-    public void performEffect(LivingEntity livingEntity, int amplifier) {
+    public void applyEffectTick(LivingEntity livingEntity, int amplifier) {
         if (livingEntity.isOnGround()) {
-            BlockState blockState = livingEntity.world.getBlockState(livingEntity.getPosition());
+            BlockState blockState = livingEntity.level.getBlockState(livingEntity.blockPosition());
             if (blockState.getMaterial() == Material.AIR) {
-                BlockState invisiTorch = ModBlocks.REDSTONE_ESSENCE.get().getDefaultState();
-                livingEntity.world.setBlockState(livingEntity.getPosition(), invisiTorch);
+                BlockState invisiTorch = ModBlocks.REDSTONE_ESSENCE.get().defaultBlockState();
+                livingEntity.level.setBlockAndUpdate(livingEntity.blockPosition(), invisiTorch);
             }
         }
 
     }
 
     @Override
-    public boolean isReady(int duration, int amplifier) {
+    public boolean isDurationEffectTick(int duration, int amplifier) {
         return true;
     }
-
 }

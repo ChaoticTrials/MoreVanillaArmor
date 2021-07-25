@@ -1,81 +1,8 @@
 buildscript {
-    repositories {
-        maven { url = 'https://files.minecraftforge.net/maven' }
-        jcenter()
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
-    }
+    apply from: 'https://raw.githubusercontent.com/noeppi-noeppi/ModUtils/v2/buildscript.gradle', to: buildscript
 }
 
-apply plugin: 'net.minecraftforge.gradle'
-
-version = "${mc_version}-${mod_version}"
-group = "de.melanx.morevanillaarmor"
-archivesBaseName = "morevanillaarmor"
-
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
-
-sourceSets.main.resources {
-    srcDir 'src/generated/resources'
-}
-
-minecraft {
-    mappings channel: 'snapshot', version: mappings_version
-
-    runs {
-        client {
-            workingDirectory project.file('run')
-
-            // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-
-            // Recommended logging level for the console
-            property 'forge.logging.console.level', 'debug'
-
-            mods {
-                morevanillatools {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        server {
-            workingDirectory project.file('run_server')
-
-            // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-
-            // Recommended logging level for the console
-            property 'forge.logging.console.level', 'debug'
-
-            mods {
-                morevanillatools {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        data {
-            workingDirectory project.file('run_data')
-
-            // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-
-            // Recommended logging level for the console
-            property 'forge.logging.console.level', 'debug'
-
-            args '--mod', 'morevanillaarmor', '--all', '--output', '"' + file('src/generated/resources/') + '"', '--existing', '"' + file('src/main/resources/') + '"'
-
-            mods {
-                morevanillatools {
-                    source sourceSets.main
-                }
-            }
-        }
-    }
-}
+apply from: 'https://raw.githubusercontent.com/noeppi-noeppi/ModUtils/v2/mod.gradle'
 
 repositories {
     maven {
@@ -90,23 +17,8 @@ repositories {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
-    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
+//    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
 
-    runtimeOnly fg.deobf("io.github.noeppi_noeppi.mods:LibX:1.16.3-1.0.1")
-    runtimeOnly fg.deobf("de.melanx.recipeprinter:recipeprinter-1.16.3:2.0.4")
-}
-
-jar {
-    manifest {
-        attributes([
-                "Specification-Title": "morevanillaarmor",
-                "Specification-Vendor": "MelanX",
-                "Specification-Version": "1", // We are version 1 of ourselves
-                "Implementation-Title": project.name,
-                "Implementation-Version": "${version}",
-                "Implementation-Vendor" :"MelanX",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
-    }
+//    runtimeOnly fg.deobf("io.github.noeppi_noeppi.mods:LibX:1.16.3-1.0.1")
+//    runtimeOnly fg.deobf("de.melanx.recipeprinter:recipeprinter-1.16.3:2.0.4")
 }

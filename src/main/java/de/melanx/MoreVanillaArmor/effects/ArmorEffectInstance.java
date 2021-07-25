@@ -1,13 +1,13 @@
 package de.melanx.MoreVanillaArmor.effects;
 
-import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
 
-public class ArmorEffectInstance extends EffectInstance {
+public class ArmorEffectInstance extends MobEffectInstance {
 
-    public ArmorEffectInstance(Effect effect, int amplifier) {
+    public ArmorEffectInstance(MobEffect effect, int amplifier) {
         super(effect, 10, amplifier, false, false);
-        this.setPotionDurationMax(true);
+        this.setNoCounter(true);
     }
 /*
     @Override

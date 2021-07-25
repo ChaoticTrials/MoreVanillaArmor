@@ -1,15 +1,16 @@
 package de.melanx.MoreVanillaArmor.data;
 
 import de.melanx.MoreVanillaArmor.items.Armor;
-import de.melanx.MoreVanillaArmor.util.Registry;
+import de.melanx.MoreVanillaArmor.util.ModRegistries;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.IFinishedRecipe;
-import net.minecraft.data.RecipeProvider;
-import net.minecraft.data.ShapedRecipeBuilder;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.Item;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.Item;
+import net.minecraftforge.fmllegacy.RegistryObject;
 
+import javax.annotation.Nonnull;
 import java.util.function.Consumer;
 
 public class Recipes extends RecipeProvider {
@@ -18,52 +19,52 @@ public class Recipes extends RecipeProvider {
     }
 
     @Override
-    protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
-        for (RegistryObject<Item> object : Registry.ITEMS.getEntries()) {
+    protected void buildCraftingRecipes(@Nonnull Consumer<FinishedRecipe> consumer) {
+        for (RegistryObject<Item> object : ModRegistries.ITEMS.getEntries()) {
             Armor item = (Armor) object.get();
-            EquipmentSlotType slotType = item.getSlotType();
-            if (slotType == EquipmentSlotType.HEAD)
-                this.registerHelmetRecipe(item).build(consumer);
-            else if (slotType == EquipmentSlotType.CHEST)
-                this.registerChestplateRecipe(item).build(consumer);
-            else if (slotType == EquipmentSlotType.LEGS)
-                this.registerLeggingsRecipe(item).build(consumer);
-            else if (slotType == EquipmentSlotType.FEET)
-                this.registerBootsRecipe(item).build(consumer);
+            EquipmentSlot slotType = item.getSlotType();
+            if (slotType == EquipmentSlot.HEAD)
+                this.registerHelmetRecipe(item).save(consumer);
+            else if (slotType == EquipmentSlot.CHEST)
+                this.registerChestplateRecipe(item).save(consumer);
+            else if (slotType == EquipmentSlot.LEGS)
+                this.registerLeggingsRecipe(item).save(consumer);
+            else if (slotType == EquipmentSlot.FEET)
+                this.registerBootsRecipe(item).save(consumer);
         }
     }
 
     private ShapedRecipeBuilder registerHelmetRecipe(Armor item) {
-        return ShapedRecipeBuilder.shapedRecipe(item)
-                .key('M', item.getType().getIngredient())
-                .patternLine("MMM")
-                .patternLine("M M")
-                .addCriterion("already_crafted", hasItem(item));
+        return ShapedRecipeBuilder.shaped(item)
+                .define('M', item.getType().getIngredient())
+                .pattern("MMM")
+                .pattern("M M")
+                .unlockedBy("already_crafted", has(item));
     }
 
     private ShapedRecipeBuilder registerChestplateRecipe(Armor item) {
-        return ShapedRecipeBuilder.shapedRecipe(item)
-                .key('M', item.getType().getIngredient())
-                .patternLine("M M")
-                .patternLine("MMM")
-                .patternLine("MMM")
-                .addCriterion("already_crafted", hasItem(item));
+        return ShapedRecipeBuilder.shaped(item)
+                .define('M', item.getType().getIngredient())
+                .pattern("M M")
+                .pattern("MMM")
+                .pattern("MMM")
+                .unlockedBy("already_crafted", has(item));
     }
 
     private ShapedRecipeBuilder registerLeggingsRecipe(Armor item) {
-        return ShapedRecipeBuilder.shapedRecipe(item)
-                .key('M', item.getType().getIngredient())
-                .patternLine("MMM")
-                .patternLine("M M")
-                .patternLine("M M")
-                .addCriterion("already_crafted", hasItem(item));
+        return ShapedRecipeBuilder.shaped(item)
+                .define('M', item.getType().getIngredient())
+                .pattern("MMM")
+                .pattern("M M")
+                .pattern("M M")
+                .unlockedBy("already_crafted", has(item));
     }
 
     private ShapedRecipeBuilder registerBootsRecipe(Armor item) {
-        return ShapedRecipeBuilder.shapedRecipe(item)
-                .key('M', item.getType().getIngredient())
-                .patternLine("M M")
-                .patternLine("M M")
-                .addCriterion("already_crafted", hasItem(item));
+        return ShapedRecipeBuilder.shaped(item)
+                .define('M', item.getType().getIngredient())
+                .pattern("M M")
+                .pattern("M M")
+                .unlockedBy("already_crafted", has(item));
     }
 }

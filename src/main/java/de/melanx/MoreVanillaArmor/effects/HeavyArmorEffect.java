@@ -1,13 +1,13 @@
 package de.melanx.MoreVanillaArmor.effects;
 
 import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
-import de.melanx.MoreVanillaArmor.util.Registry;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.potion.EffectType;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.BlockPos;
+import de.melanx.MoreVanillaArmor.util.ModRegistries;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -18,41 +18,39 @@ import javax.annotation.Nonnull;
 public class HeavyArmorEffect extends ArmorEffect {
 
     public HeavyArmorEffect() {
-        super(EffectType.HARMFUL);
+        super(MobEffectCategory.HARMFUL);
     }
 
     @SubscribeEvent
     public static void playerDamagedEvent(LivingDamageEvent event) {
-        if (event.getEntityLiving() instanceof PlayerEntity) {
-            PlayerEntity player = (PlayerEntity) event.getEntityLiving();
-
-            if (player.isPotionActive(Registry.HEAVY.get())) {
+        if (event.getEntityLiving() instanceof Player player) {
+            if (player.hasEffect(ModRegistries.HEAVY.get())) {
                 if (event.getSource() == DamageSource.FALL) {
                     // Increase damage by 50% per level (example Heavy II increases damage by 100%, Heavy III increases damage by 150%)
                     //noinspection ConstantConditions
-                    event.setAmount(event.getAmount() + event.getAmount() * ((player.getActivePotionEffect(Registry.HEAVY.get())).getAmplifier() + 1) * 0.5F);
+                    event.setAmount(event.getAmount() + event.getAmount() * ((player.getEffect(ModRegistries.HEAVY.get())).getAmplifier() + 1) * 0.5F);
                 }
             }
         }
     }
 
     @Override
-    public void performEffect(@Nonnull LivingEntity livingEntity, int amplifier) {
-        if (livingEntity instanceof PlayerEntity) {
-            PlayerEntity player = (PlayerEntity) livingEntity;
+    public void applyEffectTick(@Nonnull LivingEntity livingEntity, int amplifier) {
+        if (livingEntity instanceof Player) {
+            Player player = (Player) livingEntity;
             if (player.isInWater()) {
-                BlockPos pos = player.getPosition();
-                BlockState state = player.world.getBlockState(pos);
+                BlockPos pos = player.blockPosition();
+                BlockState state = player.level.getBlockState(pos);
                 // Prevent player from swimming up in water
                 if (!state.getFluidState().isEmpty()) {
-                    player.setMotion(player.getMotion().add(0.0D, player.isSwimming() ? -0.06D : -0.03D, 0.0D));
+                    player.setDeltaMovement(player.getDeltaMovement().add(0.0D, player.isSwimming() ? -0.06D : -0.03D, 0.0D));
                 }
             }
         }
     }
 
     @Override
-    public boolean isReady(int duration, int amplifier) {
+    public boolean isDurationEffectTick(int duration, int amplifier) {
         return true;
     }
 

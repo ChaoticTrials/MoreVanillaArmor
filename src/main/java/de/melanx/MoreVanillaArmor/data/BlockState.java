@@ -9,8 +9,8 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class BlockState extends BlockStateProvider {
 
-    public BlockState(DataGenerator gen, ExistingFileHelper exFileHelper) {
-        super(gen, MoreVanillaArmor.MODID, exFileHelper);
+    public BlockState(DataGenerator generator, ExistingFileHelper helper) {
+        super(generator, MoreVanillaArmor.MODID, helper);
     }
 
     @Override

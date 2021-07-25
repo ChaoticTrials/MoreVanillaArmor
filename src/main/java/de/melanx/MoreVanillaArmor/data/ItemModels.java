@@ -1,12 +1,12 @@
 package de.melanx.MoreVanillaArmor.data;
 
 import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
-import de.melanx.MoreVanillaArmor.util.Registry;
+import de.melanx.MoreVanillaArmor.util.ModRegistries;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.item.Item;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fmllegacy.RegistryObject;
 
 public class ItemModels extends ItemModelProvider {
     public ItemModels(DataGenerator generator, ExistingFileHelper helper) {
@@ -15,18 +15,15 @@ public class ItemModels extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        for (RegistryObject<Item> item : Registry.ITEMS.getEntries())
+        for (RegistryObject<Item> item : ModRegistries.ITEMS.getEntries()) {
             this.generateItem(item.get());
+        }
     }
 
     private void generateItem(Item item) {
+        //noinspection ConstantConditions
         String path = item.getRegistryName().getPath();
         this.getBuilder(path).parent(this.getExistingFile(this.mcLoc("item/handheld")))
                 .texture("layer0", "item/" + path);
-    }
-
-    @Override
-    public String getName() {
-        return MoreVanillaArmor.MODID + " item models";
     }
 }

@@ -1,10 +1,7 @@
 package de.melanx.MoreVanillaArmor;
 
-import com.electronwill.nightconfig.core.file.CommentedFileConfig;
-import com.electronwill.nightconfig.core.io.WritingMode;
 import net.minecraftforge.common.ForgeConfigSpec;
 
-import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +17,7 @@ public class Config {
 
     public static Map<DefaultMaterial, Material> materials;
 
-    private static void init(ForgeConfigSpec.Builder builder) {
+    private static void init(@SuppressWarnings("SameParameterValue") ForgeConfigSpec.Builder builder) {
         materials = new HashMap<>();
 
         for (DefaultMaterial material : DefaultMaterial.values()) {
@@ -32,35 +29,22 @@ public class Config {
                     builder.defineInRange(material.name + ".damageReduction.leggings", material.damageReduction[1], 0, Integer.MAX_VALUE),
                     builder.defineInRange(material.name + ".damageReduction.chest", material.damageReduction[2], 0, Integer.MAX_VALUE),
                     builder.defineInRange(material.name + ".damageReduction.head", material.damageReduction[3], 0, Integer.MAX_VALUE),
-                    builder.defineInRange(material.name + ".enchantability", material.enchantability, 0, Integer.MAX_VALUE),
+                    builder.defineInRange(material.name + ".enchantmentValue", material.enchantmentValue, 0, Integer.MAX_VALUE),
                     builder.defineInRange(material.name + ".thoughness", material.toughness, 0, Float.MAX_VALUE),
                     builder.defineInRange(material.name + ".knockbackResistance", material.knockbackResistance, 0, Float.MAX_VALUE)
             ));
         }
     }
 
-    public static class Material {
-        private final String name;
-        private final ForgeConfigSpec.IntValue durabilityFactor;
-        private final ForgeConfigSpec.IntValue bootsReduction;
-        private final ForgeConfigSpec.IntValue leggingsReduction;
-        private final ForgeConfigSpec.IntValue chestReduction;
-        private final ForgeConfigSpec.IntValue headReduction;
-        private final ForgeConfigSpec.IntValue enchantability;
-        private final ForgeConfigSpec.DoubleValue toughness;
-        private final ForgeConfigSpec.DoubleValue knockbackResistance;
-
-        private Material(String name, ForgeConfigSpec.IntValue durabilityFactor, ForgeConfigSpec.IntValue bootsReduction, ForgeConfigSpec.IntValue leggingsReduction, ForgeConfigSpec.IntValue chestReduction, ForgeConfigSpec.IntValue headReduction, ForgeConfigSpec.IntValue enchantability, ForgeConfigSpec.DoubleValue toughness, ForgeConfigSpec.DoubleValue knockbackResistance) {
-            this.name = name;
-            this.durabilityFactor = durabilityFactor;
-            this.enchantability = enchantability;
-            this.bootsReduction = bootsReduction;
-            this.chestReduction = chestReduction;
-            this.leggingsReduction = leggingsReduction;
-            this.headReduction = headReduction;
-            this.toughness = toughness;
-            this.knockbackResistance = knockbackResistance;
-        }
+    public record Material(String name,
+                           ForgeConfigSpec.IntValue durabilityFactor,
+                           ForgeConfigSpec.IntValue bootsReduction,
+                           ForgeConfigSpec.IntValue leggingsReduction,
+                           ForgeConfigSpec.IntValue chestReduction,
+                           ForgeConfigSpec.IntValue headReduction,
+                           ForgeConfigSpec.IntValue enchantmentValue,
+                           ForgeConfigSpec.DoubleValue toughness,
+                           ForgeConfigSpec.DoubleValue knockbackResistance) {
 
         public String getName() {
             return this.name;
@@ -74,8 +58,8 @@ public class Config {
             return new int[]{this.bootsReduction.get(), this.leggingsReduction.get(), this.chestReduction.get(), this.headReduction.get()};
         }
 
-        public int getEnchantability() {
-            return this.enchantability.get();
+        public int getEnchantmentValue() {
+            return this.enchantmentValue.get();
         }
 
         public float getToughness() {
@@ -108,15 +92,15 @@ public class Config {
         private final String name;
         private final int durabilityFactor;
         private final int[] damageReduction;
-        private final int enchantability;
+        private final int enchantmentValue;
         private final float toughness;
         private final float knockbackResistance;
 
-        DefaultMaterial(String name, int durabilityFactor, int bootsReduction, int leggingsReduction, int chestReduction, int headReduction, int enchantability, float toughness, float knockbackResistance) {
+        DefaultMaterial(String name, int durabilityFactor, int bootsReduction, int leggingsReduction, int chestReduction, int headReduction, int enchantmentValue, float toughness, float knockbackResistance) {
             this.name = name;
             this.durabilityFactor = durabilityFactor;
             this.damageReduction = new int[]{bootsReduction, leggingsReduction, chestReduction, headReduction};
-            this.enchantability = enchantability;
+            this.enchantmentValue = enchantmentValue;
             this.toughness = toughness;
             this.knockbackResistance = knockbackResistance;
         }
@@ -133,8 +117,8 @@ public class Config {
             return this.damageReduction;
         }
 
-        public int getEnchantability() {
-            return this.enchantability;
+        public int getEnchantmentValue() {
+            return this.enchantmentValue;
         }
 
         public float getToughness() {
