@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "morevanillaarmor:copper_helmet"
+    ]
+  },
+  "criteria": {
+    "already_crafted": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "morevanillaarmor:copper_helmet"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "morevanillaarmor:copper_helmet"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "already_crafted",
+      "has_the_recipe"
+    ]
+  ]
+}

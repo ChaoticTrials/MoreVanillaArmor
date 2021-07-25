@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "morevanillaarmor:fiery_leggings"
+            "items": [
+              "morevanillaarmor:fiery_leggings"
+            ]
           }
         ]
       }

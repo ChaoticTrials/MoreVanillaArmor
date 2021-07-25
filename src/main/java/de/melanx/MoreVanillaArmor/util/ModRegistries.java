@@ -1,10 +1,7 @@
 package de.melanx.MoreVanillaArmor.util;
 
 import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
-import de.melanx.MoreVanillaArmor.effects.DamageReductionArmorEffect;
-import de.melanx.MoreVanillaArmor.effects.FireImmunityArmorEffect;
-import de.melanx.MoreVanillaArmor.effects.HeavyArmorEffect;
-import de.melanx.MoreVanillaArmor.effects.PowerSourceArmorEffect;
+import de.melanx.MoreVanillaArmor.effects.*;
 import de.melanx.MoreVanillaArmor.items.Armor;
 import de.melanx.MoreVanillaArmor.items.ArmorTiers;
 import net.minecraft.world.effect.MobEffect;
@@ -26,6 +23,7 @@ public class ModRegistries {
     public static final RegistryObject<MobEffect> HEAVY = EFFECTS.register("heavy", () -> (new HeavyArmorEffect()).addAttributeModifier(Attributes.MOVEMENT_SPEED, "6dc9f142-dc17-11ea-87d0-0242ac130003", -0.05F, AttributeModifier.Operation.MULTIPLY_TOTAL));
     public static final RegistryObject<MobEffect> DAMAGE_REDUCTION = EFFECTS.register("damage_reduction", DamageReductionArmorEffect::new);
     public static final RegistryObject<MobEffect> FIRE_IMMUNITY = EFFECTS.register("fire_immunity", FireImmunityArmorEffect::new);
+    public static final RegistryObject<MobEffect> LIGHTNING_MAGNET = EFFECTS.register("lightning_magnet", LightningMagnetEffect::new);
     public static final RegistryObject<MobEffect> POWER_SOURCE = EFFECTS.register("power_source", PowerSourceArmorEffect::new);
 
     public static void registerArmor() {

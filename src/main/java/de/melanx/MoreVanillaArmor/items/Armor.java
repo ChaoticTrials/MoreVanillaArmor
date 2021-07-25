@@ -9,6 +9,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
@@ -64,7 +65,6 @@ public class Armor extends ArmorItem {
                 }
             }
 
-            //noinspection ConstantConditions
             if (this.armorType.getSetBonus() != null) {
                 TranslatableComponent component = new TranslatableComponent(SETBONUS_KEY);
                 component.append(this.armorType.getComponent());
@@ -123,11 +123,11 @@ public class Armor extends ArmorItem {
     }
 
     @Nullable
-    public static ArmorTiers getArmorSetType(Player player) {
-        Item helmet = player.getItemBySlot(EquipmentSlot.HEAD).getItem();
+    public static ArmorTiers getArmorSetType(LivingEntity entity) {
+        Item helmet = entity.getItemBySlot(EquipmentSlot.HEAD).getItem();
         if (helmet instanceof Armor) {
             ArmorTiers type = ((Armor) helmet).getType();
-            for (ItemStack armorPieceStack : player.getInventory().armor) {
+            for (ItemStack armorPieceStack : entity.getArmorSlots()) {
                 Item armorPiece = armorPieceStack.getItem();
                 if (armorPiece instanceof Armor) {
                     if (((Armor) armorPiece).getType() == type) {

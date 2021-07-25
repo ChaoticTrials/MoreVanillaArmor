@@ -21,6 +21,7 @@ public enum ArmorTiers implements ArmorMaterial {
 
     BONE(Config.materials.get(Config.DefaultMaterial.BONE), SoundEvents.SKELETON_AMBIENT, null, () -> Ingredient.of(Tags.Items.BONES)),
     COAL(Config.materials.get(Config.DefaultMaterial.COAL), SoundEvents.ARMOR_EQUIP_ELYTRA, null, () -> Ingredient.of(Items.COAL), () -> Ingredient.of(Tags.Items.STORAGE_BLOCKS_COAL)),
+    COPPER(Config.materials.get(Config.DefaultMaterial.COPPER), SoundEvents.ARMOR_EQUIP_IRON, ModRegistries.LIGHTNING_MAGNET, () -> Ingredient.of(Items.COPPER_INGOT)),
     EMERALD(Config.materials.get(Config.DefaultMaterial.EMERALD), SoundEvents.ARMOR_EQUIP_DIAMOND, null, () -> Ingredient.of(Tags.Items.GEMS_EMERALD)),
     ENDER(Config.materials.get(Config.DefaultMaterial.ENDER), SoundEvents.ENDER_EYE_LAUNCH, null, () -> Ingredient.of(Tags.Items.ENDER_PEARLS), () -> Ingredient.of(Tags.Items.END_STONES)),
     FIERY(Config.materials.get(Config.DefaultMaterial.FIERY), SoundEvents.BLAZE_SHOOT, ModRegistries.FIRE_IMMUNITY, () -> Ingredient.of(Items.MAGMA_BLOCK)),

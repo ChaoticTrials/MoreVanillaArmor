@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "morevanillaarmor:glowstone_boots"
+            "items": [
+              "morevanillaarmor:glowstone_boots"
+            ]
           }
         ]
       }

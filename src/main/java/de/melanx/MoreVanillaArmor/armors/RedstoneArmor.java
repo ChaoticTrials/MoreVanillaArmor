@@ -16,7 +16,6 @@ public class RedstoneArmor {
     @SubscribeEvent
     public static void playerTick(TickEvent.PlayerTickEvent event) {
         Player player = event.player;
-
         if (Armor.playerIsWearingArmorSetOfType(player, ArmorTiers.REDSTONE)) {
             player.addEffect(new ArmorEffectInstance(ModRegistries.POWER_SOURCE.get(), 0));
         }

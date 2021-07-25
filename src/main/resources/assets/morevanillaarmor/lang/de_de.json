@@ -1,6 +1,11 @@
 {
   "itemGroup.morevanillaarmor": "MoreVanillaArmor",
 
+  "effect.morevanillaarmor.damage_reduction": "Schadensreduktion",
+  "effect.morevanillaarmor.fire_immunity": "Feuerimmunität",
+  "effect.morevanillaarmor.heavy": "Schwere",
+  "effect.morevanillaarmor.power_source": "Energiequelle",
+
   "item.morevanillaarmor.bone_boots": "Knochenstiefel",
   "item.morevanillaarmor.bone_chestplate": "Knochenharnisch",
   "item.morevanillaarmor.bone_helmet": "Knochenhelm",
@@ -10,6 +15,11 @@
   "item.morevanillaarmor.coal_chestplate": "Kohleharnisch",
   "item.morevanillaarmor.coal_helmet": "Kohlehelm",
   "item.morevanillaarmor.coal_leggings": "Kohlebeinschutz",
+
+  "item.morevanillaarmor.copper_boots": "Kupferstiefel",
+  "item.morevanillaarmor.copper_chestplate": "Kupferharnisch",
+  "item.morevanillaarmor.copper_helmet": "Kupferhelm",
+  "item.morevanillaarmor.copper_leggings": "Kupferbeinschutz",
 
   "item.morevanillaarmor.emerald_boots": "Smaragdstiefel",
   "item.morevanillaarmor.emerald_chestplate": "Smaragdharnisch",
@@ -79,5 +89,11 @@
   "item.morevanillaarmor.wood_boots": "Holzstiefel",
   "item.morevanillaarmor.wood_chestplate": "Holzharnisch",
   "item.morevanillaarmor.wood_helmet": "Holzhelm",
-  "item.morevanillaarmor.wood_leggings": "Holzbeinschutz"
+  "item.morevanillaarmor.wood_leggings": "Holzbeinschutz",
+
+  "tooltip.morevanillaarmor.fiery": "Feuerimmunität",
+  "tooltip.morevanillaarmor.missing": "Fehlend: ",
+  "tooltip.morevanillaarmor.missing_pieces": "mehrere Teile",
+  "tooltip.morevanillaarmor.obsidian": "Schadensreduktion",
+  "tooltip.morevanillaarmor.setbonus": "Setbonus: "
 }

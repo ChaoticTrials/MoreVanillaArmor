@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "morevanillaarmor:slime_boots"
+            "items": [
+              "morevanillaarmor:slime_boots"
+            ]
           }
         ]
       }

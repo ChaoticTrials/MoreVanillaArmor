@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "morevanillaarmor:lapis_chestplate"
+            "items": [
+              "morevanillaarmor:lapis_chestplate"
+            ]
           }
         ]
       }

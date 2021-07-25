@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "morevanillaarmor:quartz_boots"
+            "items": [
+              "morevanillaarmor:quartz_boots"
+            ]
           }
         ]
       }

@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "morevanillaarmor:paper_boots"
+            "items": [
+              "morevanillaarmor:paper_boots"
+            ]
           }
         ]
       }

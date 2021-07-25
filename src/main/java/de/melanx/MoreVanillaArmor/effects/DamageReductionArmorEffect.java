@@ -19,12 +19,12 @@ public class DamageReductionArmorEffect extends ArmorEffect {
     @SubscribeEvent
     public static void  playerDamagedEvent(LivingDamageEvent event) {
         if (event.getEntityLiving() instanceof Player player) {
-            if (player.hasEffect(ModRegistries.DAMAGE_REDUCTION.get()) && event.getSource() != DamageSource.FALL) {
+            if (player.hasEffect(ModRegistries.LIGHTNING_MAGNET.get()) && event.getSource() != DamageSource.FALL) {
                 int damageReduction;
                 // Don't trump other mods/effects that might reduce the damage to less than .25
                 if (event.getAmount() > 0.25) {
                     //noinspection ConstantConditions
-                    damageReduction = 1 + player.getEffect(ModRegistries.DAMAGE_REDUCTION.get()).getAmplifier();
+                    damageReduction = 1 + player.getEffect(ModRegistries.LIGHTNING_MAGNET.get()).getAmplifier();
                     if (event.getAmount() - damageReduction > 0.25) {
                         event.setAmount(event.getAmount() - damageReduction);
                     } else {

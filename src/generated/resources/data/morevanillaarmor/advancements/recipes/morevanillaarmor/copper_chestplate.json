@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "morevanillaarmor:copper_chestplate"
+    ]
+  },
+  "criteria": {
+    "already_crafted": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "morevanillaarmor:copper_chestplate"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "morevanillaarmor:copper_chestplate"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "already_crafted",
+      "has_the_recipe"
+    ]
+  ]
+}

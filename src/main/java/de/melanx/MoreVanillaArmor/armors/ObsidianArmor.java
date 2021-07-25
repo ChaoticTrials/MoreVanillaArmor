@@ -48,7 +48,7 @@ public class ObsidianArmor {
         }
 
         if (Armor.playerIsWearingArmorSetOfType(player, ArmorTiers.OBSIDIAN)) {
-            player.addEffect(new ArmorEffectInstance(ModRegistries.DAMAGE_REDUCTION.get(), 0));
+            player.addEffect(new ArmorEffectInstance(ModRegistries.LIGHTNING_MAGNET.get(), 0));
         }
     }
 }

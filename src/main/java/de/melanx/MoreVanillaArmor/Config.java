@@ -74,6 +74,7 @@ public class Config {
     public enum DefaultMaterial {
         BONE("bone", 7, 1, 2, 3, 2, 20, 0.0f, 0.0f),
         COAL("coal", 6, 1, 1, 2, 1, 10, 0.0F, 0.0F),
+        COPPER("copper", 6, 1, 1, 2, 1, 15, 0.0F, 0.0F),
         EMERALD("emerald", 25, 2, 4, 6, 2, 25, 1.9F, 0.0F),
         ENDER("ender", 21, 1, 3, 5, 2, 15, 0.1F, 0.0F),
         FIERY("fiery", 13, 1, 3, 4, 1, 13, 0.0F, 0.0F),
