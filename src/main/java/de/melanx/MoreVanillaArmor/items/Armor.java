@@ -65,9 +65,9 @@ public class Armor extends ArmorItem {
                 }
             }
 
-            if (this.armorType.getSetBonus() != null) {
+            if (this.armorType.getBonusName() != null) {
                 TranslatableComponent component = new TranslatableComponent(SETBONUS_KEY);
-                component.append(this.armorType.getComponent());
+                component.append(this.armorType.getBonusName());
                 component.withStyle(setBonusColor);
                 tooltip.add(component);
                 if (missingPiecesText != null) {
@@ -96,9 +96,9 @@ public class Armor extends ArmorItem {
         return missingPieces;
     }
 
-    public static List<ArmorTiers> getArmorTypes(Player player) {
+    public static List<ArmorTiers> getArmorTypes(LivingEntity player) {
         List<ArmorTiers> types = new ArrayList<>();
-        for (ItemStack armorPieceStack : player.getInventory().armor) {
+        for (ItemStack armorPieceStack : player.getArmorSlots()) {
             if (armorPieceStack.getItem() instanceof Armor) {
                 ArmorTiers type = ((Armor) armorPieceStack.getItem()).getType();
                 if (!types.contains(type)) {
@@ -110,8 +110,8 @@ public class Armor extends ArmorItem {
         return types;
     }
 
-    public static boolean playerIsWearingArmorSetOfType(Player player, ArmorTiers type) {
-        for (ItemStack armorPieceStack : player.getInventory().armor) {
+    public static boolean entityIsWearingArmorSetOfType(LivingEntity entity, ArmorTiers type) {
+        for (ItemStack armorPieceStack : entity.getArmorSlots()) {
             if (armorPieceStack.isEmpty()
                     || !(armorPieceStack.getItem() instanceof Armor)
                     || ((Armor) armorPieceStack.getItem()).getType() != type) {
@@ -142,5 +142,32 @@ public class Armor extends ArmorItem {
         }
 
         return null;
+    }
+
+    public static int calcAmplifier(LivingEntity entity, ArmorTiers type) {
+        int amplifier = 0;
+
+        Item helmet = entity.getItemBySlot(EquipmentSlot.HEAD).getItem();
+        Item leggings = entity.getItemBySlot(EquipmentSlot.LEGS).getItem();
+        Item boots = entity.getItemBySlot(EquipmentSlot.FEET).getItem();
+        Item chestplate = entity.getItemBySlot(EquipmentSlot.CHEST).getItem();
+
+        if (helmet instanceof Armor && ((Armor) helmet).getType() == type) {
+            amplifier += 1;
+        }
+
+        if (boots instanceof Armor && ((Armor) boots).getType() == type) {
+            amplifier += 1;
+        }
+
+        if (leggings instanceof Armor && ((Armor) leggings).getType() == type) {
+            amplifier += 2;
+        }
+
+        if (chestplate instanceof Armor && ((Armor) chestplate).getType() == type) {
+            amplifier += 3;
+        }
+
+        return amplifier;
     }
 }
