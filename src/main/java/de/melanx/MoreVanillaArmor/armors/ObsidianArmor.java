@@ -1,13 +1,13 @@
 package de.melanx.MoreVanillaArmor.armors;
 
 import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
-import de.melanx.MoreVanillaArmor.effects.ArmorEffectInstance;
 import de.melanx.MoreVanillaArmor.items.Armor;
 import de.melanx.MoreVanillaArmor.items.ArmorTiers;
 import de.melanx.MoreVanillaArmor.util.Registry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
+import net.minecraft.potion.EffectInstance;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -44,11 +44,11 @@ public class ObsidianArmor {
         }
 
         if (amplifier >= 0) {
-            player.addPotionEffect(new ArmorEffectInstance(Registry.HEAVY.get(), amplifier));
+            player.addPotionEffect(new EffectInstance(Registry.HEAVY.get(), 10, amplifier, false, false));
         }
 
         if (Armor.playerIsWearingArmorSetOfType(player, ArmorTiers.OBSIDIAN)) {
-            player.addPotionEffect(new ArmorEffectInstance(Registry.DAMAGE_REDUCTION.get(), 0));
+            player.addPotionEffect(new EffectInstance(Registry.DAMAGE_REDUCTION.get(), 10, 0, false, false));
         }
     }
 }

@@ -1,11 +1,11 @@
 package de.melanx.MoreVanillaArmor.armors;
 
 import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
-import de.melanx.MoreVanillaArmor.effects.ArmorEffectInstance;
 import de.melanx.MoreVanillaArmor.items.Armor;
 import de.melanx.MoreVanillaArmor.items.ArmorTiers;
 import de.melanx.MoreVanillaArmor.util.Registry;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.potion.EffectInstance;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -19,7 +19,7 @@ public class RedstoneArmor {
         PlayerEntity player = event.player;
 
         if (Armor.playerIsWearingArmorSetOfType(player, ArmorTiers.REDSTONE)) {
-            player.addPotionEffect(new ArmorEffectInstance(Registry.POWER_SOURCE.get(), 0));
+            player.addPotionEffect(new EffectInstance(Registry.POWER_SOURCE.get(), 10, 0, false, false));
         }
     }
 }
