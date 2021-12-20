@@ -20,7 +20,6 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Events {
 
@@ -34,7 +33,7 @@ public class Events {
             List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class, AABB.ofSize(vec, 20, 20, 20))
                     .stream()
                     .filter(livingEntity -> Armor.getArmorSetType(livingEntity) != null)
-                    .collect(Collectors.toList());
+                    .toList();
 
             if (!entities.isEmpty()) {
                 LivingEntity entity1 = entities.get(level.random.nextInt(entities.size()));

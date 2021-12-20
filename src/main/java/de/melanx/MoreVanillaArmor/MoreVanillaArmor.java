@@ -1,7 +1,7 @@
 package de.melanx.MoreVanillaArmor;
 
+import de.melanx.MoreVanillaArmor.blockentities.ModBlockEntityTypes;
 import de.melanx.MoreVanillaArmor.blocks.ModBlocks;
-import de.melanx.MoreVanillaArmor.tile_entities.ModBlockEntityTypes;
 import de.melanx.MoreVanillaArmor.util.CreativeTab;
 import de.melanx.MoreVanillaArmor.util.ModRegistries;
 import net.minecraft.world.item.CreativeModeTab;

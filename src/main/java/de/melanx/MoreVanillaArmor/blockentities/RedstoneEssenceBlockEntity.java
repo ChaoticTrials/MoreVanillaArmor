@@ -1,4 +1,4 @@
-package de.melanx.MoreVanillaArmor.tile_entities;
+package de.melanx.MoreVanillaArmor.blockentities;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;

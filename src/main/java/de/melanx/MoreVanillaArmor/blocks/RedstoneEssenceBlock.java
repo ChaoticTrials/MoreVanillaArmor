@@ -1,7 +1,7 @@
 package de.melanx.MoreVanillaArmor.blocks;
 
-import de.melanx.MoreVanillaArmor.tile_entities.ModBlockEntityTypes;
-import de.melanx.MoreVanillaArmor.tile_entities.RedstoneEssenceBlockEntity;
+import de.melanx.MoreVanillaArmor.blockentities.ModBlockEntityTypes;
+import de.melanx.MoreVanillaArmor.blockentities.RedstoneEssenceBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;

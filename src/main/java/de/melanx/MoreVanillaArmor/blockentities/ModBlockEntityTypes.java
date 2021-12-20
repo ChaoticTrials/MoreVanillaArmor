@@ -1,11 +1,11 @@
-package de.melanx.MoreVanillaArmor.tile_entities;
+package de.melanx.MoreVanillaArmor.blockentities;
 
 import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
 import de.melanx.MoreVanillaArmor.blocks.ModBlocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 public class ModBlockEntityTypes {
 
