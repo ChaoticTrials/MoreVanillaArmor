@@ -1,14 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "MMM",
-    "M M"
-  ],
   "key": {
     "M": {
       "tag": "forge:stone"
     }
   },
+  "pattern": [
+    "MMM",
+    "M M"
+  ],
   "result": {
     "item": "morevanillaarmor:stone_helmet"
   }

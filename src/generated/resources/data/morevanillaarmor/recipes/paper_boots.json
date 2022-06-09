@@ -1,14 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "M M",
-    "M M"
-  ],
   "key": {
     "M": {
       "item": "minecraft:paper"
     }
   },
+  "pattern": [
+    "M M",
+    "M M"
+  ],
   "result": {
     "item": "morevanillaarmor:paper_boots"
   }

@@ -1,14 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "MMM",
-    "M M"
-  ],
   "key": {
     "M": {
       "item": "minecraft:copper_ingot"
     }
   },
+  "pattern": [
+    "MMM",
+    "M M"
+  ],
   "result": {
     "item": "morevanillaarmor:copper_helmet"
   }

@@ -1,15 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "M M",
-    "MMM",
-    "MMM"
-  ],
   "key": {
     "M": {
       "item": "minecraft:magma_block"
     }
   },
+  "pattern": [
+    "M M",
+    "MMM",
+    "MMM"
+  ],
   "result": {
     "item": "morevanillaarmor:fiery_chestplate"
   }

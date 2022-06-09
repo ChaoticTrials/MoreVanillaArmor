@@ -1,14 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "M M",
-    "M M"
-  ],
   "key": {
     "M": {
       "tag": "forge:storage_blocks/redstone"
     }
   },
+  "pattern": [
+    "M M",
+    "M M"
+  ],
   "result": {
     "item": "morevanillaarmor:redstone_boots"
   }
