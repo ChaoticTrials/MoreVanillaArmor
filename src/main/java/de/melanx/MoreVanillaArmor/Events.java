@@ -5,6 +5,7 @@ import de.melanx.MoreVanillaArmor.items.Armor;
 import de.melanx.MoreVanillaArmor.items.ArmorTiers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
@@ -90,12 +91,18 @@ public class Events {
     }
 
     private static void livingTickActions(LivingEntity entity) {
-        if (entity.isInWater() && Armor.getArmorTypes(entity).contains(ArmorTiers.OBSIDIAN)) {
-            BlockPos pos = entity.blockPosition();
-            BlockState state = entity.level.getBlockState(pos);
-            // Prevent player from swimming up in water
-            if (!state.getFluidState().isEmpty()) {
-                entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, entity.isSwimming() ? -0.06D : -0.03D, 0.0D));
+        if (Armor.getArmorTypes(entity).contains(ArmorTiers.OBSIDIAN)) {
+            if (entity.isInWater()) {
+                BlockPos pos = entity.blockPosition();
+                BlockState state = entity.level.getBlockState(pos);
+                // Prevent player from swimming up in water
+                if (!state.getFluidState().isEmpty()) {
+                    entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, entity.isSwimming() ? -0.06D : -0.03D, 0.0D));
+                }
+            }
+
+            if (entity.hasEffect(MobEffects.LEVITATION)) {
+                entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, -0.02D, 0.0D));
             }
         }
 
