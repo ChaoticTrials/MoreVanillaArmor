@@ -16,11 +16,11 @@ public class DataCreator {
         ExistingFileHelper helper = event.getExistingFileHelper();
 
         if (event.includeServer()) {
-            generator.addProvider(new Recipes(generator));
+            generator.addProvider(true, new Recipes(generator));
         }
         if (event.includeClient()) {
-            generator.addProvider(new BlockState(generator, helper));
-            generator.addProvider(new ItemModels(generator, helper));
+            generator.addProvider(true, new BlockState(generator, helper));
+            generator.addProvider(true, new ItemModels(generator, helper));
         }
     }
 

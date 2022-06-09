@@ -5,6 +5,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nonnull;
@@ -22,7 +23,7 @@ public class CreativeTab extends CreativeModeTab {
         Collection<RegistryObject<Item>> entries = ModRegistries.ITEMS.getEntries();
         for (RegistryObject<Item> entry : entries) {
             //noinspection ConstantConditions
-            if (entry.get().getRegistryName().getPath().contains("emerald_chestplate")) {
+            if (ForgeRegistries.ITEMS.getKey(entry.get()).getPath().contains("emerald_chestplate")) {
                 return new ItemStack(entry.get());
             }
         }

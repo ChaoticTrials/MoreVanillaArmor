@@ -6,7 +6,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -28,7 +28,7 @@ import java.util.List;
 public class Armor extends ArmorItem {
     private static final String SETBONUS_KEY = ModRegistries.getTooltip("setbonus");
     private static final String MISSING_KEY = ModRegistries.getTooltip("missing");
-    private static final TranslatableComponent MISSING_PIECES_COMPONENT = new TranslatableComponent(ModRegistries.getTooltip("missing_pieces"));
+    private static final Component MISSING_PIECES_COMPONENT = Component.translatable(ModRegistries.getTooltip("missing_pieces"));
     private final ArmorTiers armorType;
     private final EquipmentSlot slotType;
 
@@ -66,12 +66,12 @@ public class Armor extends ArmorItem {
             }
 
             if (this.armorType.getBonusName() != null) {
-                TranslatableComponent component = new TranslatableComponent(SETBONUS_KEY);
+                MutableComponent component = Component.translatable(SETBONUS_KEY);
                 component.append(this.armorType.getBonusName());
                 component.withStyle(setBonusColor);
                 tooltip.add(component);
                 if (missingPiecesText != null) {
-                    TranslatableComponent missingComponent = new TranslatableComponent(MISSING_KEY);
+                    MutableComponent missingComponent = Component.translatable(MISSING_KEY);
                     missingComponent.append(missingPiecesText);
                     missingComponent.withStyle(setBonusColor);
                     tooltip.add(missingComponent);
