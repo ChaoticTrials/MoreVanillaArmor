@@ -6,9 +6,6 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.Item;
-import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nonnull;
 import java.util.function.Consumer;
@@ -20,17 +17,13 @@ public class Recipes extends RecipeProvider {
 
     @Override
     protected void buildCraftingRecipes(@Nonnull Consumer<FinishedRecipe> consumer) {
-        for (RegistryObject<Item> object : ModRegistries.ITEMS.getEntries()) {
-            Armor item = (Armor) object.get();
-            EquipmentSlot slotType = item.getSlotType();
-            if (slotType == EquipmentSlot.HEAD)
-                this.registerHelmetRecipe(item).save(consumer);
-            else if (slotType == EquipmentSlot.CHEST)
-                this.registerChestplateRecipe(item).save(consumer);
-            else if (slotType == EquipmentSlot.LEGS)
-                this.registerLeggingsRecipe(item).save(consumer);
-            else if (slotType == EquipmentSlot.FEET)
-                this.registerBootsRecipe(item).save(consumer);
+        for (Armor item : ModRegistries.armor.values()) {
+            switch (item.getSlotType()) {
+                case HEAD -> this.registerHelmetRecipe(item).save(consumer);
+                case CHEST -> this.registerChestplateRecipe(item).save(consumer);
+                case LEGS -> this.registerLeggingsRecipe(item).save(consumer);
+                case FEET -> this.registerBootsRecipe(item).save(consumer);
+            }
         }
     }
 

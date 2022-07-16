@@ -1,5 +1,6 @@
 package de.melanx.MoreVanillaArmor.blockentities;
 
+import de.melanx.MoreVanillaArmor.util.ModRegistries;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -11,7 +12,7 @@ public class RedstoneEssenceBlockEntity extends BlockEntity {
     private int tick = 0;
 
     public RedstoneEssenceBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntityTypes.REDSTONE_ESSENCE.get(), pos, state);
+        super(ModRegistries.redstoneEssenceBlockEntityType, pos, state);
     }
 
     public static <T extends BlockEntity> void serverTick(Level level, BlockPos pos, BlockState state, T blockEntity) {

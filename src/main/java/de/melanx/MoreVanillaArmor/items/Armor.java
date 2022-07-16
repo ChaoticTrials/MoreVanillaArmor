@@ -24,6 +24,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class Armor extends ArmorItem {
     private static final String SETBONUS_KEY = ModRegistries.getTooltip("setbonus");
@@ -32,10 +33,10 @@ public class Armor extends ArmorItem {
     private final ArmorTiers armorType;
     private final EquipmentSlot slotType;
 
-    public Armor(ArmorTiers type, EquipmentSlot slot) {
-        super(type, slot, new Item.Properties().tab(MoreVanillaArmor.creativeTab));
+    public Armor(ArmorTiers type, ModRegistries.ArmorSlot slot) {
+        super(type, slot.slot(), new Item.Properties().tab(MoreVanillaArmor.creativeTab));
         this.armorType = type;
-        this.slotType = slot;
+        this.slotType = slot.slot();
     }
 
     public ArmorTiers getType() {
@@ -89,7 +90,7 @@ public class Armor extends ArmorItem {
         for (int i = 0; i < slotTypes.length; i++) {
             Item armorPiece = player.getItemBySlot(slotTypes[i]).getItem();
             if (!(armorPiece instanceof Armor) || ((Armor) armorPiece).getType() != type) {
-                missingPieces.add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(MoreVanillaArmor.MODID, type.getName() + "_" + names[i])));
+                missingPieces.add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(MoreVanillaArmor.MODID, type.getName().toLowerCase(Locale.ROOT) + "_" + names[i])));
             }
         }
 

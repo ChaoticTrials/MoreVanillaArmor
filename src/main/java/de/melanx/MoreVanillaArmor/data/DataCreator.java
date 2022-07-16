@@ -3,9 +3,9 @@ package de.melanx.MoreVanillaArmor.data;
 import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 @Mod.EventBusSubscriber(modid = MoreVanillaArmor.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DataCreator {
@@ -23,5 +23,4 @@ public class DataCreator {
             generator.addProvider(true, new ItemModels(generator, helper));
         }
     }
-
 }

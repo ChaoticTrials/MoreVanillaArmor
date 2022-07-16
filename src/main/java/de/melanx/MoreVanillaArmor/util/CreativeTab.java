@@ -1,15 +1,14 @@
 package de.melanx.MoreVanillaArmor.util;
 
 import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
+import de.melanx.MoreVanillaArmor.items.Armor;
+import de.melanx.MoreVanillaArmor.items.ArmorTiers;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nonnull;
-import java.util.Collection;
+import java.util.Objects;
 
 public class CreativeTab extends CreativeModeTab {
 
@@ -20,13 +19,7 @@ public class CreativeTab extends CreativeModeTab {
     @Nonnull
     @Override
     public ItemStack makeIcon() {
-        Collection<RegistryObject<Item>> entries = ModRegistries.ITEMS.getEntries();
-        for (RegistryObject<Item> entry : entries) {
-            //noinspection ConstantConditions
-            if (ForgeRegistries.ITEMS.getKey(entry.get()).getPath().contains("emerald_chestplate")) {
-                return new ItemStack(entry.get());
-            }
-        }
-        return new ItemStack(Items.DIAMOND_CHESTPLATE);
+        Armor armor = ModRegistries.armor.get(new ModRegistries.ArmorPiece(ArmorTiers.EMERALD, ModRegistries.ArmorSlot.CHESTPLATE));
+        return new ItemStack(Objects.requireNonNullElse(armor, Items.DIAMOND_CHESTPLATE));
     }
 }

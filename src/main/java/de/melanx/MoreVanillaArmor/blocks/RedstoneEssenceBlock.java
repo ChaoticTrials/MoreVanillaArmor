@@ -1,7 +1,7 @@
 package de.melanx.MoreVanillaArmor.blocks;
 
-import de.melanx.MoreVanillaArmor.blockentities.ModBlockEntityTypes;
 import de.melanx.MoreVanillaArmor.blockentities.RedstoneEssenceBlockEntity;
+import de.melanx.MoreVanillaArmor.util.ModRegistries;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
@@ -43,7 +43,7 @@ public class RedstoneEssenceBlock extends PoweredBlock implements EntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(@Nonnull Level level, @Nonnull BlockState state, @Nonnull BlockEntityType<T> type) {
-        return level.isClientSide ? null : type == ModBlockEntityTypes.REDSTONE_ESSENCE.get() ? RedstoneEssenceBlockEntity::serverTick : null;
+        return level.isClientSide ? null : type == ModRegistries.redstoneEssenceBlockEntityType ? RedstoneEssenceBlockEntity::serverTick : null;
     }
 
     @SuppressWarnings("deprecation")

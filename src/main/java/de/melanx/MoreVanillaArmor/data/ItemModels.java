@@ -7,7 +7,6 @@ import net.minecraft.world.item.Item;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 
 public class ItemModels extends ItemModelProvider {
     public ItemModels(DataGenerator generator, ExistingFileHelper helper) {
@@ -16,9 +15,7 @@ public class ItemModels extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        for (RegistryObject<Item> item : ModRegistries.ITEMS.getEntries()) {
-            this.generateItem(item.get());
-        }
+        ModRegistries.armor.values().forEach(this::generateItem);
     }
 
     private void generateItem(Item item) {

@@ -13,7 +13,7 @@ public class PlayerDamagedEvent {
 
     @SubscribeEvent
     public static void  playerDamagedEvent(LivingDamageEvent event) {
-        if (event.getEntityLiving() instanceof Player player) {
+        if (event.getEntity() instanceof Player player) {
             if (event.getSource().isFire()) {
                 if (Armor.getArmorSetType(player) != null && Armor.getArmorSetType(player) == ArmorTiers.FIERY) {
                     event.setAmount(0.0F);

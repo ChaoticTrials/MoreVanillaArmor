@@ -1,8 +1,8 @@
 package de.melanx.MoreVanillaArmor;
 
-import de.melanx.MoreVanillaArmor.blocks.ModBlocks;
 import de.melanx.MoreVanillaArmor.items.Armor;
 import de.melanx.MoreVanillaArmor.items.ArmorTiers;
+import de.melanx.MoreVanillaArmor.util.ModRegistries;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffects;
@@ -15,7 +15,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -25,12 +25,12 @@ import java.util.List;
 public class Events {
 
     @SubscribeEvent
-    public void lightningStrike(EntityJoinWorldEvent event) {
+    public void lightningStrike(EntityJoinLevelEvent event) {
         Entity entity = event.getEntity();
         if (entity instanceof LightningBolt lightning) {
             Vec3 vec = new Vec3(lightning.getX(), lightning.getY(), lightning.getZ());
 
-            Level level = event.getWorld();
+            Level level = event.getLevel();
             List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class, AABB.ofSize(vec, 20, 20, 20))
                     .stream()
                     .filter(livingEntity -> Armor.getArmorSetType(livingEntity) != null)
@@ -45,7 +45,7 @@ public class Events {
 
     @SubscribeEvent
     public void playerDamagedEvent(LivingDamageEvent event) {
-        LivingEntity entity = event.getEntityLiving();
+        LivingEntity entity = event.getEntity();
         ArmorTiers type = Armor.getArmorSetType(entity);
 
         if (type == ArmorTiers.FIERY) {
@@ -77,8 +77,8 @@ public class Events {
     }
 
     @SubscribeEvent
-    public void playerTick(LivingEvent.LivingUpdateEvent event) {
-        LivingEntity entity = event.getEntityLiving();
+    public void playerTick(LivingEvent.LivingTickEvent event) {
+        LivingEntity entity = event.getEntity();
 
         Events.livingTickActions(entity);
     }
@@ -108,8 +108,8 @@ public class Events {
 
         if (entity.isOnGround() && Armor.getArmorSetType(entity) == ArmorTiers.REDSTONE) {
             BlockState state = entity.level.getBlockState(entity.blockPosition());
-            if (state.is(Blocks.AIR) || state.is(ModBlocks.REDSTONE_ESSENCE.get())) {
-                BlockState invisiTorch = ModBlocks.REDSTONE_ESSENCE.get().defaultBlockState();
+            if (state.is(Blocks.AIR) || state.is(ModRegistries.redstoneEssence)) {
+                BlockState invisiTorch = ModRegistries.redstoneEssence.defaultBlockState();
                 entity.level.setBlockAndUpdate(entity.blockPosition(), invisiTorch);
             }
         }
