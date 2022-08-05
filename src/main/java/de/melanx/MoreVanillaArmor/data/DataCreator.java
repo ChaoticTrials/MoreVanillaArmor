@@ -17,6 +17,7 @@ public class DataCreator {
 
         if (event.includeServer()) {
             generator.addProvider(true, new Recipes(generator));
+            generator.addProvider(true, new ModTags(generator, helper));
         }
         if (event.includeClient()) {
             generator.addProvider(true, new BlockState(generator, helper));

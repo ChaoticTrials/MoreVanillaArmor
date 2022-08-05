@@ -15,7 +15,7 @@ A mod which adds more armor in the vanilla way.
 [[dependencies.morevanillaarmor]]
     modId = "forge"
     mandatory = true
-    versionRange = "[42,)"
+    versionRange = "[42.0.8,)"
     ordering = "NONE"
     side = "BOTH"
 
