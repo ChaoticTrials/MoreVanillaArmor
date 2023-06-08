@@ -34,7 +34,7 @@ public class ModRegistries {
 
     public static void createTab(CreativeModeTabEvent.Register event) {
         event.registerCreativeModeTab(new ResourceLocation(MoreVanillaArmor.MODID, "tab"), builder -> {
-            builder.title(Component.literal("Vanilla AIOTs"));
+            builder.title(Component.literal("MoreVanillaArmor"));
             builder.icon(() -> new ItemStack(Objects.requireNonNullElse(armor.get(new ArmorPiece(ArmorTiers.EMERALD, ArmorSlot.CHESTPLATE)), Items.DIAMOND_CHESTPLATE)))
                     .displayItems((enabledFlags, output) -> {
                         for (Item item : ForgeRegistries.ITEMS.getValues()) {
