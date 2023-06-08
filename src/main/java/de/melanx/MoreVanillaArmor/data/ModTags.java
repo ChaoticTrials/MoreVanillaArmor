@@ -21,6 +21,7 @@ import java.util.concurrent.CompletableFuture;
 public class ModTags extends IntrinsicHolderTagsProvider<Item> {
 
     public ModTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper helper) {
+        //noinspection deprecation
         super(output, Registries.ITEM, lookupProvider, item -> ResourceKey.create(BuiltInRegistries.ITEM.key(), BuiltInRegistries.ITEM.getKey(item)), MoreVanillaArmor.MODID, helper);
     }
 

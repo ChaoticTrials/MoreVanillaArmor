@@ -5,18 +5,13 @@ import de.melanx.MoreVanillaArmor.blockentities.RedstoneEssenceBlockEntity;
 import de.melanx.MoreVanillaArmor.blocks.RedstoneEssenceBlock;
 import de.melanx.MoreVanillaArmor.items.Armor;
 import de.melanx.MoreVanillaArmor.items.ArmorTiers;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
-import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegisterEvent;
 
@@ -29,13 +24,13 @@ import java.util.Objects;
 public class ModRegistries {
 
     public static final Map<ArmorPiece, Armor> armor = new HashMap<>();
-    public static Block redstoneEssence = new RedstoneEssenceBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().instabreak());
+    public static Block redstoneEssence = new RedstoneEssenceBlock(BlockBehaviour.Properties.of().noCollission().instabreak());
     public static BlockEntityType<RedstoneEssenceBlockEntity> redstoneEssenceBlockEntityType = BlockEntityType.Builder.of(RedstoneEssenceBlockEntity::new, redstoneEssence).build(null);
 
-    public static void createTab(CreativeModeTabEvent.Register event) {
-        event.registerCreativeModeTab(new ResourceLocation(MoreVanillaArmor.MODID, "tab"), builder -> {
-            builder.title(Component.literal("Vanilla AIOTs"));
-            builder.icon(() -> new ItemStack(Objects.requireNonNullElse(armor.get(new ArmorPiece(ArmorTiers.EMERALD, ArmorSlot.CHESTPLATE)), Items.DIAMOND_CHESTPLATE)))
+    public static void register(RegisterEvent event) {
+        event.register(Registries.CREATIVE_MODE_TAB, helper -> {
+            helper.register("morevanillaarmor", CreativeModeTab.builder()
+                    .icon(() -> new ItemStack(Objects.requireNonNullElse(armor.get(new ArmorPiece(ArmorTiers.EMERALD, ArmorSlot.CHESTPLATE)), Items.DIAMOND_CHESTPLATE)))
                     .displayItems((enabledFlags, output) -> {
                         for (Item item : ForgeRegistries.ITEMS.getValues()) {
                             //noinspection DataFlowIssue
@@ -43,11 +38,11 @@ public class ModRegistries {
                                 output.accept(new ItemStack(item));
                             }
                         }
-                    });
+                    })
+                    .title(Component.literal("MoreVanillaArmor"))
+                    .build());
         });
-    }
 
-    public static void register(RegisterEvent event) {
         event.register(ForgeRegistries.Keys.ITEMS, helper -> {
             for (ArmorTiers armorType : ArmorTiers.values()) {
                 for (ArmorItem.Type type : ArmorItem.Type.values()) {
@@ -92,10 +87,6 @@ public class ModRegistries {
             }
 
             throw new IllegalArgumentException("That shouldn't happen. Why?");
-        }
-
-        public EquipmentSlot slot() {
-            return this.slot;
         }
     }
 

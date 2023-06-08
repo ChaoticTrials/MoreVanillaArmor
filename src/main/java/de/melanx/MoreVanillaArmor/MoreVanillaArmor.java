@@ -16,6 +16,5 @@ public class MoreVanillaArmor {
 
         MinecraftForge.EVENT_BUS.register(new Events());
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModRegistries::register);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModRegistries::createTab);
     }
 }

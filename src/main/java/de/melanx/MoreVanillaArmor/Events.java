@@ -91,10 +91,12 @@ public class Events {
     }
 
     private static void livingTickActions(LivingEntity entity) {
+        //noinspection resource
+        Level level = entity.level();
         if (Armor.getArmorTypes(entity).contains(ArmorTiers.OBSIDIAN)) {
             if (entity.isInWater()) {
                 BlockPos pos = entity.blockPosition();
-                BlockState state = entity.level.getBlockState(pos);
+                BlockState state = level.getBlockState(pos);
                 // Prevent player from swimming up in water
                 if (!state.getFluidState().isEmpty()) {
                     entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, entity.isSwimming() ? -0.06D : -0.03D, 0.0D));
@@ -106,11 +108,11 @@ public class Events {
             }
         }
 
-        if (entity.isOnGround() && Armor.getArmorSetType(entity) == ArmorTiers.REDSTONE) {
-            BlockState state = entity.level.getBlockState(entity.blockPosition());
+        if (entity.onGround() && Armor.getArmorSetType(entity) == ArmorTiers.REDSTONE) {
+            BlockState state = level.getBlockState(entity.blockPosition());
             if (state.is(Blocks.AIR) || state.is(ModRegistries.redstoneEssence)) {
                 BlockState invisiTorch = ModRegistries.redstoneEssence.defaultBlockState();
-                entity.level.setBlockAndUpdate(entity.blockPosition(), invisiTorch);
+                level.setBlockAndUpdate(entity.blockPosition(), invisiTorch);
             }
         }
     }
