@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "M": {
       "item": "minecraft:slime_block"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "morevanillaarmor:slime_chestplate"
-  }
+  },
+  "show_notification": true
 }

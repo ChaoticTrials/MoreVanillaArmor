@@ -33,13 +33,14 @@ public class Armor extends ArmorItem {
     private final ArmorTiers armorType;
     private final EquipmentSlot slotType;
 
-    public Armor(ArmorTiers type, ModRegistries.ArmorSlot slot) {
-        super(type, slot.slot(), new Item.Properties().tab(MoreVanillaArmor.creativeTab));
-        this.armorType = type;
-        this.slotType = slot.slot();
+    public Armor(ArmorTiers armorType, ArmorItem.Type type) {
+        super(armorType, type, new Item.Properties());
+        this.armorType = armorType;
+        this.slotType = type.getSlot();
     }
 
-    public ArmorTiers getType() {
+    @Nonnull
+    public ArmorTiers getArmorType() {
         return this.armorType;
     }
 
@@ -89,7 +90,7 @@ public class Armor extends ArmorItem {
 
         for (int i = 0; i < slotTypes.length; i++) {
             Item armorPiece = player.getItemBySlot(slotTypes[i]).getItem();
-            if (!(armorPiece instanceof Armor) || ((Armor) armorPiece).getType() != type) {
+            if (!(armorPiece instanceof Armor) || ((Armor) armorPiece).getArmorType() != type) {
                 missingPieces.add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(MoreVanillaArmor.MODID, type.getName().toLowerCase(Locale.ROOT) + "_" + names[i])));
             }
         }
@@ -101,7 +102,7 @@ public class Armor extends ArmorItem {
         List<ArmorTiers> types = new ArrayList<>();
         for (ItemStack armorPieceStack : player.getArmorSlots()) {
             if (armorPieceStack.getItem() instanceof Armor) {
-                ArmorTiers type = ((Armor) armorPieceStack.getItem()).getType();
+                ArmorTiers type = ((Armor) armorPieceStack.getItem()).getArmorType();
                 if (!types.contains(type)) {
                     types.add(type);
                 }
@@ -115,7 +116,7 @@ public class Armor extends ArmorItem {
         for (ItemStack armorPieceStack : entity.getArmorSlots()) {
             if (armorPieceStack.isEmpty()
                     || !(armorPieceStack.getItem() instanceof Armor)
-                    || ((Armor) armorPieceStack.getItem()).getType() != type) {
+                    || ((Armor) armorPieceStack.getItem()).getArmorType() != type) {
                 return false;
             }
         }
@@ -127,11 +128,11 @@ public class Armor extends ArmorItem {
     public static ArmorTiers getArmorSetType(LivingEntity entity) {
         Item helmet = entity.getItemBySlot(EquipmentSlot.HEAD).getItem();
         if (helmet instanceof Armor) {
-            ArmorTiers type = ((Armor) helmet).getType();
+            ArmorTiers type = ((Armor) helmet).getArmorType();
             for (ItemStack armorPieceStack : entity.getArmorSlots()) {
                 Item armorPiece = armorPieceStack.getItem();
                 if (armorPiece instanceof Armor) {
-                    if (((Armor) armorPiece).getType() == type) {
+                    if (((Armor) armorPiece).getArmorType() == type) {
                         continue;
                     }
                 }
@@ -153,19 +154,19 @@ public class Armor extends ArmorItem {
         Item boots = entity.getItemBySlot(EquipmentSlot.FEET).getItem();
         Item chestplate = entity.getItemBySlot(EquipmentSlot.CHEST).getItem();
 
-        if (helmet instanceof Armor && ((Armor) helmet).getType() == type) {
+        if (helmet instanceof Armor && ((Armor) helmet).getArmorType() == type) {
             amplifier += 1;
         }
 
-        if (boots instanceof Armor && ((Armor) boots).getType() == type) {
+        if (boots instanceof Armor && ((Armor) boots).getArmorType() == type) {
             amplifier += 1;
         }
 
-        if (leggings instanceof Armor && ((Armor) leggings).getType() == type) {
+        if (leggings instanceof Armor && ((Armor) leggings).getArmorType() == type) {
             amplifier += 2;
         }
 
-        if (chestplate instanceof Armor && ((Armor) chestplate).getType() == type) {
+        if (chestplate instanceof Armor && ((Armor) chestplate).getArmorType() == type) {
             amplifier += 3;
         }
 

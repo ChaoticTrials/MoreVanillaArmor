@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "M": {
       "tag": "forge:gems/emerald"
@@ -11,5 +12,6 @@
   ],
   "result": {
     "item": "morevanillaarmor:emerald_boots"
-  }
+  },
+  "show_notification": true
 }

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "M": {
       "tag": "forge:end_stones"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "morevanillaarmor:ender_chestplate"
-  }
+  },
+  "show_notification": true
 }

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "M": {
       "item": "minecraft:magma_block"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "morevanillaarmor:fiery_leggings"
-  }
+  },
+  "show_notification": true
 }

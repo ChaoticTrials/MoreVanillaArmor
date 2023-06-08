@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "M": {
       "item": "minecraft:paper"
@@ -11,5 +12,6 @@
   ],
   "result": {
     "item": "morevanillaarmor:paper_boots"
-  }
+  },
+  "show_notification": true
 }

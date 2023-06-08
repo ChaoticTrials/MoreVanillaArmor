@@ -2,9 +2,11 @@ package de.melanx.MoreVanillaArmor.data;
 
 import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
 import de.melanx.MoreVanillaArmor.items.Armor;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.tags.BlockTagsProvider;
-import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.tags.IntrinsicHolderTagsProvider;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.Tags;
@@ -12,28 +14,32 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.Nonnull;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
-public class ModTags extends ItemTagsProvider {
+public class ModTags extends IntrinsicHolderTagsProvider<Item> {
 
-    public ModTags(DataGenerator generator, @Nullable ExistingFileHelper helper) {
-        super(generator, new BlockTagsProvider(generator, MoreVanillaArmor.MODID, helper), MoreVanillaArmor.MODID, helper);
+    public ModTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper helper) {
+        super(output, Registries.ITEM, lookupProvider, item -> ResourceKey.create(BuiltInRegistries.ITEM.key(), BuiltInRegistries.ITEM.getKey(item)), MoreVanillaArmor.MODID, helper);
     }
 
     @Override
-    protected void addTags() {
+    protected void addTags(@Nonnull HolderLookup.Provider provider) {
         TagAppender<Item> boots = this.tag(Tags.Items.ARMORS_BOOTS);
         TagAppender<Item> leggings = this.tag(Tags.Items.ARMORS_LEGGINGS);
         TagAppender<Item> chestplates = this.tag(Tags.Items.ARMORS_CHESTPLATES);
         TagAppender<Item> helmets = this.tag(Tags.Items.ARMORS_HELMETS);
         for (Map.Entry<ResourceKey<Item>, Item> entry : ForgeRegistries.ITEMS.getEntries()) {
             if (entry.getValue() instanceof Armor armor) {
-                switch (armor.getSlotType()) {
-                    case HEAD -> helmets.add(armor);
-                    case CHEST -> chestplates.add(armor);
-                    case LEGS -> leggings.add(armor);
-                    case FEET -> boots.add(armor);
-                }
+                ForgeRegistries.ITEMS.getResourceKey(armor).ifPresent(key -> {
+                    switch (armor.getSlotType()) {
+                        case HEAD -> helmets.add(key);
+                        case CHEST -> chestplates.add(key);
+                        case LEGS -> leggings.add(key);
+                        case FEET -> boots.add(key);
+                    }
+                });
             }
         }
     }

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "M": {
       "item": "minecraft:prismarine"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "morevanillaarmor:prismarine_chestplate"
-  }
+  },
+  "show_notification": true
 }

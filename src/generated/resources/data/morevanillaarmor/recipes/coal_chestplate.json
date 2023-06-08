@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "M": {
       "tag": "forge:storage_blocks/coal"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "morevanillaarmor:coal_chestplate"
-  }
+  },
+  "show_notification": true
 }

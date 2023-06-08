@@ -2,15 +2,16 @@ package de.melanx.MoreVanillaArmor.data;
 
 import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
 import de.melanx.MoreVanillaArmor.util.ModRegistries;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class ItemModels extends ItemModelProvider {
-    public ItemModels(DataGenerator generator, ExistingFileHelper helper) {
-        super(generator, MoreVanillaArmor.MODID, helper);
+
+    public ItemModels(PackOutput output, ExistingFileHelper helper) {
+        super(output, MoreVanillaArmor.MODID, helper);
     }
 
     @Override

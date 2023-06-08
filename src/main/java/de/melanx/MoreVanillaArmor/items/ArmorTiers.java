@@ -8,7 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -61,12 +61,12 @@ public enum ArmorTiers implements ArmorMaterial {
         this.ingredient = new LazyValue<>(repairMaterial);
     }
 
-    public int getDurabilityForSlot(EquipmentSlot slot) {
-        return DURABILITY_ARRAY[slot.getIndex()] * this.material.getDurabilityFactor();
+    public int getDurabilityForType(ArmorItem.Type type) {
+        return DURABILITY_ARRAY[type.getSlot().getIndex()] * this.material.getDurabilityFactor();
     }
 
-    public int getDefenseForSlot(EquipmentSlot slot) {
-        return this.material.getDamageReduction()[slot.getIndex()];
+    public int getDefenseForType(ArmorItem.Type type) {
+        return this.material.getDamageReduction()[type.getSlot().getIndex()];
     }
 
     public int getEnchantmentValue() {

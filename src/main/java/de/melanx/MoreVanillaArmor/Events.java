@@ -4,7 +4,7 @@ import de.melanx.MoreVanillaArmor.items.Armor;
 import de.melanx.MoreVanillaArmor.items.ArmorTiers;
 import de.melanx.MoreVanillaArmor.util.ModRegistries;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LightningBolt;
@@ -49,13 +49,13 @@ public class Events {
         ArmorTiers type = Armor.getArmorSetType(entity);
 
         if (type == ArmorTiers.FIERY) {
-            if (event.getSource().isFire()) {
+            if (event.getSource().is(DamageTypeTags.IS_FIRE)) {
                 event.setAmount(0.0F);
                 return;
             }
         }
 
-        if ((type == ArmorTiers.SLIME || type == ArmorTiers.OBSIDIAN) && event.getSource() != DamageSource.FALL) {
+        if ((type == ArmorTiers.SLIME || type == ArmorTiers.OBSIDIAN) && !event.getSource().is(DamageTypeTags.IS_FALL)) {
             // Don't trump other mods/effects that might reduce the damage to less than .25
             if (event.getAmount() > 0.25) {
                 if (event.getAmount() - 1 > 0.25) {
@@ -68,7 +68,7 @@ public class Events {
             return;
         }
 
-        if (event.getSource() == DamageSource.FALL) {
+        if (event.getSource().is(DamageTypeTags.IS_FALL)) {
             if (Armor.getArmorTypes(entity).contains(ArmorTiers.OBSIDIAN)) {
                 // Increase damage by 5% per level (example Heavy II increases damage by 10%, Heavy III increases damage by 15%)
                 event.setAmount(event.getAmount() + event.getAmount() * Armor.calcAmplifier(entity, ArmorTiers.OBSIDIAN) * 0.05F);

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "M": {
       "tag": "minecraft:logs"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "morevanillaarmor:wood_chestplate"
-  }
+  },
+  "show_notification": true
 }

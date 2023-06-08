@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "M": {
       "tag": "minecraft:logs"
@@ -11,5 +12,6 @@
   ],
   "result": {
     "item": "morevanillaarmor:wood_helmet"
-  }
+  },
+  "show_notification": true
 }

@@ -3,6 +3,7 @@ package de.melanx.MoreVanillaArmor.events;
 import de.melanx.MoreVanillaArmor.MoreVanillaArmor;
 import de.melanx.MoreVanillaArmor.items.Armor;
 import de.melanx.MoreVanillaArmor.items.ArmorTiers;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -14,7 +15,7 @@ public class PlayerDamagedEvent {
     @SubscribeEvent
     public static void  playerDamagedEvent(LivingDamageEvent event) {
         if (event.getEntity() instanceof Player player) {
-            if (event.getSource().isFire()) {
+            if (event.getSource().is(DamageTypeTags.IS_FIRE)) {
                 if (Armor.getArmorSetType(player) != null && Armor.getArmorSetType(player) == ArmorTiers.FIERY) {
                     event.setAmount(0.0F);
                 }
