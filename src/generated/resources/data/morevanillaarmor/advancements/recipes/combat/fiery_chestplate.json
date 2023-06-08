@@ -30,5 +30,6 @@
     "recipes": [
       "morevanillaarmor:fiery_chestplate"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

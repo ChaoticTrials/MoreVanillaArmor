@@ -30,5 +30,6 @@
     "recipes": [
       "morevanillaarmor:coal_boots"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

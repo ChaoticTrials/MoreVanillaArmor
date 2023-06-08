@@ -30,5 +30,6 @@
     "recipes": [
       "morevanillaarmor:glowstone_leggings"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

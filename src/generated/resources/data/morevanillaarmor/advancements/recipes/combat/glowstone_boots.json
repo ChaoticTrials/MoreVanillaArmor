@@ -30,5 +30,6 @@
     "recipes": [
       "morevanillaarmor:glowstone_boots"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }
