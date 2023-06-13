@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[46,)"
+loaderVersion = "[${fml},)"
 license = "Apache 2.0"
 
 [[mods]]
@@ -22,6 +22,6 @@ A mod which adds more armor in the vanilla way.
 [[dependencies.morevanillaarmor]]
     modId = "minecraft"
     mandatory = true
-    versionRange = "[1.20, 1.21)"
+    versionRange = "[${minecraft},)"
     ordering = "NONE"
     side = "BOTH"
