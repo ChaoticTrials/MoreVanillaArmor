@@ -33,7 +33,7 @@ public class Events {
             Level level = event.getLevel();
             List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class, AABB.ofSize(vec, 20, 20, 20))
                     .stream()
-                    .filter(livingEntity -> Armor.getArmorSetType(livingEntity) != null)
+                    .filter(livingEntity -> Armor.getArmorSetType(livingEntity) != ArmorTiers.COPPER)
                     .toList();
 
             if (!entities.isEmpty()) {
