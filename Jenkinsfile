@@ -14,13 +14,6 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-                echo 'Building'
-                sh './gradlew build'
-            }
-        }
-
         stage('Build and Publish') {
             steps {
                 echo 'Building'
